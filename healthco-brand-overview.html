@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Health Co. · Brand Overview</title>
+<meta name="description" content="The Health Co. is a media and wellness company founded by Alaias Fittz, on a mission to reach 100 million women. Three pillars: owned content, consulting, and brand partnerships.">
+<meta property="og:title" content="The Health Co. · Brand Overview">
+<meta property="og:description" content="A media and production company on a mission to help 100 million women transform their health — not just physically, but at the identity level.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thehealthco.com/healthco-brand-overview.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Health Co. · Brand Overview">
+<meta name="twitter:description" content="Three pillars. One mission. 100 million women.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -453,14 +461,80 @@
   .footer-nav a { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,228,0.35); text-decoration: none; transition: color 0.2s; }
   .footer-nav a:hover { color: var(--cream); }
   .footer-copy { font-size: 0.65rem; color: rgba(240,236,228,0.25); }
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; background: none; border: none; padding: 0.4rem;
+  }
+  .nav-hamburger span { width: 22px; height: 1px; background: var(--cream); display: block; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none; flex-direction: column; gap: 0;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(35,51,32,0.99); padding: 0.5rem 1.5rem 1rem;
+      border-top: 1px solid rgba(240,236,228,0.08);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { padding: 0.8rem 0; border-bottom: 1px solid rgba(240,236,228,0.07); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-cta { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 1.5rem 3rem; }
+    .hero-right { min-height: 280px; }
+
+    .belief-section { padding: 4rem 1.5rem; }
+
+    .data-section { padding: 4rem 1.5rem 0; }
+    .data-cards { grid-template-columns: 1fr; border-top: none; }
+    .data-card { border-right: none; border-top: 1px solid rgba(0,0,0,0.1); padding: 2.5rem 0; }
+    .data-card:nth-child(2), .data-card:nth-child(3) { padding-left: 0; }
+
+    .identity-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .identity-stat { grid-template-columns: 100px 1fr; }
+
+    .wellness-banner { padding: 4rem 1.5rem; }
+
+    .youtube-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+
+    .pillars-section { padding: 4rem 1.5rem; }
+    .pillars-grid { grid-template-columns: 1fr; }
+
+    .team-section { padding: 4rem 1.5rem; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+
+    .resources-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .resources-right { display: none; }
+
+    .cta-section { padding: 5rem 1.5rem; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+
+    footer { flex-direction: column; gap: 1.2rem; padding: 2rem 1.5rem; text-align: center; }
+    .footer-nav { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  }
+  @media (max-width: 480px) {
+    .team-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo">The Health Co.</a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="index.html">← Home</a></li>
     <li><a href="#mission">Mission</a></li>
     <li><a href="#data">The Data</a></li>
     <li><a href="#pillars">Our Pillars</a></li>
@@ -468,6 +542,9 @@
     <li><a href="#contact" class="nav-cta">Work With Us</a></li>
   </ul>
 </nav>
+
+<!-- SKIP NAV -->
+<a href="#mission" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 
 <!-- HERO -->
 <section class="hero" id="mission">
@@ -491,11 +568,11 @@
   <div class="hero-right">
     <div class="hero-right-content">
       <div class="hero-stat">
-        <div class="hero-stat-num">27M+</div>
+        <div class="hero-stat-num">26M+</div>
         <div class="hero-stat-label">Total YouTube Views</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">100K+</div>
+        <div class="hero-stat-num">130K+</div>
         <div class="hero-stat-label">Subscribers & Followers</div>
       </div>
       <div class="hero-stat">
@@ -503,7 +580,7 @@
         <div class="hero-stat-label">Core Business Pillars</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">8</div>
+        <div class="hero-stat-num">6</div>
         <div class="hero-stat-label">Person Team</div>
       </div>
     </div>
@@ -621,11 +698,11 @@
       <div class="pillar-stats">
         <div class="pillar-stat">
           <span class="pillar-stat-key">YouTube Views</span>
-          <span class="pillar-stat-val">27M+ total</span>
+          <span class="pillar-stat-val">26M+ total</span>
         </div>
         <div class="pillar-stat">
           <span class="pillar-stat-key">Subscribers</span>
-          <span class="pillar-stat-val">100,000+</span>
+          <span class="pillar-stat-val">130,000+</span>
         </div>
         <div class="pillar-stat">
           <span class="pillar-stat-key">Individual Videos</span>
@@ -820,9 +897,9 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-brand">The Health Co. · Alaias Fittz</span>
-  <nav class="footer-nav">
-    <a href="https://youtube.com/@alaias.fit" target="_blank">YouTube</a>
-    <a href="https://instagram.com/alaias.fit" target="_blank">Instagram</a>
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://instagram.com/alaias.fit" target="_blank" rel="noopener noreferrer">Instagram</a>
     <a href="#">Substack</a>
     <a href="healthco-pageant-journey.html">Miss Florida USA</a>
     <a href="healthco-services.html">Work With Me</a>
@@ -830,5 +907,21 @@
   <span class="footer-copy">© 2026 The Health Co.</span>
 </footer>
 
+<script>
+  const btn = document.querySelector('.nav-hamburger');
+  const menu = document.getElementById('nav-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
 </body>
 </html>

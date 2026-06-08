@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miss Lake Nona · Alaias Fittz · Miss Florida USA 2026</title>
+<meta name="description" content="Alaias Fittz, Miss Lake Nona, is competing in Miss Florida USA 2026 (July 10–12, Orlando). Her platform: Confidently Beautiful — helping women transform their health and identity.">
+<meta property="og:title" content="Miss Lake Nona · Alaias Fittz · Miss Florida USA 2026">
+<meta property="og:description" content="Platform: Confidently Beautiful. Competing for 300+ appearances in 365 days to take her mission from digital to real-world impact across all 67 counties of Florida.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thehealthco.com/healthco-pageant-journey.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Miss Lake Nona · Alaias Fittz · Miss Florida USA 2026">
+<meta name="twitter:description" content="Creator. CEO. Competitor. Confidently Beautiful — Miss Florida USA 2026.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -539,14 +547,86 @@
   .footer-nav a { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,228,0.35); text-decoration: none; transition: color 0.2s; }
   .footer-nav a:hover { color: var(--cream); }
   .footer-copy { font-size: 0.65rem; color: rgba(240,236,228,0.25); }
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; background: none; border: none; padding: 0.4rem;
+  }
+  .nav-hamburger span { width: 22px; height: 1px; background: var(--cream); display: block; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none; flex-direction: column; gap: 0;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(35,51,32,0.99); padding: 0.5rem 1.5rem 1rem;
+      border-top: 1px solid rgba(240,236,228,0.08);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { padding: 0.8rem 0; border-bottom: 1px solid rgba(240,236,228,0.07); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-cta { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 1.5rem 3rem; }
+    .hero-right { min-height: 240px; }
+    .hero-photo-strip { height: 120px; }
+
+    .platform-section { padding: 4rem 1.5rem; }
+    .platform-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+    .goals-grid { grid-template-columns: 1fr; }
+
+    .program-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+
+    .hunger-section { padding: 4rem 1.5rem; }
+    .hunger-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+    .hunger-stats { grid-template-columns: 1fr 1fr; }
+
+    .resources-section { padding: 4rem 1.5rem; }
+    .guides-grid { grid-template-columns: 1fr; }
+
+    .service-section { padding: 4rem 1.5rem; }
+    .service-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+    .service-grid { grid-template-columns: 1fr; }
+
+    .sponsors-section { padding: 3rem 1.5rem; }
+    .sponsors-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .market-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .market-right { grid-template-columns: 1fr 1fr; }
+
+    .press-section { padding: 3rem 1.5rem; }
+    .press-card { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; gap: 1rem; }
+    .press-ghost { display: none; }
+
+    .cta-section { padding: 5rem 1.5rem; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+
+    footer { flex-direction: column; gap: 1.2rem; padding: 2rem 1.5rem; text-align: center; }
+    .footer-nav { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  }
+  @media (max-width: 480px) {
+    .hunger-stats { grid-template-columns: 1fr; }
+    .sponsors-grid { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo">The Health Co.</a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="index.html">← Home</a></li>
     <li><a href="#platform">Platform</a></li>
     <li><a href="#resources">Resources</a></li>
     <li><a href="#service">Community</a></li>
@@ -555,8 +635,11 @@
   </ul>
 </nav>
 
+<!-- SKIP NAV -->
+<a href="#platform" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content">
   <div class="hero-left">
     <div class="hero-crown">Miss Lake Nona · Miss Florida USA 2026</div>
     <h1 class="hero-headline">
@@ -738,7 +821,7 @@
   <div class="guides-grid">
     <div class="guide-card">
       <div class="guide-card-top">
-        <div class="guide-card-icon">🥗</div>
+        <div class="guide-card-icon" aria-hidden="true">🥗</div>
         <div class="guide-card-title">Nutrition<br>Guide</div>
         <div class="guide-card-sub">Healthy, Anywhere Series</div>
       </div>
@@ -749,7 +832,7 @@
     </div>
     <div class="guide-card">
       <div class="guide-card-top">
-        <div class="guide-card-icon">🏃‍♀️</div>
+        <div class="guide-card-icon" aria-hidden="true">🏃‍♀️</div>
         <div class="guide-card-title">Exercise<br>Guide</div>
         <div class="guide-card-sub">Healthy, Anywhere Series</div>
       </div>
@@ -760,7 +843,7 @@
     </div>
     <div class="guide-card">
       <div class="guide-card-top">
-        <div class="guide-card-icon">🧠</div>
+        <div class="guide-card-icon" aria-hidden="true">🧠</div>
         <div class="guide-card-title">Mindset &<br>Confidence</div>
         <div class="guide-card-sub">Healthy, Anywhere Series</div>
       </div>
@@ -783,37 +866,37 @@
   </div>
   <div class="service-grid">
     <div class="service-card">
-      <span class="service-card-icon">🤝</span>
+      <span class="service-card-icon" aria-hidden="true">🤝</span>
       <div class="service-card-org">Northern Ohio Recovery Association (NORA)</div>
       <div class="service-card-title">Weekly Health & Wellness Sessions</div>
       <div class="service-card-desc">Leads weekly sessions for individuals in substance recovery — movement, mindset, and lifestyle habits to support long-term wellbeing. Has done this consistently for years.</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon">🧘‍♀️</span>
+      <span class="service-card-icon" aria-hidden="true">🧘‍♀️</span>
       <div class="service-card-org">Griffin Home · Alliant Treatment · Moore Counseling</div>
       <div class="service-card-title">Yoga & Recovery Workshops</div>
       <div class="service-card-desc">Led yoga sessions for women in recovery — using movement as a tool for stress relief, discipline, and rebuilding a positive relationship with the body across multiple organizations.</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon">👑</span>
+      <span class="service-card-icon" aria-hidden="true">👑</span>
       <div class="service-card-org">Girls Inc. Atlanta</div>
       <div class="service-card-title">Confidence & Poise Workshop</div>
       <div class="service-card-desc">Led a confidence and poise workshop for young girls and boys — emphasizing self-expression, confidence, and personal development. (And yes, one week she was training like an MMA fighter; the next she was in a full princess gown with Girls Inc.)</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon">🏈</span>
+      <span class="service-card-icon" aria-hidden="true">🏈</span>
       <div class="service-card-org">EA Sports · Nike · NFL · Microsoft</div>
       <div class="service-card-title">Field the Future — Founder</div>
       <div class="service-card-desc">Created EA Sports' first community-driven brand marketing program. 1,000+ youth impacted annually. 25 STEM scholarships per year. Connected youth with NFL athletes for real-world mentorship.</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon">💪</span>
+      <span class="service-card-icon" aria-hidden="true">💪</span>
       <div class="service-card-org">Recovery Communities · Men's Program</div>
       <div class="service-card-title">Men's Health & Mindset Coaching</div>
       <div class="service-card-desc">Currently coaches men in recovery on foundational health, fitness, and mindset principles — building the habits that support a healthier, more structured life.</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon">📋</span>
+      <span class="service-card-icon" aria-hidden="true">📋</span>
       <div class="service-card-org">Health & Wellness Seminar · 2024</div>
       <div class="service-card-title">Sustainable Habits Workshop</div>
       <div class="service-card-desc">Hosted a 2024 health and wellness seminar focused on building sustainable habits and improving overall wellbeing — practical, accessible, and free to attend.</div>
@@ -922,9 +1005,9 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-brand">The Health Co. · Alaias Fittz</span>
-  <nav class="footer-nav">
-    <a href="https://youtube.com/@alaias.fit" target="_blank">YouTube</a>
-    <a href="https://instagram.com/alaias.fit" target="_blank">Instagram</a>
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://instagram.com/alaias.fit" target="_blank" rel="noopener noreferrer">Instagram</a>
     <a href="#">Substack</a>
     <a href="healthco-pageant-journey.html">Miss Florida USA</a>
     <a href="healthco-services.html">Work With Me</a>
@@ -932,5 +1015,21 @@
   <span class="footer-copy">© 2026 The Health Co.</span>
 </footer>
 
+<script>
+  const btn = document.querySelector('.nav-hamburger');
+  const menu = document.getElementById('nav-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
 </body>
 </html>
