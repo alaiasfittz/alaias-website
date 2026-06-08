@@ -176,29 +176,27 @@
     text-align: center; line-height: 1.9; max-width: 200px;
   }
 
-  /* ── HERO CREDIBILITY (left column, bottom) ── */
+  /* ── HERO CREDIBILITY (left column, bottom — dark panel) ── */
   .hero-credibility {
-    border-top: 1px solid rgba(201,169,110,0.2);
-    padding-top: 2rem;
-    display: grid; grid-template-columns: 1fr 1px 1.8fr;
-    gap: 0 2rem; align-items: start;
-  }
-  .hero-cred-rule {
-    background: rgba(201,169,110,0.18); align-self: stretch;
+    /* bleed to the edges of hero-left padding */
+    margin: 0 -4rem -5rem -5rem;
+    padding: 2.2rem 5rem 2.8rem;
+    background: linear-gradient(to bottom, transparent, rgba(14,22,13,0.88) 35%);
   }
   .cred-cat-label {
     display: block; font-size: 0.48rem; letter-spacing: 0.38em;
-    text-transform: uppercase; color: var(--gold); opacity: 0.65;
-    margin-bottom: 1rem;
+    text-transform: uppercase; color: var(--gold); opacity: 0.6;
+    margin-bottom: 1.2rem;
   }
-  .cred-logo-list { display: flex; flex-direction: column; gap: 0.65rem; }
-  .cred-logo-row  { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; align-items: baseline; }
+  .cred-logo-row {
+    display: flex; flex-wrap: wrap; gap: 0.4rem 2rem; align-items: baseline;
+  }
   .cred-logo {
     font-family: var(--font-serif); font-weight: 300;
-    color: rgba(240,236,228,0.5);
+    color: rgba(240,236,228,0.52);
     transition: color 0.25s; line-height: 1;
   }
-  .cred-logo:hover { color: rgba(240,236,228,0.82); }
+  .cred-logo:hover { color: rgba(240,236,228,0.85); }
 
   /* individual brand treatments */
   .cred-logo--bi  { font-size: 1rem; font-weight: 400; letter-spacing: 0.01em; }
@@ -617,7 +615,8 @@
     .hero-right { min-height: 70vw; order: -1; }
     .hero-left { padding: 3rem 1.5rem 3.5rem; }
     .hero-name .first, .hero-name .last { font-size: clamp(4rem, 16vw, 7rem); }
-    .hero-credibility { grid-template-columns: 1fr 1px 1.8fr; gap: 0 1rem; }
+    .hero-credibility { margin: 0 -1.5rem -3rem; padding: 2rem 1.5rem 2.5rem; }
+    .cred-logo-row { gap: 0.4rem 1.2rem; }
 
     .data-section { padding: 4rem 1.5rem 0; }
     .data-cards { grid-template-columns: 1fr; border-top: none; }
@@ -716,21 +715,13 @@
 
     <!-- Credibility -->
     <div class="hero-credibility" aria-label="Featured in and trusted by">
-      <div>
-        <span class="cred-cat-label">Featured In</span>
-        <div class="cred-logo-list">
-          <span class="cred-logo cred-logo--bi">Business Insider</span>
-        </div>
-      </div>
-      <div class="hero-cred-rule" aria-hidden="true"></div>
-      <div>
-        <span class="cred-cat-label">Trusted By</span>
-        <div class="cred-logo-row">
-          <span class="cred-logo cred-logo--ea">EA Sports</span>
-          <span class="cred-logo cred-logo--ag1">AG1</span>
-          <span class="cred-logo cred-logo--org">Orgain</span>
-          <span class="cred-logo cred-logo--ot">Orangetheory</span>
-        </div>
+      <span class="cred-cat-label">Featured In &amp; Trusted By</span>
+      <div class="cred-logo-row">
+        <span class="cred-logo cred-logo--bi">Business Insider</span>
+        <span class="cred-logo cred-logo--ea">EA Sports</span>
+        <span class="cred-logo cred-logo--ag1">AG1</span>
+        <span class="cred-logo cred-logo--org">Orgain</span>
+        <span class="cred-logo cred-logo--ot">Orangetheory</span>
       </div>
     </div>
 
