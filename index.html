@@ -44,20 +44,20 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.5rem 4rem;
-    background: rgba(35,51,32,0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,169,110,0.1);
+    background: rgba(26,40,24,0.98);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201,169,110,0.18);
   }
   .nav-logo {
-    font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400;
+    font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400;
     font-style: italic; color: var(--cream); letter-spacing: 0.06em;
     text-decoration: none; transition: color 0.25s;
   }
   .nav-logo:hover { color: var(--gold); }
-  .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
   .nav-links a {
-    font-size: 0.76rem; font-weight: 400; letter-spacing: 0.2em;
-    text-transform: uppercase; color: rgba(240,236,228,0.72);
+    font-size: 0.78rem; font-weight: 400; letter-spacing: 0.22em;
+    text-transform: uppercase; color: rgba(240,236,228,0.88);
     text-decoration: none; transition: color 0.25s;
     position: relative; padding-bottom: 3px;
   }
@@ -68,9 +68,9 @@
   .nav-links a:hover { color: var(--cream); }
   .nav-links a:hover::after { width: 100%; }
   .nav-cta {
-    background: rgba(201,169,110,0.12) !important; color: var(--gold) !important;
-    border: 1px solid rgba(201,169,110,0.35) !important;
-    padding: 0.55rem 1.5rem; border-radius: 2rem;
+    background: rgba(201,169,110,0.14) !important; color: var(--gold) !important;
+    border: 1px solid rgba(201,169,110,0.45) !important;
+    padding: 0.6rem 1.6rem; border-radius: 2rem;
     letter-spacing: 0.15em !important; transition: background 0.25s, color 0.25s !important;
   }
   .nav-cta:hover { background: var(--gold) !important; color: var(--near-black) !important; }
@@ -145,18 +145,22 @@
   }
   .btn-outline:hover { border-color: rgba(201,169,110,0.6); color: var(--gold); }
 
-  .hero-seen-in { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .hero-seen-in {
+    border-top: 1px solid rgba(201,169,110,0.15);
+    padding-top: 2rem;
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
   .proof-label {
-    font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(240,236,228,0.28); white-space: nowrap;
+    font-size: 0.56rem; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.55; white-space: nowrap;
   }
-  .proof-logos { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; }
+  .proof-logos { display: flex; gap: 2.2rem; align-items: center; flex-wrap: wrap; }
   .proof-logo {
-    font-family: var(--font-serif); font-size: 0.9rem; font-weight: 400;
-    color: rgba(240,236,228,0.3); font-style: italic; white-space: nowrap;
-    transition: color 0.2s;
+    font-family: var(--font-serif); font-size: 1rem; font-weight: 400;
+    color: rgba(240,236,228,0.45); font-style: italic; white-space: nowrap;
+    letter-spacing: 0.03em; transition: color 0.25s;
   }
-  .proof-logo:hover { color: rgba(240,236,228,0.55); }
+  .proof-logo:hover { color: rgba(240,236,228,0.75); }
 
   /* right: full-bleed photo */
   .hero-right {
@@ -697,13 +701,16 @@
       <a href="#hub" class="btn-outline">Why This Matters</a>
     </div>
 
-    <!-- As Seen In -->
+    <!-- Featured In & Trusted By -->
     <div class="hero-seen-in">
-      <span class="proof-label">As Seen In</span>
+      <span class="proof-label">Featured In &amp; Trusted By</span>
       <div class="proof-logos">
         <span class="proof-logo">Business Insider</span>
+        <span class="hero-eyebrow-sep" aria-hidden="true"></span>
         <span class="proof-logo">EA Sports</span>
+        <span class="hero-eyebrow-sep" aria-hidden="true"></span>
         <span class="proof-logo">AG1</span>
+        <span class="hero-eyebrow-sep" aria-hidden="true"></span>
         <span class="proof-logo">NFL</span>
       </div>
     </div>
