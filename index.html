@@ -145,40 +145,6 @@
   }
   .btn-outline:hover { border-color: rgba(201,169,110,0.6); color: var(--gold); }
 
-  /* ── HERO CREDIBILITY ── */
-  .hero-credibility {
-    border-top: 1px solid rgba(201,169,110,0.2);
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1px 1.6fr;
-    gap: 0 2.8rem;
-    align-items: start;
-  }
-  .hero-cred-rule {
-    background: rgba(201,169,110,0.15);
-    align-self: stretch;
-  }
-  .cred-cat-label {
-    display: block;
-    font-size: 0.5rem; letter-spacing: 0.36em; text-transform: uppercase;
-    color: var(--gold); opacity: 0.6;
-    margin-bottom: 1.3rem;
-  }
-  .cred-logo-list { display: flex; flex-direction: column; gap: 0.8rem; }
-  .cred-logo {
-    font-family: var(--font-serif); font-weight: 300;
-    color: rgba(240,236,228,0.38);
-    transition: color 0.25s; line-height: 1; display: block;
-  }
-  .cred-logo:hover { color: rgba(240,236,228,0.62); }
-
-  /* individual brand treatments */
-  .cred-logo--bi   { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.01em; }
-  .cred-logo--ea   { font-size: 1rem; font-style: italic; letter-spacing: 0.06em; }
-  .cred-logo--ag1  { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.22em; }
-  .cred-logo--org  { font-size: 1rem; font-style: italic; font-weight: 300; letter-spacing: 0.04em; }
-  .cred-logo--ot   { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; }
-
   /* right: full-bleed photo */
   .hero-right {
     position: relative; overflow: hidden;
@@ -209,6 +175,40 @@
     color: rgba(240,236,228,0.15); font-size: 0.85rem;
     text-align: center; line-height: 1.9; max-width: 200px;
   }
+
+  /* ── CREDIBILITY OVERLAY (bottom of photo column) ── */
+  .hero-credibility-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    background: linear-gradient(to bottom, transparent 0%, rgba(26,40,24,0.82) 30%, rgba(26,40,24,0.97) 100%);
+    padding: 4rem 2.5rem 2.2rem;
+  }
+  .hero-cred-inner {
+    display: grid; grid-template-columns: 1fr 1px 1.8fr;
+    gap: 0 2rem; align-items: start;
+  }
+  .hero-cred-rule {
+    background: rgba(201,169,110,0.2); align-self: stretch;
+  }
+  .cred-cat-label {
+    display: block; font-size: 0.48rem; letter-spacing: 0.38em;
+    text-transform: uppercase; color: var(--gold); opacity: 0.65;
+    margin-bottom: 1rem;
+  }
+  .cred-logo-list { display: flex; flex-direction: column; gap: 0.65rem; }
+  .cred-logo-row  { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; align-items: baseline; }
+  .cred-logo {
+    font-family: var(--font-serif); font-weight: 300;
+    color: rgba(240,236,228,0.5);
+    transition: color 0.25s; line-height: 1;
+  }
+  .cred-logo:hover { color: rgba(240,236,228,0.82); }
+
+  /* individual brand treatments */
+  .cred-logo--bi  { font-size: 1rem; font-weight: 400; letter-spacing: 0.01em; }
+  .cred-logo--ea  { font-size: 0.9rem; font-style: italic; letter-spacing: 0.05em; }
+  .cred-logo--ag1 { font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; }
+  .cred-logo--org { font-size: 0.9rem; font-style: italic; letter-spacing: 0.04em; }
+  .cred-logo--ot  { font-family: var(--font-sans); font-size: 0.66rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; }
 
   /* ── DATA SECTION ── */
   .data-section { background: var(--linen); padding: 7rem 5rem 0; }
@@ -620,8 +620,8 @@
     .hero-right { min-height: 70vw; order: -1; }
     .hero-left { padding: 3rem 1.5rem 3.5rem; }
     .hero-name .first, .hero-name .last { font-size: clamp(4rem, 16vw, 7rem); }
-    .hero-credibility { grid-template-columns: 1fr; gap: 1.5rem 0; }
-    .hero-cred-rule { display: none; }
+    .hero-cred-inner { grid-template-columns: 1fr 1px 1.8fr; gap: 0 1.2rem; }
+    .hero-credibility-overlay { padding: 3rem 1.5rem 1.8rem; }
 
     .data-section { padding: 4rem 1.5rem 0; }
     .data-cards { grid-template-columns: 1fr; border-top: none; }
@@ -718,30 +718,6 @@
       <a href="#hub" class="btn-outline">Why This Matters</a>
     </div>
 
-    <!-- Credibility: Featured In & Trusted By -->
-    <div class="hero-credibility" aria-label="Featured in and trusted by">
-      <!-- Featured In -->
-      <div>
-        <span class="cred-cat-label">Featured In</span>
-        <div class="cred-logo-list">
-          <span class="cred-logo cred-logo--bi">Business Insider</span>
-        </div>
-      </div>
-
-      <!-- Divider -->
-      <div class="hero-cred-rule" aria-hidden="true"></div>
-
-      <!-- Trusted By -->
-      <div>
-        <span class="cred-cat-label">Trusted By</span>
-        <div class="cred-logo-list">
-          <span class="cred-logo cred-logo--ea">EA Sports</span>
-          <span class="cred-logo cred-logo--ag1">AG1</span>
-          <span class="cred-logo cred-logo--org">Orgain</span>
-          <span class="cred-logo cred-logo--ot">Orangetheory</span>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- Hero photo — full-bleed right column -->
@@ -751,7 +727,29 @@
            alt="Alaias Fittz — Creator, Speaker, Miss Lake Nona USA, Founder of The Health Co."
            onerror="this.style.display='none'; this.parentElement.querySelector('.hero-photo-placeholder').style.display='flex';" />
       <div class="hero-photo-placeholder" style="display:none;">
-        <span>Add assets/alaias-hero.jpg<br>to display hero photo</span>
+        <span>Add assets/Alaias-Hero.jpg<br>to display hero photo</span>
+      </div>
+    </div>
+
+    <!-- Credibility overlay — anchored to bottom of photo -->
+    <div class="hero-credibility-overlay" aria-label="Featured in and trusted by">
+      <div class="hero-cred-inner">
+        <div>
+          <span class="cred-cat-label">Featured In</span>
+          <div class="cred-logo-list">
+            <span class="cred-logo cred-logo--bi">Business Insider</span>
+          </div>
+        </div>
+        <div class="hero-cred-rule" aria-hidden="true"></div>
+        <div>
+          <span class="cred-cat-label">Trusted By</span>
+          <div class="cred-logo-row">
+            <span class="cred-logo cred-logo--ea">EA Sports</span>
+            <span class="cred-logo cred-logo--ag1">AG1</span>
+            <span class="cred-logo cred-logo--org">Orgain</span>
+            <span class="cred-logo cred-logo--ot">Orangetheory</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
