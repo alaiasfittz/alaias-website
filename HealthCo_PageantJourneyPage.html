@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miss Lake Nona · Alaias Fittz · Miss Florida USA 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest:     #233320;
+    --forest-mid: #2d4228;
+    --forest-lt:  #3a5435;
+    --sage:       #7d8f6a;
+    --sage-lt:    #8fa67a;
+    --sage-pale:  #a8b895;
+    --gold:       #c9a96e;
+    --gold-lt:    #d4b87a;
+    --cream:      #f0ece4;
+    --linen:      #f5f2ec;
+    --warm-white: #faf8f4;
+    --charcoal:   #1c1c1a;
+    --near-black: #181916;
+    --text-dark:  #1e2218;
+    --text-mid:   #5a5a50;
+    --text-muted: #999980;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:  'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); color: var(--text-dark); overflow-x: hidden; background: var(--linen); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3.5rem;
+    background: rgba(35,51,32,0.97);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-family: var(--font-serif); font-size: 1rem; font-weight: 400;
+    font-style: italic; color: var(--cream); letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 0.68rem; font-weight: 400; letter-spacing: 0.16em;
+    text-transform: uppercase; color: rgba(240,236,228,0.65);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-cta {
+    background: var(--sage) !important; color: var(--cream) !important;
+    padding: 0.5rem 1.3rem; border-radius: 2rem;
+    letter-spacing: 0.12em !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; background: var(--forest);
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 4.5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 4rem 5rem 5rem; position: relative; z-index: 1;
+  }
+  .hero-crown {
+    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-crown::before {
+    content: '♛'; font-size: 0.9rem;
+  }
+  .hero-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 6vw, 7rem); font-weight: 300;
+    line-height: 0.95; color: var(--cream); margin-bottom: 0.5rem;
+  }
+  .hero-headline em { font-style: italic; color: var(--gold); display: block; }
+  .hero-title-badge {
+    display: inline-flex; align-items: center; gap: 1rem;
+    margin: 1.5rem 0 2.5rem;
+  }
+  .badge {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 2rem;
+  }
+  .badge-gold {
+    background: rgba(201,169,110,0.15); color: var(--gold);
+    border: 1px solid rgba(201,169,110,0.3);
+  }
+  .badge-sage {
+    background: rgba(125,143,106,0.15); color: var(--sage-pale);
+    border: 1px solid rgba(125,143,106,0.3);
+  }
+  .hero-bio {
+    font-size: 1rem; line-height: 1.85; font-weight: 300;
+    color: rgba(240,236,228,0.68); max-width: 420px; margin-bottom: 3rem;
+  }
+  .hero-bio strong { color: var(--cream); font-weight: 400; }
+  .hero-event-details {
+    display: flex; flex-direction: column; gap: 0;
+    border-top: 1px solid rgba(240,236,228,0.1);
+    padding-top: 2rem;
+  }
+  .event-row {
+    display: flex; justify-content: space-between;
+    padding: 0.7rem 0; border-bottom: 1px solid rgba(240,236,228,0.07);
+    font-size: 0.78rem;
+  }
+  .event-row:last-child { border-bottom: none; }
+  .event-key {
+    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,236,228,0.35);
+  }
+  .event-val { color: var(--cream); font-weight: 300; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--forest-mid);
+    display: flex; flex-direction: column;
+  }
+  .hero-photo-main {
+    flex: 1;
+    background: var(--forest-lt);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .hero-photo-main span {
+    font-family: var(--font-serif); font-style: italic;
+    color: rgba(240,236,228,0.2); font-size: 0.9rem;
+    text-align: center; line-height: 1.8;
+  }
+  .hero-photo-strip {
+    display: grid; grid-template-columns: 1fr 1fr;
+    height: 180px; gap: 1px;
+  }
+  .strip-photo {
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .strip-photo span {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 0.7rem; color: rgba(240,236,228,0.15); text-align: center;
+  }
+
+  /* PLATFORM */
+  .platform-section {
+    background: var(--linen); padding: 7rem 5rem;
+  }
+  .platform-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8rem;
+    align-items: end; margin-bottom: 5rem;
+  }
+  .section-label {
+    font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--sage); margin-bottom: 1rem;
+  }
+  .section-label.light { color: var(--sage-pale); }
+  .section-label.gold-c { color: var(--gold); }
+  .platform-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300;
+    color: var(--text-dark); line-height: 1.0;
+  }
+  .platform-headline em { font-style: italic; color: var(--sage); }
+  .platform-statement {
+    font-family: var(--font-serif); font-size: 1.25rem; font-weight: 300;
+    font-style: italic; color: var(--text-mid); line-height: 1.6;
+    border-left: 2px solid var(--sage); padding-left: 1.5rem;
+  }
+  .goals-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: rgba(0,0,0,0.08);
+  }
+  .goal-card {
+    background: var(--warm-white); padding: 3rem 2.5rem;
+    transition: background 0.3s;
+  }
+  .goal-card:hover { background: var(--cream); }
+  .goal-num {
+    font-family: var(--font-serif); font-size: 4rem; font-weight: 300;
+    color: rgba(0,0,0,0.05); line-height: 1; margin-bottom: -0.8rem;
+  }
+  .goal-tag {
+    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 0.6rem;
+  }
+  .goal-title {
+    font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400;
+    color: var(--text-dark); line-height: 1.2; margin-bottom: 1rem;
+  }
+  .goal-title em { font-style: italic; color: var(--sage); }
+  .goal-desc {
+    font-size: 0.82rem; line-height: 1.75; color: var(--text-mid);
+    margin-bottom: 1.5rem;
+  }
+  .goal-bullets { list-style: none; }
+  .goal-bullets li {
+    font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;
+    padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex; gap: 0.6rem; align-items: baseline;
+  }
+  .goal-bullets li:last-child { border-bottom: none; }
+  .goal-bullets li::before { content: '→'; color: var(--sage); font-size: 0.7rem; flex-shrink: 0; }
+
+  /* HEALTHY ANYWHERE SIGNATURE PROGRAM */
+  .program-section {
+    background: var(--charcoal); padding: 7rem 5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+  .program-left .section-label { color: var(--sage-pale); margin-bottom: 1rem; }
+  .program-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
+    color: var(--cream); line-height: 1.05; margin-bottom: 1.5rem;
+  }
+  .program-headline em { font-style: italic; color: var(--gold); }
+  .program-desc {
+    font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,228,0.6);
+    margin-bottom: 2.5rem;
+  }
+  .program-right { display: flex; flex-direction: column; gap: 1px; }
+  .program-item {
+    background: rgba(240,236,228,0.04);
+    border: 1px solid rgba(240,236,228,0.07);
+    padding: 1.8rem 2rem;
+    transition: background 0.2s;
+  }
+  .program-item:hover { background: rgba(240,236,228,0.07); }
+  .program-item-label {
+    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage-lt); margin-bottom: 0.4rem;
+  }
+  .program-item-title {
+    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400;
+    color: var(--cream); margin-bottom: 0.4rem;
+  }
+  .program-item-desc {
+    font-size: 0.78rem; line-height: 1.6; color: rgba(240,236,228,0.45);
+  }
+
+  /* FOOD INSECURITY DATA */
+  .hunger-section {
+    background: var(--sage); padding: 6rem 5rem;
+  }
+  .hunger-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8rem;
+    align-items: end; margin-bottom: 4rem;
+  }
+  .hunger-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
+    color: var(--cream); line-height: 1.05;
+  }
+  .hunger-headline em { font-style: italic; }
+  .hunger-context {
+    font-size: 0.9rem; line-height: 1.8; color: rgba(240,236,228,0.75);
+  }
+  .hunger-context a { color: var(--cream); }
+  .hunger-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.1);
+  }
+  .hunger-stat {
+    background: rgba(35,51,32,0.35); padding: 2.5rem 2rem;
+  }
+  .hunger-stat-num {
+    font-family: var(--font-serif); font-size: 3rem; font-weight: 300;
+    color: var(--cream); line-height: 1; margin-bottom: 0.5rem;
+  }
+  .hunger-stat-label {
+    font-size: 0.78rem; line-height: 1.6; color: rgba(240,236,228,0.7);
+  }
+  .hunger-partner {
+    margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid rgba(240,236,228,0.2);
+    display: flex; align-items: center; gap: 2rem;
+  }
+  .hunger-partner-label {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,236,228,0.5); white-space: nowrap;
+  }
+  .hunger-partner-name {
+    font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400;
+    font-style: italic; color: var(--cream);
+  }
+
+  /* RESOURCES / DOWNLOADABLE GUIDES */
+  .resources-section {
+    background: var(--linen); padding: 7rem 5rem;
+  }
+  .resources-header { margin-bottom: 4rem; }
+  .resources-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
+    color: var(--text-dark); line-height: 1.05;
+  }
+  .resources-header h2 em { font-style: italic; color: var(--sage); }
+  .resources-header p {
+    font-size: 0.9rem; line-height: 1.8; color: var(--text-mid);
+    max-width: 500px; margin-top: 1rem;
+  }
+  .guides-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .guide-card {
+    background: var(--forest); border-radius: 2px;
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .guide-card-top {
+    aspect-ratio: 4/5; background: var(--forest-mid);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 2.5rem; text-align: center;
+    position: relative;
+  }
+  .guide-card-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.8; }
+  .guide-card-title {
+    font-family: var(--font-serif); font-size: 1.8rem; font-weight: 300;
+    font-style: italic; color: var(--cream); line-height: 1.1; margin-bottom: 0.5rem;
+  }
+  .guide-card-sub {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .guide-card-bottom { padding: 1.8rem 2rem; }
+  .guide-card-desc {
+    font-size: 0.8rem; line-height: 1.7; color: rgba(240,236,228,0.55);
+    margin-bottom: 1.5rem;
+  }
+  .guide-badge {
+    font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.25);
+    padding: 0.3rem 0.9rem; border-radius: 2rem; display: inline-block;
+  }
+
+  /* COMMUNITY SERVICE */
+  .service-section {
+    background: var(--near-black); padding: 7rem 5rem;
+  }
+  .service-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8rem;
+    align-items: end; margin-bottom: 5rem;
+  }
+  .service-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
+    color: var(--cream); line-height: 1.05;
+  }
+  .service-headline em { font-style: italic; color: var(--gold); }
+  .service-context {
+    font-size: 0.9rem; line-height: 1.8; color: rgba(240,236,228,0.55);
+  }
+  .service-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: rgba(240,236,228,0.06);
+  }
+  .service-card {
+    background: var(--near-black); padding: 2.8rem 2.5rem;
+    transition: background 0.3s;
+  }
+  .service-card:hover { background: rgba(35,51,32,0.6); }
+  .service-card-icon {
+    font-size: 1.5rem; margin-bottom: 1.2rem; display: block;
+  }
+  .service-card-org {
+    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage-lt); margin-bottom: 0.5rem;
+  }
+  .service-card-title {
+    font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400;
+    color: var(--cream); line-height: 1.2; margin-bottom: 0.8rem;
+  }
+  .service-card-desc {
+    font-size: 0.78rem; line-height: 1.7; color: rgba(240,236,228,0.45);
+  }
+  .service-orgs {
+    margin-top: 4rem; padding-top: 3rem;
+    border-top: 1px solid rgba(240,236,228,0.08);
+  }
+  .service-orgs-label {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(240,236,228,0.3); margin-bottom: 1.5rem;
+  }
+  .org-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .org-pill {
+    border: 1px solid rgba(240,236,228,0.15); color: rgba(240,236,228,0.5);
+    padding: 0.4rem 1rem; border-radius: 2rem;
+    font-size: 0.72rem; font-family: var(--font-sans);
+    text-decoration: none; transition: all 0.2s;
+  }
+  .org-pill:hover { border-color: rgba(240,236,228,0.4); color: var(--cream); }
+
+  /* SPONSORSHIPS */
+  .sponsors-section {
+    background: var(--cream); padding: 5rem 5rem;
+  }
+  .sponsors-section .section-label { margin-bottom: 2rem; }
+  .sponsors-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  .sponsors-header h2 {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 300;
+    color: var(--text-dark);
+  }
+  .sponsors-header h2 em { font-style: italic; color: var(--sage); }
+  .sponsors-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px;
+    background: rgba(0,0,0,0.07);
+  }
+  .sponsor-cell {
+    background: var(--warm-white); padding: 2rem 1.5rem;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; gap: 0.5rem;
+    transition: background 0.2s;
+  }
+  .sponsor-cell:hover { background: var(--cream); }
+  .sponsor-name {
+    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400;
+    font-style: italic; color: var(--text-dark);
+  }
+  .sponsor-type {
+    font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* MARKETABILITY */
+  .market-section {
+    background: var(--forest); padding: 7rem 5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+  .market-left .section-label { color: var(--sage-pale); margin-bottom: 1rem; }
+  .market-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
+    color: var(--cream); line-height: 1.0; margin-bottom: 2rem;
+  }
+  .market-headline em { font-style: italic; color: var(--gold); }
+  .market-desc {
+    font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,228,0.6);
+    margin-bottom: 2.5rem;
+  }
+  .market-right { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(240,236,228,0.08); }
+  .market-stat {
+    background: var(--forest-mid); padding: 2.5rem 2rem;
+  }
+  .market-stat-num {
+    font-family: var(--font-serif); font-size: 2.8rem; font-weight: 300;
+    color: var(--gold); line-height: 1; margin-bottom: 0.4rem;
+  }
+  .market-stat-label {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(240,236,228,0.4);
+  }
+
+  /* PRESS FEATURE */
+  .press-section { background: var(--linen); padding: 5rem 5rem; }
+  .press-section .section-label { margin-bottom: 2.5rem; }
+  .press-card {
+    background: var(--charcoal); border-radius: 2px;
+    padding: 5rem; display: grid; grid-template-columns: 1fr auto;
+    gap: 4rem; align-items: start;
+  }
+  .press-outlet {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--sage-pale); margin-bottom: 1.5rem;
+  }
+  .press-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 3.2rem); font-weight: 300;
+    color: var(--cream); line-height: 1.1; margin-bottom: 1.8rem;
+  }
+  .press-body {
+    font-size: 0.85rem; line-height: 1.8;
+    color: rgba(240,236,228,0.45); max-width: 560px; margin-bottom: 2rem;
+  }
+  .btn-article {
+    border: 1px solid rgba(240,236,228,0.25); color: var(--cream);
+    background: transparent; padding: 0.75rem 1.8rem; border-radius: 3rem;
+    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--font-sans); cursor: pointer; text-decoration: none;
+    display: inline-block; transition: all 0.2s;
+  }
+  .btn-article:hover { background: rgba(240,236,228,0.07); }
+  .press-ghost {
+    font-family: var(--font-serif); font-size: clamp(3rem, 6vw, 7rem);
+    font-weight: 300; font-style: italic;
+    color: rgba(240,236,228,0.05); line-height: 1; text-align: right;
+    white-space: nowrap; align-self: center;
+  }
+
+  /* CTA */
+  .cta-section { background: var(--near-black); padding: 9rem 5rem; text-align: center; }
+  .cta-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 6vw, 7rem); font-weight: 300;
+    color: var(--cream); line-height: 1.0; margin-bottom: 1.5rem;
+  }
+  .cta-headline em { font-style: italic; color: var(--gold); }
+  .cta-sub {
+    font-size: 0.95rem; line-height: 1.8; color: rgba(240,236,228,0.45);
+    max-width: 480px; margin: 0 auto 3rem;
+  }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-sage-pill {
+    background: var(--sage); color: var(--cream);
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s; display: inline-block;
+  }
+  .btn-sage-pill:hover { background: var(--sage-lt); }
+  .btn-ghost-pill {
+    background: transparent; color: rgba(240,236,228,0.65);
+    border: 1px solid rgba(240,236,228,0.2);
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-ghost-pill:hover { border-color: rgba(240,236,228,0.5); color: var(--cream); }
+  .cta-contact { font-size: 0.78rem; color: rgba(240,236,228,0.3); }
+  .cta-contact a { color: rgba(240,236,228,0.4); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest); padding: 1.8rem 3.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-brand { font-family: var(--font-serif); font-size: 0.9rem; font-style: italic; color: rgba(240,236,228,0.55); }
+  .footer-nav { display: flex; gap: 2.5rem; }
+  .footer-nav a { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,228,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-nav a:hover { color: var(--cream); }
+  .footer-copy { font-size: 0.65rem; color: rgba(240,236,228,0.25); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">The Health Co.</a>
+  <ul class="nav-links">
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#service">Community</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#contact" class="nav-cta">Follow the Journey</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-crown">Miss Lake Nona · Miss Florida USA 2026</div>
+    <h1 class="hero-headline">
+      Alaias<br><em>Fittz.</em>
+    </h1>
+    <div class="hero-title-badge">
+      <span class="badge badge-gold">Miss Lake Nona</span>
+      <span class="badge badge-sage">Competing · Miss Florida USA 2026</span>
+    </div>
+    <p class="hero-bio">
+      Creator. CEO. Competitor. A D1 athlete, EA Sports brand strategist, and founder of The Health Co. — now competing to bring <strong>Confidently Beautiful</strong> to 67 counties and 300+ appearances across the state of Florida.
+    </p>
+    <div class="hero-event-details">
+      <div class="event-row">
+        <span class="event-key">Event</span>
+        <span class="event-val">Miss Florida USA 2026</span>
+      </div>
+      <div class="event-row">
+        <span class="event-key">Dates</span>
+        <span class="event-val">July 10–12, 2026</span>
+      </div>
+      <div class="event-row">
+        <span class="event-key">Venue</span>
+        <span class="event-val">Linda W. Chapin Theater, Orlando, FL</span>
+      </div>
+      <div class="event-row">
+        <span class="event-key">Platform</span>
+        <span class="event-val">Confidently Beautiful</span>
+      </div>
+      <div class="event-row">
+        <span class="event-key">Current Title</span>
+        <span class="event-val">Miss Lake Nona</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-main">
+      <span>Pageant headshot<br>(Carlos · editorial)</span>
+    </div>
+    <div class="hero-photo-strip">
+      <div class="strip-photo"><span>Crown photo</span></div>
+      <div class="strip-photo"><span>Appearance photo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="platform-section" id="platform">
+  <div class="platform-intro">
+    <div>
+      <div class="section-label">My Platform</div>
+      <h2 class="platform-headline">Confidently<br><em>Beautiful.</em></h2>
+    </div>
+    <div>
+      <p class="platform-statement">"I advocate for redefining health for women — shifting the conversation from restriction and dieting to sustainable, personalized wellness, so women can feel confident, capable, and in control of their bodies for life."</p>
+    </div>
+  </div>
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="goal-num">01</div>
+      <div class="goal-tag">Goal One</div>
+      <h3 class="goal-title">Shift how young women<br>view <em>health & dieting.</em></h3>
+      <p class="goal-desc">Moving the conversation from shame and restriction to ownership, nourishment, and balance — because I lived through the confusion of mixed messaging on my own 75+ lb journey.</p>
+      <ul class="goal-bullets">
+        <li>Partner with organizations like NEDA and universities</li>
+        <li>Teach simple, sustainable habits women can actually maintain</li>
+        <li>Champion a new standard for women's health in Florida</li>
+        <li>Because when women have the right tools, they change their lives</li>
+      </ul>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">02</div>
+      <div class="goal-tag">Goal Two · Signature Program</div>
+      <h3 class="goal-title"><em>Healthy, Anywhere.</em><br>No matter the zip code.</h3>
+      <p class="goal-desc">A statewide initiative making healthy living accessible to every woman — through practical, low-cost tools whether she's shopping at a grocery store, dollar store, or gas station.</p>
+      <ul class="goal-bullets">
+        <li>30–45 min workshops: "Healthy Eating on $50/Week"</li>
+        <li>Live demos: build a meal, show real food swaps</li>
+        <li>Partner with colleges, high schools, community centers</li>
+        <li>Digital amplifier: YouTube, Reels, TikTok challenges</li>
+        <li>Free downloadable resource hub for every woman</li>
+      </ul>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">03</div>
+      <div class="goal-tag">Goal Three</div>
+      <h3 class="goal-title">Elevate the Miss USA brand<br>through <em>social media.</em></h3>
+      <p class="goal-desc">As a content creator with 26M+ YouTube views, I've seen firsthand how digital platforms shape culture — it's actually how I found pageants. I'd bring that expertise to the Miss USA brand.</p>
+      <ul class="goal-bullets">
+        <li>Reach a new generation of women authentically</li>
+        <li>Highlight real impact this organization is making</li>
+        <li>When young women see themselves in it, they believe they belong</li>
+        <li>Representation isn't just being seen — it's making others believe they can step in too</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTHY ANYWHERE PROGRAM -->
+<section class="program-section">
+  <div class="program-left">
+    <div class="section-label light">Signature Initiative</div>
+    <h2 class="program-headline">Healthy,<br><em>Anywhere.</em></h2>
+    <p class="program-desc">I'm simplifying healthy living for women across Florida — through workshops, digital content, and practical tools that work no matter your budget or background. What I teach in real life, I scale through content. From rooms to millions.</p>
+    <p class="program-desc" style="margin-top:0;">In partnership with Second Harvest Food Bank of Central Florida and Feeding Florida — because access to healthy food and access to healthy knowledge go hand in hand.</p>
+  </div>
+  <div class="program-right">
+    <div class="program-item">
+      <div class="program-item-label">Workshop Format</div>
+      <div class="program-item-title">"Healthy Eating on $50/Week"</div>
+      <div class="program-item-desc">Live community workshop with real meal builds, food swaps, and take-home guides</div>
+    </div>
+    <div class="program-item">
+      <div class="program-item-label">Digital Content</div>
+      <div class="program-item-title">I Tried Eating Healthy at the Dollar Store</div>
+      <div class="program-item-desc">YouTube episodes + Reels + TikTok challenges moving impact from rooms to millions</div>
+    </div>
+    <div class="program-item">
+      <div class="program-item-label">Community Partners</div>
+      <div class="program-item-title">Colleges, High Schools & Community Centers</div>
+      <div class="program-item-desc">Statewide partnerships across all 67 Florida counties</div>
+    </div>
+    <div class="program-item">
+      <div class="program-item-label">Resource Hub</div>
+      <div class="program-item-title">Free Digital Toolkit</div>
+      <div class="program-item-desc">Meal ideas, shopping lists, and habit frameworks — downloadable for every woman, everywhere</div>
+    </div>
+    <div class="program-item">
+      <div class="program-item-label">Food Bank Partnership</div>
+      <div class="program-item-title">Second Harvest Food Bank of Central Florida</div>
+      <div class="program-item-desc">Addressing food insecurity alongside health education — because you can't build a healthy life without food access</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD INSECURITY DATA -->
+<section class="hunger-section">
+  <div class="hunger-intro">
+    <div>
+      <div class="section-label" style="color:rgba(240,236,228,0.5); margin-bottom:1rem;">Why Food Access Matters</div>
+      <h2 class="hunger-headline">Hunger in<br><em>Central Florida.</em></h2>
+    </div>
+    <p class="hunger-context">
+      You cannot talk about women's health without talking about food access. These numbers are why the "Healthy, Anywhere" initiative partners directly with local food organizations — health education and food security must go together.<br><br>
+      Source: <a href="https://feedhopenow.org/our-work/hunger-in-central-florida/map-the-meal-gap-report/" target="_blank">Second Harvest Food Bank · Map the Meal Gap Report</a>
+    </p>
+  </div>
+  <div class="hunger-stats">
+    <div class="hunger-stat">
+      <div class="hunger-stat-num">1 in 7</div>
+      <div class="hunger-stat-label">individuals in Central Florida are facing hunger</div>
+    </div>
+    <div class="hunger-stat">
+      <div class="hunger-stat-num">1 in 6</div>
+      <div class="hunger-stat-label">kids live in food-insecure households</div>
+    </div>
+    <div class="hunger-stat">
+      <div class="hunger-stat-num">35%</div>
+      <div class="hunger-stat-label">of food-insecure people don't even qualify for SNAP — working families falling through the cracks</div>
+    </div>
+    <div class="hunger-stat">
+      <div class="hunger-stat-num">111M+</div>
+      <div class="hunger-stat-label">meals is the regional shortfall per year in Central Florida</div>
+    </div>
+  </div>
+  <div class="hunger-partner">
+    <span class="hunger-partner-label">Future Nonprofit Partner</span>
+    <span class="hunger-partner-name">Second Harvest Food Bank of Central Florida · Feeding Florida</span>
+  </div>
+</section>
+
+<!-- DOWNLOADABLE RESOURCES -->
+<section class="resources-section" id="resources">
+  <div class="resources-header">
+    <div class="section-label">Free Resources · In Development</div>
+    <h2>Tools for the <em>journey.</em></h2>
+    <p>Three guides built for women on the go — distributed at appearances, speaking events, and downloadable directly from this page. In future partnership with the Miss Florida USA organization.</p>
+  </div>
+  <div class="guides-grid">
+    <div class="guide-card">
+      <div class="guide-card-top">
+        <div class="guide-card-icon">🥗</div>
+        <div class="guide-card-title">Nutrition<br>Guide</div>
+        <div class="guide-card-sub">Healthy, Anywhere Series</div>
+      </div>
+      <div class="guide-card-bottom">
+        <p class="guide-card-desc">Simple, accessible meal ideas, grocery lists, and food frameworks for real women with real budgets and real schedules.</p>
+        <span class="guide-badge">Coming Soon</span>
+      </div>
+    </div>
+    <div class="guide-card">
+      <div class="guide-card-top">
+        <div class="guide-card-icon">🏃‍♀️</div>
+        <div class="guide-card-title">Exercise<br>Guide</div>
+        <div class="guide-card-sub">Healthy, Anywhere Series</div>
+      </div>
+      <div class="guide-card-bottom">
+        <p class="guide-card-desc">Beginner-accessible movement frameworks that work anywhere — no gym required. Build the habit first, build the body second.</p>
+        <span class="guide-badge">Coming Soon</span>
+      </div>
+    </div>
+    <div class="guide-card">
+      <div class="guide-card-top">
+        <div class="guide-card-icon">🧠</div>
+        <div class="guide-card-title">Mindset &<br>Confidence</div>
+        <div class="guide-card-sub">Healthy, Anywhere Series</div>
+      </div>
+      <div class="guide-card-bottom">
+        <p class="guide-card-desc">The identity-level work that makes everything else possible. When you change the way you think, you change your life.</p>
+        <span class="guide-badge">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY SERVICE -->
+<section class="service-section" id="service">
+  <div class="service-intro">
+    <div>
+      <div class="section-label light">Community Service</div>
+      <h2 class="service-headline">Showing up<br><em>before the crown.</em></h2>
+    </div>
+    <p class="service-context">This work didn't start with a title. It started years ago — in recovery centers, yoga rooms, community workshops, and high school gyms. The crown just means I can take it further.</p>
+  </div>
+  <div class="service-grid">
+    <div class="service-card">
+      <span class="service-card-icon">🤝</span>
+      <div class="service-card-org">Northern Ohio Recovery Association (NORA)</div>
+      <div class="service-card-title">Weekly Health & Wellness Sessions</div>
+      <div class="service-card-desc">Leads weekly sessions for individuals in substance recovery — movement, mindset, and lifestyle habits to support long-term wellbeing. Has done this consistently for years.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-card-icon">🧘‍♀️</span>
+      <div class="service-card-org">Griffin Home · Alliant Treatment · Moore Counseling</div>
+      <div class="service-card-title">Yoga & Recovery Workshops</div>
+      <div class="service-card-desc">Led yoga sessions for women in recovery — using movement as a tool for stress relief, discipline, and rebuilding a positive relationship with the body across multiple organizations.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-card-icon">👑</span>
+      <div class="service-card-org">Girls Inc. Atlanta</div>
+      <div class="service-card-title">Confidence & Poise Workshop</div>
+      <div class="service-card-desc">Led a confidence and poise workshop for young girls and boys — emphasizing self-expression, confidence, and personal development. (And yes, one week she was training like an MMA fighter; the next she was in a full princess gown with Girls Inc.)</div>
+    </div>
+    <div class="service-card">
+      <span class="service-card-icon">🏈</span>
+      <div class="service-card-org">EA Sports · Nike · NFL · Microsoft</div>
+      <div class="service-card-title">Field the Future — Founder</div>
+      <div class="service-card-desc">Created EA Sports' first community-driven brand marketing program. 1,000+ youth impacted annually. 25 STEM scholarships per year. Connected youth with NFL athletes for real-world mentorship.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-card-icon">💪</span>
+      <div class="service-card-org">Recovery Communities · Men's Program</div>
+      <div class="service-card-title">Men's Health & Mindset Coaching</div>
+      <div class="service-card-desc">Currently coaches men in recovery on foundational health, fitness, and mindset principles — building the habits that support a healthier, more structured life.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-card-icon">📋</span>
+      <div class="service-card-org">Health & Wellness Seminar · 2024</div>
+      <div class="service-card-title">Sustainable Habits Workshop</div>
+      <div class="service-card-desc">Hosted a 2024 health and wellness seminar focused on building sustainable habits and improving overall wellbeing — practical, accessible, and free to attend.</div>
+    </div>
+  </div>
+  <div class="service-orgs">
+    <div class="service-orgs-label">Organizations Partnered With</div>
+    <div class="org-pills">
+      <a href="https://norainc.org/" target="_blank" class="org-pill">NORA · Northern Ohio Recovery Association</a>
+      <a href="https://alliantrecovery.com/" target="_blank" class="org-pill">Alliant Treatment Center</a>
+      <a href="https://moorecounseling.com/" target="_blank" class="org-pill">Moore Counseling & Meditation Center</a>
+      <a href="https://www.girlsincatl.org/" target="_blank" class="org-pill">Girls Inc. Atlanta</a>
+      <span class="org-pill">Griffin Home & Sober Living</span>
+      <span class="org-pill">Second Harvest Food Bank of Central Florida</span>
+      <span class="org-pill">Feeding Florida</span>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORSHIPS -->
+<section class="sponsors-section" id="sponsors">
+  <div class="section-label">Pageant Sponsors</div>
+  <div class="sponsors-header">
+    <h2>The brands that <em>believe in this.</em></h2>
+  </div>
+  <div class="sponsors-grid">
+    <div class="sponsor-cell">
+      <div class="sponsor-name">The Ethos Group</div>
+      <div class="sponsor-type">Presenting Sponsor</div>
+    </div>
+    <div class="sponsor-cell">
+      <div class="sponsor-name">NORA Inc.</div>
+      <div class="sponsor-type">Nonprofit Partner</div>
+    </div>
+    <div class="sponsor-cell">
+      <div class="sponsor-name">The Health Co.</div>
+      <div class="sponsor-type">Brand Sponsor</div>
+    </div>
+    <div class="sponsor-cell">
+      <div class="sponsor-name">OrangeTheory Fitness</div>
+      <div class="sponsor-type">Wellness Partner</div>
+    </div>
+    <div class="sponsor-cell">
+      <div class="sponsor-name">Letter Media</div>
+      <div class="sponsor-type">Media Partner</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETABILITY -->
+<section class="market-section">
+  <div class="market-left">
+    <div class="section-label light">Why She's Ready for the Job</div>
+    <h2 class="market-headline">The platform<br>is already <em>built.</em></h2>
+    <p class="market-desc">Most titleholders build their platform after the crown. Alaias walks in with 26M+ YouTube views, a team of six, active brand partnerships, and a community of 100,000+ women already following the mission. The reach is real. The impact is documented. The work is already happening.</p>
+    <p class="market-desc">"I have to hook people in 3 seconds — that's what I do every day. And that's why I'm ready for the job."</p>
+  </div>
+  <div class="market-right">
+    <div class="market-stat">
+      <div class="market-stat-num">26M+</div>
+      <div class="market-stat-label">YouTube Views</div>
+    </div>
+    <div class="market-stat">
+      <div class="market-stat-num">130K+</div>
+      <div class="market-stat-label">Subscribers & Followers</div>
+    </div>
+    <div class="market-stat">
+      <div class="market-stat-num">1M+</div>
+      <div class="market-stat-label">Views on Individual Videos</div>
+    </div>
+    <div class="market-stat">
+      <div class="market-stat-num">300+</div>
+      <div class="market-stat-label">Appearances as Miss Florida (Year 1 Goal)</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="press-section">
+  <div class="section-label">In the Press</div>
+  <div class="press-card">
+    <div>
+      <div class="press-outlet">Business Insider</div>
+      <h2 class="press-headline">From Corporate Brand Strategist to Content CEO: How Alaias Fittz Is Building a Wellness Media Empire</h2>
+      <p class="press-body">After four years balancing a full-time role at EA Sports with building her own media company, Alaias Fittz made the leap — and hasn't looked back. With 26 million YouTube views and a growing consulting practice, she's redefining what it means to be a health and wellness creator in 2025.</p>
+      <a href="#" class="btn-article">Read the Article →</a>
+    </div>
+    <div class="press-ghost">Business<br>Insider</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-label light" style="margin-bottom:2rem;">Follow the Journey</div>
+  <h2 class="cta-headline">Miss Lake Nona.<br><em>Next stop: Miss Florida.</em></h2>
+  <p class="cta-sub">I'm not competing for a crown. I'm competing for a platform — 300+ appearances in 365 days to take this mission from digital to real-world impact across all 67 counties of Florida.</p>
+  <div class="cta-buttons">
+    <a href="https://youtube.com/@alaias.fit" target="_blank" class="btn-sage-pill">Follow on YouTube</a>
+    <a href="https://instagram.com/alaias.fit" target="_blank" class="btn-ghost-pill">Follow on Instagram</a>
+    <a href="mailto:hello@thehealthco.com" class="btn-ghost-pill">Media Inquiry</a>
+    <a href="#resources" class="btn-ghost-pill">Download a Resource Guide</a>
+  </div>
+  <p class="cta-contact">@alaias.fit · <a href="mailto:hello@thehealthco.com">hello@thehealthco.com</a></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">The Health Co. · Alaias Fittz</span>
+  <nav class="footer-nav">
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+    <a href="#">Substack</a>
+    <a href="#">Miss Florida USA</a>
+    <a href="#">Work With Me</a>
+  </nav>
+  <span class="footer-copy">© 2026 The Health Co.</span>
+</footer>
+
+</body>
+</html>

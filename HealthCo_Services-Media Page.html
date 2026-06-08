@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work With Us · The Health Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest:     #233320;
+    --forest-mid: #2d4228;
+    --sage:       #7d8f6a;
+    --sage-lt:    #8fa67a;
+    --gold:       #c9a96e;
+    --gold-lt:    #d4b87a;
+    --cream:      #f0ece4;
+    --linen:      #f5f2ec;
+    --warm-white: #faf8f4;
+    --charcoal:   #1c1c1a;
+    --near-black: #181916;
+    --text-dark:  #1e2218;
+    --text-mid:   #5a5a50;
+    --text-muted: #999980;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:  'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); color: var(--text-dark); overflow-x: hidden; background: var(--linen); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3.5rem;
+    background: rgba(35,51,32,0.97);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-family: var(--font-serif); font-size: 1rem; font-weight: 400;
+    font-style: italic; color: var(--cream); letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 0.68rem; font-weight: 400; letter-spacing: 0.16em;
+    text-transform: uppercase; color: rgba(240,236,228,0.65);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-back {
+    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(240,236,228,0.4); text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--cream); }
+  .nav-cta {
+    background: var(--sage) !important; color: var(--cream) !important;
+    padding: 0.5rem 1.3rem; border-radius: 2rem;
+    letter-spacing: 0.12em !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 85vh;
+    background: var(--charcoal);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 5rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(35,51,32,0.6) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(240,236,228,0.4); margin-bottom: 2rem;
+    position: relative; z-index: 1;
+  }
+  .hero-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 7vw, 7.5rem); font-weight: 300;
+    line-height: 1.0; color: var(--cream);
+    margin-bottom: 0.2rem; position: relative; z-index: 1;
+  }
+  .hero-headline em {
+    font-style: italic; color: var(--gold); display: block;
+  }
+  .hero-divider {
+    width: 2.5rem; height: 1px; background: rgba(240,236,228,0.2);
+    margin: 2.5rem auto; position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; line-height: 1.8; font-weight: 300;
+    color: rgba(240,236,228,0.55); max-width: 560px;
+    margin-bottom: 4rem; position: relative; z-index: 1;
+  }
+  .hero-nav {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .hero-nav-btn {
+    border: 1px solid rgba(240,236,228,0.25);
+    color: rgba(240,236,228,0.75); background: transparent;
+    padding: 0.75rem 1.8rem; border-radius: 3rem;
+    font-size: 0.68rem; font-weight: 400; letter-spacing: 0.14em;
+    text-transform: uppercase; text-decoration: none;
+    cursor: pointer; transition: all 0.2s;
+    font-family: var(--font-sans);
+  }
+  .hero-nav-btn:hover,
+  .hero-nav-btn.active {
+    border-color: rgba(240,236,228,0.6);
+    color: var(--cream);
+    background: rgba(240,236,228,0.06);
+  }
+
+  /* SECTION WRAPPER */
+  .section { padding: 7rem 5rem; }
+  .section-label {
+    font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--sage); margin-bottom: 1rem;
+  }
+  .section-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300;
+    line-height: 1.0; color: var(--text-dark);
+  }
+  .section-headline em { font-style: italic; color: var(--sage); }
+  .section-divider {
+    width: 100%; height: 1px; background: rgba(0,0,0,0.08);
+    margin: 3rem 0;
+  }
+
+  /* ── INDIVIDUAL SESSIONS ── */
+  .sessions-section { background: var(--linen); }
+  .sessions-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: end; margin-bottom: 0;
+  }
+  .sessions-intro-right {
+    font-size: 1rem; line-height: 1.8; color: var(--text-mid);
+    text-align: right; padding-bottom: 0.5rem;
+  }
+  .sessions-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; border-top: 1px solid rgba(0,0,0,0.08);
+    margin-top: 3rem;
+  }
+  .session-card {
+    padding: 3rem 2.5rem 3rem 0;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    padding-right: 2.5rem;
+  }
+  .session-card:last-child { border-right: none; padding-left: 2.5rem; padding-right: 0; }
+  .session-card:nth-child(2) { padding-left: 2.5rem; }
+  .session-icon {
+    width: 3rem; height: 3rem; border-radius: 50%;
+    background: var(--cream); border: 1px solid rgba(0,0,0,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1.5rem;
+  }
+  .session-category {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 0.7rem;
+  }
+  .session-title {
+    font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400;
+    color: var(--text-dark); line-height: 1.2; margin-bottom: 1rem;
+  }
+  .session-desc {
+    font-size: 0.85rem; line-height: 1.75; color: var(--text-mid);
+    margin-bottom: 1.5rem;
+  }
+  .session-features { list-style: none; margin-bottom: 2rem; }
+  .session-features li {
+    font-size: 0.82rem; color: var(--text-mid); line-height: 1.6;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    display: flex; align-items: baseline; gap: 0.6rem;
+  }
+  .session-features li:last-child { border-bottom: none; }
+  .session-features li::before {
+    content: '→'; color: var(--sage); font-size: 0.75rem; flex-shrink: 0;
+  }
+  .session-price {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 300;
+    color: var(--text-dark); margin-bottom: 1rem;
+  }
+  .session-price span {
+    font-family: var(--font-sans); font-size: 0.78rem;
+    color: var(--text-muted); font-weight: 300;
+  }
+  .btn-book {
+    background: var(--charcoal); color: var(--cream);
+    padding: 0.75rem 1.8rem; border-radius: 3rem; border: none;
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--font-sans); cursor: pointer; text-decoration: none;
+    display: inline-block; transition: background 0.2s;
+  }
+  .btn-book:hover { background: var(--forest); }
+
+  /* ── BRAND CONSULTING ── */
+  .consulting-section { background: var(--linen); padding-top: 0; }
+  .consulting-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: end; padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .consulting-intro-right {
+    font-size: 0.95rem; line-height: 1.8; color: var(--text-mid);
+    text-align: right;
+  }
+  /* Tier rows */
+  .tier-row {
+    display: grid; grid-template-columns: 280px 1fr 1fr 200px;
+    gap: 0; align-items: start;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 0;
+  }
+  .tier-row.dark { background: var(--charcoal); }
+  .tier-cell {
+    padding: 3.5rem 2.5rem;
+    border-right: 1px solid rgba(0,0,0,0.06);
+  }
+  .tier-row.dark .tier-cell { border-color: rgba(255,255,255,0.06); }
+  .tier-cell:last-child { border-right: none; }
+  .tier-tag {
+    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 0.6rem;
+  }
+  .tier-row.dark .tier-tag { color: var(--sage-lt); }
+  .tier-name {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 300;
+    color: var(--text-dark); line-height: 1.1; margin-bottom: 0.8rem;
+  }
+  .tier-row.dark .tier-name { color: var(--cream); }
+  .tier-desc {
+    font-family: var(--font-serif); font-size: 0.9rem; font-style: italic;
+    color: var(--text-muted); line-height: 1.6;
+  }
+  .tier-row.dark .tier-desc { color: rgba(240,236,228,0.4); }
+  .tier-popular {
+    background: var(--gold); color: var(--charcoal);
+    font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.35rem 1rem; border-radius: 2rem;
+    display: inline-block; margin-bottom: 1rem; font-weight: 500;
+  }
+  .tier-col-label {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 1.2rem;
+  }
+  .tier-row.dark .tier-col-label { color: var(--sage-lt); }
+  .tier-list { list-style: none; }
+  .tier-list li {
+    font-size: 0.82rem; line-height: 1.6; color: var(--text-mid);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex; align-items: baseline; gap: 0.6rem;
+  }
+  .tier-row.dark .tier-list li {
+    color: rgba(240,236,228,0.6);
+    border-color: rgba(255,255,255,0.06);
+  }
+  .tier-list li:last-child { border-bottom: none; }
+  .tier-list li::before { content: '·'; color: var(--sage); flex-shrink: 0; }
+  .tier-price-label {
+    font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 0.5rem;
+  }
+  .tier-row.dark .tier-price-label { color: rgba(240,236,228,0.35); }
+  .tier-price-num {
+    font-family: var(--font-serif); font-size: 3rem; font-weight: 300;
+    color: var(--text-dark); line-height: 1; margin-bottom: 0.3rem;
+  }
+  .tier-row.dark .tier-price-num { color: var(--cream); }
+  .tier-price-per {
+    font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.8rem;
+  }
+  .tier-row.dark .tier-price-per { color: rgba(240,236,228,0.35); }
+  .btn-talk {
+    border: 1px solid rgba(0,0,0,0.25);
+    color: var(--text-dark); background: transparent;
+    padding: 0.7rem 1.6rem; border-radius: 3rem;
+    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--font-sans); cursor: pointer; text-decoration: none;
+    display: inline-block; transition: all 0.2s;
+  }
+  .btn-talk:hover { background: var(--text-dark); color: var(--cream); }
+  .btn-talk.light {
+    border-color: rgba(240,236,228,0.3); color: var(--cream);
+  }
+  .btn-talk.light:hover { background: rgba(240,236,228,0.1); }
+
+  /* ── SPEAKING ── */
+  .speaking-section { background: var(--linen); }
+  .speaking-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: end;
+  }
+  .speaking-intro-right {
+    font-size: 0.95rem; line-height: 1.8; color: var(--text-mid);
+    text-align: right;
+  }
+  .speaking-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-top: 4rem;
+  }
+  .speaking-card {
+    padding: 3.5rem 3rem; border-radius: 2px;
+  }
+  .speaking-card.light { background: var(--warm-white); }
+  .speaking-card.dark { background: var(--charcoal); }
+  .speaking-num {
+    font-family: var(--font-serif); font-size: 4rem; font-weight: 300;
+    color: rgba(0,0,0,0.06); line-height: 1; margin-bottom: -1rem;
+  }
+  .speaking-card.dark .speaking-num { color: rgba(255,255,255,0.06); }
+  .speaking-cat {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 0.8rem;
+  }
+  .speaking-card.dark .speaking-cat { color: var(--sage-lt); }
+  .speaking-title {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 300;
+    color: var(--text-dark); line-height: 1.15; margin-bottom: 1.2rem;
+  }
+  .speaking-card.dark .speaking-title { color: var(--cream); }
+  .speaking-desc {
+    font-size: 0.85rem; line-height: 1.75; color: var(--text-mid);
+    margin-bottom: 1.8rem;
+  }
+  .speaking-card.dark .speaking-desc { color: rgba(240,236,228,0.55); }
+  .topic-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .topic-pill {
+    border: 1px solid rgba(0,0,0,0.15); color: var(--text-mid);
+    padding: 0.35rem 1rem; border-radius: 3rem;
+    font-size: 0.7rem; font-family: var(--font-sans);
+  }
+  .speaking-card.dark .topic-pill {
+    border-color: rgba(240,236,228,0.2); color: rgba(240,236,228,0.65);
+  }
+  .speaking-link {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-dark); text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2); padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+  .speaking-card.dark .speaking-link { color: var(--cream); border-color: rgba(240,236,228,0.3); }
+  .speaking-link:hover { border-color: var(--text-dark); }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--near-black);
+    padding: 9rem 5rem; text-align: center;
+  }
+  .contact-section .section-label { color: var(--sage-lt); margin-bottom: 2rem; }
+  .contact-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 6vw, 7rem); font-weight: 300;
+    color: var(--cream); line-height: 1.0; margin-bottom: 1.5rem;
+  }
+  .contact-headline em { font-style: italic; color: var(--gold); }
+  .contact-sub {
+    font-size: 0.95rem; line-height: 1.8; color: rgba(240,236,228,0.45);
+    max-width: 480px; margin: 0 auto 3rem;
+  }
+  .contact-buttons {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+  }
+  .btn-sage-pill {
+    background: var(--sage); color: var(--cream);
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; font-family: var(--font-sans);
+    transition: background 0.2s; display: inline-block;
+  }
+  .btn-sage-pill:hover { background: var(--sage-lt); }
+  .btn-ghost-pill {
+    background: transparent; color: rgba(240,236,228,0.65);
+    border: 1px solid rgba(240,236,228,0.2);
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; font-family: var(--font-sans);
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-ghost-pill:hover { border-color: rgba(240,236,228,0.5); color: var(--cream); }
+  .contact-email {
+    font-size: 0.78rem; color: rgba(240,236,228,0.3); letter-spacing: 0.06em;
+  }
+  .contact-email a { color: inherit; text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest);
+    padding: 1.8rem 3.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-brand {
+    font-family: var(--font-serif); font-size: 0.9rem; font-style: italic;
+    color: rgba(240,236,228,0.55);
+  }
+  .footer-nav { display: flex; gap: 2.5rem; }
+  .footer-nav a {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,236,228,0.35); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-nav a:hover { color: var(--cream); }
+  .footer-copy { font-size: 0.65rem; color: rgba(240,236,228,0.25); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">The Health Co.</a>
+  <ul class="nav-links">
+    <li><a href="#" class="nav-back">← Back to Home</a></li>
+    <li><a href="#sessions">Sessions</a></li>
+    <li><a href="#consulting">Consulting</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">The Health Co.</div>
+  <h1 class="hero-headline">
+    Let's build<br>
+    <em>something real.</em>
+  </h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Whether you're a woman ready to change how you think, a brand looking for an authentic voice, or an organization seeking a speaker who's lived what she teaches — there's a way to work together.</p>
+  <div class="hero-nav">
+    <a href="#sessions" class="hero-nav-btn active">1-Hour Sessions</a>
+    <a href="#consulting" class="hero-nav-btn">Brand Consulting</a>
+    <a href="#speaking" class="hero-nav-btn">Speaking</a>
+    <a href="#contact" class="hero-nav-btn">Podcast & Media</a>
+  </div>
+</section>
+
+<!-- INDIVIDUAL SESSIONS -->
+<section class="section sessions-section" id="sessions">
+  <div class="section-label">Individual Sessions</div>
+  <div class="sessions-intro">
+    <h2 class="section-headline">One hour.<br><em>Real answers.</em></h2>
+    <p class="sessions-intro-right">Focused, personalized sessions designed to cut through the noise and give you exactly what you need to move forward.</p>
+  </div>
+  <div class="section-divider"></div>
+  <div class="sessions-cards">
+
+    <div class="session-card">
+      <div class="session-icon">🏋️</div>
+      <div class="session-category">Fitness & Health</div>
+      <h3 class="session-title">Health & Transformation Coaching</h3>
+      <p class="session-desc">A focused deep-dive into your health, fitness, and mindset — built around your lifestyle, your goals, and where you actually are right now.</p>
+      <ul class="session-features">
+        <li>Personalized fitness & nutrition framework</li>
+        <li>Mindset + identity work</li>
+        <li>Habit building & accountability structure</li>
+        <li>Custom action plan</li>
+      </ul>
+      <div class="session-price">$197 <span>/ session</span></div>
+      <a href="#contact" class="btn-book">Book Now</a>
+    </div>
+
+    <div class="session-card">
+      <div class="session-icon">📱</div>
+      <div class="session-category">Social Media</div>
+      <h3 class="session-title">Social Media Strategy Session</h3>
+      <p class="session-desc">An audit and strategy call for creators, entrepreneurs, or personal brands ready to grow with intention — not just content volume.</p>
+      <ul class="session-features">
+        <li>Profile & content audit</li>
+        <li>Platform-specific growth strategy</li>
+        <li>Content pillars & positioning</li>
+        <li>Monetization pathway review</li>
+      </ul>
+      <div class="session-price">$247 <span>/ session</span></div>
+      <a href="#contact" class="btn-book">Book Now</a>
+    </div>
+
+    <div class="session-card">
+      <div class="session-icon">📊</div>
+      <div class="session-category">Marketing</div>
+      <h3 class="session-title">Brand Marketing Intensive</h3>
+      <p class="session-desc">A power session for founders, executives, or brand teams who need a clear-eyed, strategic perspective on their brand presence and marketing approach.</p>
+      <ul class="session-features">
+        <li>Brand positioning & messaging review</li>
+        <li>Audience & content strategy</li>
+        <li>Channel prioritization</li>
+        <li>Campaign concept feedback</li>
+      </ul>
+      <div class="session-price">$297 <span>/ session</span></div>
+      <a href="#contact" class="btn-book">Book Now</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- BRAND CONSULTING -->
+<section class="section consulting-section" id="consulting">
+  <div class="section-label">Brand & Business Consulting</div>
+  <div class="consulting-intro">
+    <h2 class="section-headline">Full-service<br><em>partnerships.</em></h2>
+    <p class="consulting-intro-right">We work with a small, selective roster of brands and executives. Every engagement is built from scratch — no templates, no shortcuts.</p>
+  </div>
+
+  <!-- Tier 01 — Light -->
+  <div class="tier-row">
+    <div class="tier-cell">
+      <div class="tier-tag">Tier 01 — Foundation</div>
+      <h3 class="tier-name">Brand Presence Starter</h3>
+      <p class="tier-desc">For brands and executives establishing their digital presence from the ground up.</p>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-col-label">What's Included</div>
+      <ul class="tier-list">
+        <li>Brand voice & positioning development</li>
+        <li>1 platform focus (LinkedIn or Instagram)</li>
+        <li>Monthly content strategy & calendar</li>
+        <li>8 posts per month — copy + creative direction</li>
+        <li>Monthly strategy call</li>
+        <li>Analytics report & optimization</li>
+      </ul>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-col-label">Best For</div>
+      <ul class="tier-list">
+        <li>Executives entering the creator space</li>
+        <li>Brands launching organic social</li>
+        <li>Founders building personal brand</li>
+      </ul>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-price-label">Starting At</div>
+      <div class="tier-price-num">$3,500</div>
+      <div class="tier-price-per">/ month</div>
+      <a href="#contact" class="btn-talk">Let's Talk</a>
+    </div>
+  </div>
+
+  <!-- Tier 02 — Dark -->
+  <div class="tier-row dark">
+    <div class="tier-cell">
+      <div class="tier-popular">Most Popular</div>
+      <div class="tier-tag">Tier 02 — Growth</div>
+      <h3 class="tier-name">Full Social Media Management</h3>
+      <p class="tier-desc">End-to-end strategy and execution for brands ready to scale their digital presence with real impact.</p>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-col-label">What's Included</div>
+      <ul class="tier-list">
+        <li>Multi-platform strategy (LinkedIn, Instagram, TikTok)</li>
+        <li>Full content production — video, photo, copy</li>
+        <li>12–16 posts per month across platforms</li>
+        <li>Community management & engagement</li>
+        <li>Weekly strategy calls</li>
+        <li>Monthly deep-dive analytics & reporting</li>
+        <li>Influencer & partnership strategy</li>
+      </ul>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-col-label">Best For</div>
+      <ul class="tier-list">
+        <li>Scaling executives (current: AG1 / Kat Cole)</li>
+        <li>Health & wellness brands</li>
+        <li>Companies with 7–8 figure revenue</li>
+      </ul>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-price-label">Starting At</div>
+      <div class="tier-price-num">$8,500</div>
+      <div class="tier-price-per">/ month</div>
+      <a href="#contact" class="btn-talk light">Let's Talk</a>
+    </div>
+  </div>
+
+  <!-- Tier 03 — Light -->
+  <div class="tier-row">
+    <div class="tier-cell">
+      <div class="tier-tag">Tier 03 — Scale</div>
+      <h3 class="tier-name">Full-Scale Brand Partnership</h3>
+      <p class="tier-desc">Our highest level of engagement. Reserved for brands ready for a true strategic partner — not just a vendor.</p>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-col-label">What's Included</div>
+      <ul class="tier-list">
+        <li>Everything in Growth, plus:</li>
+        <li>Dedicated creative team (editor, strategist, producer)</li>
+        <li>Long-form content production (YouTube, podcast)</li>
+        <li>Executive coaching on personal brand</li>
+        <li>Campaign development & brand partnerships</li>
+        <li>PR & media strategy support</li>
+        <li>Quarterly brand audits & growth planning</li>
+      </ul>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-col-label">Best For</div>
+      <ul class="tier-list">
+        <li>Brands investing in long-term cultural authority</li>
+        <li>Executives with major public profiles</li>
+        <li>Companies at growth inflection points</li>
+      </ul>
+    </div>
+    <div class="tier-cell">
+      <div class="tier-price-label">Up To</div>
+      <div class="tier-price-num">$25K</div>
+      <div class="tier-price-per">/ month</div>
+      <a href="#contact" class="btn-talk">Let's Talk</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- SPEAKING -->
+<section class="section speaking-section" id="speaking">
+  <div class="section-label">Speaking & Media</div>
+  <div class="speaking-intro">
+    <h2 class="section-headline">In the room<br><em>& on the mic.</em></h2>
+    <p class="speaking-intro-right">Alaias brings lived experience, data-backed insight, and a presence that moves rooms. Every appearance is tailored to the audience and goal.</p>
+  </div>
+  <div class="speaking-cards">
+
+    <div class="speaking-card light">
+      <div class="speaking-num">01</div>
+      <div class="speaking-cat">Speaking Engagements</div>
+      <h3 class="speaking-title">Keynotes & Panel Appearances</h3>
+      <p class="speaking-desc">From corporate stages to university campuses to women's conferences — Alaias speaks on health, identity, entrepreneurship, and what it actually takes to transform your life.</p>
+      <div class="topic-pills">
+        <span class="topic-pill">Women's Health & Identity</span>
+        <span class="topic-pill">Entrepreneurship</span>
+        <span class="topic-pill">Digital Media & Brand</span>
+        <span class="topic-pill">Doing Hard Things</span>
+        <span class="topic-pill">Youth & Representation</span>
+      </div>
+      <a href="#contact" class="speaking-link">Book a Speaking Engagement →</a>
+    </div>
+
+    <div class="speaking-card dark">
+      <div class="speaking-num">02</div>
+      <div class="speaking-cat">Podcast & Guest Features</div>
+      <h3 class="speaking-title">Guest Interviews & Media Appearances</h3>
+      <p class="speaking-desc">Alaias is available for podcast interviews, YouTube collaborations, brand campaigns, and press features. Her story is rare — D1 athlete, EA Sports brand strategist, CEO, and now Miss Lake Nona.</p>
+      <div class="topic-pills">
+        <span class="topic-pill">Health & Wellness</span>
+        <span class="topic-pill">Creator Economy</span>
+        <span class="topic-pill">Transformation Stories</span>
+        <span class="topic-pill">Women in Business</span>
+      </div>
+      <a href="#contact" class="speaking-link">Pitch a Feature →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-label">Work Together</div>
+  <h2 class="contact-headline">What would you<br>like to <em>discuss?</em></h2>
+  <p class="contact-sub">Whether you're a brand, a judge, a podcast host, or a woman ready to change her life — there's a way in.</p>
+  <div class="contact-buttons">
+    <a href="mailto:hello@thehealthco.com" class="btn-sage-pill">Book a Discovery Call</a>
+    <a href="#speaking" class="btn-ghost-pill">Speaking Engagement</a>
+    <a href="#consulting" class="btn-ghost-pill">Brand Consulting</a>
+    <a href="#contact" class="btn-ghost-pill">Guest / Interview</a>
+    <a href="mailto:hello@thehealthco.com" class="btn-ghost-pill">Media Inquiry</a>
+  </div>
+  <p class="contact-email">@alaias.fit · <a href="mailto:hello@thehealthco.com">hello@thehealthco.com</a></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">The Health Co. · Alaias Fittz</span>
+  <nav class="footer-nav">
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+    <a href="#">Substack</a>
+    <a href="#">Miss Florida USA</a>
+    <a href="#">Work With Me</a>
+  </nav>
+  <span class="footer-copy">© 2026 The Health Co.</span>
+</footer>
+
+</body>
+</html>
