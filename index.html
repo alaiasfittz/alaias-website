@@ -241,7 +241,16 @@
     line-height: 1.5; margin-bottom: 0.8rem;
   }
   .data-body { font-size: 0.8rem; line-height: 1.75; color: var(--text-mid); margin-bottom: 0.8rem; }
-  .data-source { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  .data-source {
+    font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .data-source a {
+    color: var(--text-muted); text-decoration: none;
+    border-bottom: 1px solid rgba(153,153,128,0.3);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .data-source a:hover { color: var(--sage); border-color: var(--sage); }
 
   /* ── IDENTITY ── */
   .identity-section {
@@ -745,26 +754,30 @@
 <!-- DATA -->
 <section class="data-section" id="why-this-matters">
   <div class="section-label">Why This Work Matters</div>
-  <h2 class="data-headline">The data is clear.<br>Women are still <em>not okay.</em></h2>
+  <h2 class="data-headline">The data is clear.<br>Women still struggle with <em>confidence.</em></h2>
   <p class="data-sub">My story started as one girl's struggle with her body and her confidence. But the data shows it was never just my story — it's a global crisis. This is why I do what I do.</p>
   <div class="data-cards">
     <div class="data-card">
       <div class="data-num">2%</div>
-      <div class="data-title">of women globally considered themselves beautiful in 2004.</div>
-      <div class="data-body">Dove spent 20 years and billions of dollars trying to fix that. In 2024, women feel less confident than they did in 2016. It's getting worse, not better.</div>
-      <div class="data-source">Dove Real State of Beauty Report, 2024 · Harvard University</div>
+      <div class="data-title">of women considered themselves beautiful when Dove first began studying confidence.</div>
+      <div class="data-body">According to Dove's Real State of Beauty Report, only 2% of women considered themselves beautiful when Dove first began studying confidence and body image. Two decades later, women report feeling less confident than they did just a few years ago. Despite years of progress, the confidence crisis is getting worse, not better.</div>
+      <div class="data-source"><a href="https://realstateofbeauty.dove.com/" target="_blank" rel="noopener noreferrer">Dove Real State of Beauty Report, 2024 · Harvard University</a></div>
     </div>
     <div class="data-card">
       <div class="data-num">52%</div>
       <div class="data-title">happier when women exercise regularly. 50% more energized. 80% less frustrated.</div>
       <div class="data-body">And still — over half of women globally have stopped exercising completely. 74% cite time pressure. 44% say intimidating environments. 42% don't feel fit or sporty enough.</div>
-      <div class="data-source">ASICS Global Gender Exercise Study, 2024 · 25,000 Women · 40 Countries</div>
+      <div class="data-source"><a href="https://www.asics.com/gb/en-gb/mk/running/sound-mind-sound-body" target="_blank" rel="noopener noreferrer">ASICS Global Gender Exercise Study, 2024 · 25,000 Women · 40 Countries</a></div>
     </div>
     <div class="data-card">
       <div class="data-num">86%</div>
       <div class="data-title">of Americans now turn to social media for health advice instead of a doctor.</div>
       <div class="data-body">Only 2.1% of nutrition content on TikTok is based on public health guidelines. Women are desperately seeking answers. The platform they're turning to is 97.9% noise.</div>
-      <div class="data-source">Psychology Today, 2025 · Zoe Research, 2024</div>
+      <div class="data-source">
+        <a href="https://www.psychologytoday.com/us/blog/the-digital-self/202501/social-media-is-now-americas-top-health-advisor" target="_blank" rel="noopener noreferrer">Psychology Today, 2025</a>
+        <span style="margin:0 0.4em;">·</span>
+        <a href="https://zoe.com/learn/social-media-nutrition-misinformation" target="_blank" rel="noopener noreferrer">ZOE Research, 2024</a>
+      </div>
     </div>
   </div>
 </section>
@@ -774,7 +787,7 @@
   <div>
     <div class="section-label light">The Identity Crisis</div>
     <h2 class="identity-headline">1 in 3 women would give up <em>a year of her life</em> for the "perfect" body.</h2>
-    <p class="identity-source-title">Dove Real State of Beauty Report, April 2024</p>
+    <p class="identity-source-title"><a href="https://realstateofbeauty.dove.com/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(240,236,228,0.2);transition:border-color 0.2s;">Dove Real State of Beauty Report, April 2024</a></p>
     <p class="identity-source-body">33,000 women across 20 countries — the largest study ever conducted by a beauty brand. With Dr. Nancy Etcoff, Harvard University, and Dr. Susie Orbach, London School of Economics.</p>
   </div>
   <div class="identity-stats">
