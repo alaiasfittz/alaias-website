@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alaias Fittz · The Health Co.</title>
+<meta name="description" content="Alaias Fittz is the CEO of The Health Co. — a media and wellness company on a mission to reach 100 million women. D1 athlete, EA Sports brand strategist, and Miss Lake Nona competing in Miss Florida USA 2026.">
+<meta property="og:title" content="Alaias Fittz · The Health Co.">
+<meta property="og:description" content="Creator. CEO. Competitor. Helping women believe they can do hard things — because she did. 26M+ YouTube views, The Health Co., Miss Florida USA 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thehealthco.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alaias Fittz · The Health Co.">
+<meta name="twitter:description" content="Creator. CEO. Competitor. Helping women believe they can do hard things — because she did.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -328,7 +336,7 @@
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
     margin-bottom: 2.5rem;
   }
-  .video-card { cursor: pointer; }
+  .video-card { cursor: pointer; text-decoration: none; color: inherit; display: block; }
   .video-thumb {
     aspect-ratio: 16/9; background: var(--cream); border-radius: 2px;
     margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;
@@ -518,14 +526,92 @@
   .footer-nav a { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,228,0.35); text-decoration: none; transition: color 0.2s; }
   .footer-nav a:hover { color: var(--cream); }
   .footer-copy { font-size: 0.65rem; color: rgba(240,236,228,0.25); }
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; background: none; border: none; padding: 0.4rem;
+  }
+  .nav-hamburger span { width: 22px; height: 1px; background: var(--cream); display: block; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none; flex-direction: column; gap: 0;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(35,51,32,0.99); padding: 0.5rem 1.5rem 1rem;
+      border-top: 1px solid rgba(240,236,228,0.08);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { padding: 0.8rem 0; border-bottom: 1px solid rgba(240,236,228,0.07); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-cta { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 1.5rem 3rem; }
+    .hero-right { min-height: 300px; }
+    .hero-proof-strip { flex-direction: column; gap: 1rem; padding: 1.2rem 1.5rem; }
+    .proof-logos { flex-wrap: wrap; gap: 1rem; }
+
+    .data-section { padding: 4rem 1.5rem 0; }
+    .data-cards { grid-template-columns: 1fr; border-top: none; }
+    .data-card { border-right: none; border-top: 1px solid rgba(0,0,0,0.1); padding: 2.5rem 0; }
+    .data-card:nth-child(2), .data-card:nth-child(3) { padding-left: 0; }
+
+    .identity-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .identity-stat { grid-template-columns: 100px 1fr; }
+
+    .wellness-banner { padding: 4rem 1.5rem; }
+
+    .about-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
+    .about-photo { display: none; }
+
+    .hub-section { padding: 4rem 1.5rem; }
+    .hub-grid { grid-template-columns: 1fr; }
+    .hub-grid-bottom { grid-template-columns: 1fr; }
+
+    .youtube-section { padding: 4rem 1.5rem; }
+    .youtube-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .yt-views { text-align: left; }
+    .video-grid { grid-template-columns: 1fr; }
+    .youtube-bottom { grid-template-columns: 1fr; gap: 1.5rem; }
+    .yt-membership { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
+
+    .newsletter-section { grid-template-columns: 1fr; }
+    .newsletter-photo { display: none; }
+    .newsletter-content { padding: 4rem 1.5rem; }
+
+    .pageant-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+
+    .press-section { padding: 3rem 1.5rem; }
+    .press-card { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; gap: 1rem; }
+    .press-ghost { display: none; }
+
+    .cta-section { padding: 5rem 1.5rem; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+
+    footer { flex-direction: column; gap: 1.2rem; padding: 2rem 1.5rem; text-align: center; }
+    .footer-nav { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  }
 </style>
 </head>
 <body>
 
+<!-- SKIP NAV -->
+<a href="#main-content" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo">The Health Co.</a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="#hub">Explore</a></li>
     <li><a href="#youtube">YouTube</a></li>
     <li><a href="#pageant">Miss Florida</a></li>
@@ -535,7 +621,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content">
   <div class="hero-left">
     <div class="hero-credentials">
       <span>Miss Lake Nona · Miss Florida USA 2026</span>
@@ -555,8 +641,7 @@
   </div>
   <div class="hero-right">
     <div class="hero-photo-wrap">
-      <div class="hero-photo-main">
-        <span>Carlos headshot<br>goes here</span>
+      <div class="hero-photo-main" role="img" aria-label="Photo of Alaias Fittz">
       </div>
       <div class="hero-proof-strip">
         <span class="proof-label">As Seen In</span>
@@ -634,8 +719,7 @@
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
-  <div class="about-photo">
-    <span>Carlos headshot<br>— business/editorial</span>
+  <div class="about-photo" role="img" aria-label="Photo of Alaias Fittz">
   </div>
   <div>
     <div class="section-label light">Who Is Alaias Fittz?</div>
@@ -725,24 +809,21 @@
     </div>
   </div>
   <div class="video-grid">
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <a class="video-card" href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer" aria-label="Watch: I Trained Like an MMA Fighter for a Week on YouTube">
+      <div class="video-thumb"><div class="play-btn" aria-hidden="true"></div></div>
       <div class="video-cat">MMA Challenge</div>
       <div class="video-title">I Trained Like an MMA Fighter for a Week</div>
-      <div class="video-views">Add view count</div>
-    </div>
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    </a>
+    <a class="video-card" href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer" aria-label="Watch: I Followed a Princess's Daily Routine on YouTube">
+      <div class="video-thumb"><div class="play-btn" aria-hidden="true"></div></div>
       <div class="video-cat">Lifestyle Reset</div>
       <div class="video-title">I Followed a Princess's Daily Routine</div>
-      <div class="video-views">Add view count</div>
-    </div>
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    </a>
+    <a class="video-card" href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer" aria-label="Watch: My 75 lb Weight Loss: The Full Story on YouTube">
+      <div class="video-thumb"><div class="play-btn" aria-hidden="true"></div></div>
       <div class="video-cat">Transformation</div>
       <div class="video-title">My 75 lb Weight Loss: The Full Story</div>
-      <div class="video-views">Add view count</div>
-    </div>
+    </a>
   </div>
   <div class="youtube-bottom">
     <a href="https://youtube.com/@alaias.fit" target="_blank" class="btn-yt">Watch on YouTube</a>
@@ -759,17 +840,17 @@
 
 <!-- NEWSLETTER -->
 <section class="newsletter-section">
-  <div class="newsletter-photo">
-    <span>Lifestyle photo<br>goes here</span>
+  <div class="newsletter-photo" role="img" aria-label="Alaias Fittz lifestyle photo">
   </div>
   <div class="newsletter-content">
     <div class="section-label">The Newsletter</div>
     <h2>Transform your health.<br><em>Stay aligned.</em></h2>
     <p>Real talk on fitness, mindset, nutrition, and what it actually looks like to build a healthy life while running a business and showing up for yourself. No fluff. No guilt. Just the truth — every week.</p>
-    <div class="email-form">
-      <input type="email" placeholder="Your email address">
-      <button type="button">Subscribe</button>
-    </div>
+    <form class="email-form" action="https://youtube.com/@alaias.fit" method="get" onsubmit="return false;" aria-label="Newsletter signup">
+      <label for="newsletter-email" class="sr-only" style="position:absolute;clip:rect(0,0,0,0);">Email address</label>
+      <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required autocomplete="email">
+      <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+    </form>
   </div>
 </section>
 
@@ -779,11 +860,11 @@
     <div class="section-label">Pageant Journey</div>
     <h2 class="pageant-headline">Miss Lake Nona.<br><em>Next stop: Miss Florida USA.</em></h2>
     <p class="pageant-body">I'm not competing for a crown. I'm competing for a platform — 300+ appearances in 365 days to take my mission from digital to real-world impact, across all 67 counties of Florida.</p>
-    <table class="pageant-table">
-      <tr><td>Event</td><td>Miss Florida USA 2026</td></tr>
-      <tr><td>Dates</td><td>July 10–12, 2026</td></tr>
-      <tr><td>Location</td><td>Orlando, FL</td></tr>
-      <tr><td>Platform</td><td>Confidently Beautiful</td></tr>
+    <table class="pageant-table" aria-label="Pageant event details">
+      <tr><th scope="row">Event</th><td>Miss Florida USA 2026</td></tr>
+      <tr><th scope="row">Dates</th><td>July 10–12, 2026</td></tr>
+      <tr><th scope="row">Location</th><td>Orlando, FL</td></tr>
+      <tr><th scope="row">Platform</th><td>Confidently Beautiful</td></tr>
     </table>
     <a href="healthco-pageant-journey.html" class="btn-white-pill">Follow the Journey →</a>
   </div>
@@ -829,9 +910,9 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-brand">The Health Co. · Alaias Fittz</span>
-  <nav class="footer-nav">
-    <a href="https://youtube.com/@alaias.fit" target="_blank">YouTube</a>
-    <a href="https://instagram.com/alaias.fit" target="_blank">Instagram</a>
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://instagram.com/alaias.fit" target="_blank" rel="noopener noreferrer">Instagram</a>
     <a href="#">Substack</a>
     <a href="healthco-pageant-journey.html">Miss Florida USA</a>
     <a href="healthco-services.html">Work With Me</a>
@@ -839,5 +920,21 @@
   <span class="footer-copy">© 2026 The Health Co.</span>
 </footer>
 
+<script>
+  const btn = document.querySelector('.nav-hamburger');
+  const menu = document.getElementById('nav-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
 </body>
 </html>
