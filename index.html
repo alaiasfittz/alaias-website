@@ -43,108 +43,150 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 3.5rem;
+    padding: 1.5rem 4rem;
     background: rgba(35,51,32,0.97);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,169,110,0.1);
   }
   .nav-logo {
-    font-family: var(--font-serif); font-size: 1rem; font-weight: 400;
-    font-style: italic; color: var(--cream); letter-spacing: 0.04em;
-    text-decoration: none;
+    font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400;
+    font-style: italic; color: var(--cream); letter-spacing: 0.06em;
+    text-decoration: none; transition: color 0.25s;
   }
-  .nav-links { display: flex; gap: 1.4rem; list-style: none; align-items: center; }
+  .nav-logo:hover { color: var(--gold); }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
   .nav-links a {
-    font-size: 0.68rem; font-weight: 400; letter-spacing: 0.16em;
-    text-transform: uppercase; color: rgba(240,236,228,0.65);
-    text-decoration: none; transition: color 0.2s;
+    font-size: 0.76rem; font-weight: 400; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(240,236,228,0.72);
+    text-decoration: none; transition: color 0.25s;
+    position: relative; padding-bottom: 3px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--gold); transition: width 0.3s;
   }
   .nav-links a:hover { color: var(--cream); }
+  .nav-links a:hover::after { width: 100%; }
   .nav-cta {
-    background: var(--sage) !important; color: var(--cream) !important;
-    padding: 0.5rem 1.3rem; border-radius: 2rem;
-    letter-spacing: 0.12em !important;
+    background: rgba(201,169,110,0.12) !important; color: var(--gold) !important;
+    border: 1px solid rgba(201,169,110,0.35) !important;
+    padding: 0.55rem 1.5rem; border-radius: 2rem;
+    letter-spacing: 0.15em !important; transition: background 0.25s, color 0.25s !important;
   }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--near-black) !important; }
+  .nav-cta::after { display: none !important; }
 
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: 56fr 44fr;
     background: var(--forest);
-    padding-top: 4.5rem;
+    position: relative; overflow: hidden;
   }
+
   .hero-left {
     display: flex; flex-direction: column; justify-content: center;
-    padding: 5rem 4rem 5rem 5rem;
+    padding: 9rem 4rem 5rem 5rem;
+    position: relative; z-index: 1;
   }
-  .hero-credentials {
-    display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 2.8rem;
+
+  .hero-eyebrow {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.2rem;
+    margin-bottom: 2.8rem;
   }
-  .hero-credentials span {
-    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(240,236,228,0.45); line-height: 1.9;
+  .hero-eyebrow-item {
+    font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(240,236,228,0.4);
   }
+  .hero-eyebrow-sep {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--gold); opacity: 0.45; flex-shrink: 0;
+  }
+
   .hero-name {
-    font-family: var(--font-serif); line-height: 0.95; margin-bottom: 2.5rem;
+    font-family: var(--font-serif); line-height: 0.88; margin-bottom: 2.8rem;
   }
   .hero-name .first {
-    font-size: clamp(5rem, 8vw, 9rem); font-weight: 300;
-    color: var(--cream); display: block;
+    font-size: clamp(5.5rem, 11vw, 13rem); font-weight: 300;
+    color: var(--cream); display: block; letter-spacing: -0.01em;
   }
   .hero-name .last {
-    font-size: clamp(5rem, 8vw, 9rem); font-weight: 400;
-    color: var(--gold); display: block; font-style: italic;
+    font-size: clamp(5.5rem, 11vw, 13rem); font-weight: 400;
+    color: var(--gold); display: block; font-style: italic; letter-spacing: -0.01em;
   }
+
+  .hero-rule {
+    width: 3.5rem; height: 1px;
+    background: linear-gradient(to right, rgba(201,169,110,0.5), transparent);
+    margin-bottom: 2.2rem;
+  }
+
   .hero-bio {
-    font-size: 1.05rem; line-height: 1.85; font-weight: 300;
-    color: rgba(240,236,228,0.68); max-width: 420px; margin-bottom: 3rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem); font-weight: 300; font-style: italic;
+    line-height: 1.6; color: rgba(240,236,228,0.72);
+    max-width: 460px; margin-bottom: 3rem;
   }
-  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
   .btn-sage {
     background: var(--sage); color: var(--cream);
-    padding: 0.85rem 2rem; border-radius: 3rem;
-    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-    text-decoration: none; transition: background 0.2s; display: inline-block;
+    padding: 0.88rem 2.2rem; border-radius: 3rem;
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.25s; display: inline-block;
   }
   .btn-sage:hover { background: var(--sage-lt); }
   .btn-outline {
     background: transparent; color: var(--cream);
     border: 1px solid rgba(240,236,228,0.3);
-    padding: 0.85rem 2rem; border-radius: 3rem;
-    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-    text-decoration: none; transition: border-color 0.2s; display: inline-block;
+    padding: 0.88rem 2.2rem; border-radius: 3rem;
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; transition: border-color 0.25s, color 0.25s; display: inline-block;
   }
-  .btn-outline:hover { border-color: rgba(240,236,228,0.7); }
+  .btn-outline:hover { border-color: rgba(201,169,110,0.6); color: var(--gold); }
 
-  .hero-right {
-    display: flex; align-items: stretch; justify-content: center;
-    background: var(--forest-mid); position: relative; overflow: hidden;
+  .hero-seen-in { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .proof-label {
+    font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,236,228,0.28); white-space: nowrap;
   }
-  .hero-photo-wrap {
-    width: 100%; height: 100%;
-    display: flex; flex-direction: column;
+  .proof-logos { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; }
+  .proof-logo {
+    font-family: var(--font-serif); font-size: 0.9rem; font-weight: 400;
+    color: rgba(240,236,228,0.3); font-style: italic; white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .proof-logo:hover { color: rgba(240,236,228,0.55); }
+
+  /* right: full-bleed photo */
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--forest-mid);
   }
   .hero-photo-main {
-    flex: 1; background: var(--forest-lt);
+    position: absolute; inset: 0;
+  }
+  .hero-photo-main img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+  }
+  /* left edge: blend photo into left panel */
+  .hero-photo-main::before {
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 30%;
+    background: linear-gradient(to right, var(--forest), transparent);
+    z-index: 1; pointer-events: none;
+  }
+  /* placeholder state (before photo is added) */
+  .hero-photo-placeholder {
+    position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
+    background: var(--forest-mid);
   }
-  .hero-photo-main span {
+  .hero-photo-placeholder span {
     font-family: var(--font-serif); font-style: italic;
-    color: rgba(240,236,228,0.2); font-size: 0.9rem; text-align: center; line-height: 1.8;
-  }
-  .hero-proof-strip {
-    background: var(--forest);
-    padding: 1.2rem 3rem;
-    display: flex; align-items: center; gap: 3rem;
-    border-top: 1px solid rgba(240,236,228,0.06);
-  }
-  .proof-label {
-    font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(240,236,228,0.3); white-space: nowrap;
-  }
-  .proof-logos { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
-  .proof-logo {
-    font-family: var(--font-serif); font-size: 0.95rem; font-weight: 400;
-    color: rgba(240,236,228,0.35); font-style: italic; white-space: nowrap;
+    color: rgba(240,236,228,0.15); font-size: 0.85rem;
+    text-align: center; line-height: 1.9; max-width: 200px;
   }
 
   /* ── DATA SECTION ── */
@@ -550,13 +592,15 @@
     .nav-links.open { display: flex; }
     .nav-links li { padding: 0.8rem 0; border-bottom: 1px solid rgba(240,236,228,0.07); }
     .nav-links li:last-child { border-bottom: none; }
-    .nav-cta { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
+    .nav-cta { background: transparent !important; padding: 0.8rem 0 !important; border: none !important; border-radius: 0 !important; color: var(--gold) !important; }
+    .nav-cta::after { display: none !important; }
 
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 6rem 1.5rem 3rem; }
-    .hero-right { min-height: 300px; }
-    .hero-proof-strip { flex-direction: column; gap: 1rem; padding: 1.2rem 1.5rem; }
-    .proof-logos { flex-wrap: wrap; gap: 1rem; }
+    .hero-right { min-height: 70vw; order: -1; }
+    .hero-left { padding: 3rem 1.5rem 3.5rem; }
+    .hero-name .first, .hero-name .last { font-size: clamp(4rem, 16vw, 7rem); }
+    .hero-seen-in { gap: 1.2rem; }
+    .proof-logos { gap: 1rem; flex-wrap: wrap; }
 
     .data-section { padding: 4rem 1.5rem 0; }
     .data-cards { grid-template-columns: 1fr; border-top: none; }
@@ -623,39 +667,60 @@
 
 <!-- HERO -->
 <section class="hero" id="main-content">
+
   <div class="hero-left">
-    <div class="hero-credentials">
-      <span>Miss Lake Nona · Miss Florida USA 2026</span>
-      <span>D1 Athlete · EA Sports Brand Strategist</span>
-      <span>CEO, The Health Co.</span>
-      <span>26M+ YouTube Views</span>
+    <!-- Eyebrow credentials -->
+    <div class="hero-eyebrow" aria-label="Credentials">
+      <span class="hero-eyebrow-item">Creator</span>
+      <span class="hero-eyebrow-sep" aria-hidden="true"></span>
+      <span class="hero-eyebrow-item">Speaker</span>
+      <span class="hero-eyebrow-sep" aria-hidden="true"></span>
+      <span class="hero-eyebrow-item">Miss Lake Nona USA</span>
+      <span class="hero-eyebrow-sep" aria-hidden="true"></span>
+      <span class="hero-eyebrow-item">Founder, The Health Co.</span>
     </div>
+
+    <!-- Name — dominant visual element -->
     <h1 class="hero-name">
       <span class="first">Alaias</span>
       <span class="last">Fittz.</span>
     </h1>
-    <p class="hero-bio">I transform lives by helping women believe they can do hard things — because I did. Lost 75 lbs. Earned a D1 scholarship. Built a media company. Now I'm taking it to the stage.</p>
+
+    <div class="hero-rule" aria-hidden="true"></div>
+
+    <!-- Story statement -->
+    <p class="hero-bio">"I transform lives by helping women believe they can do hard things — because I did."</p>
+
+    <!-- CTAs -->
     <div class="hero-buttons">
-      <a href="#youtube" class="btn-sage">Follow My Journey</a>
+      <a href="healthco-timeline.html" class="btn-sage">My Story</a>
       <a href="#hub" class="btn-outline">Why This Matters</a>
     </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-main" role="img" aria-label="Photo of Alaias Fittz">
-      </div>
-      <div class="hero-proof-strip">
-        <span class="proof-label">As Seen In</span>
-        <div class="proof-logos">
-          <span class="proof-logo">EA Sports</span>
-          <span class="proof-logo">Business Insider</span>
-          <span class="proof-logo">Nike</span>
-          <span class="proof-logo">AG1</span>
-          <span class="proof-logo">NFL</span>
-        </div>
+
+    <!-- As Seen In -->
+    <div class="hero-seen-in">
+      <span class="proof-label">As Seen In</span>
+      <div class="proof-logos">
+        <span class="proof-logo">Business Insider</span>
+        <span class="proof-logo">EA Sports</span>
+        <span class="proof-logo">AG1</span>
+        <span class="proof-logo">NFL</span>
       </div>
     </div>
   </div>
+
+  <!-- Hero photo — full-bleed right column -->
+  <div class="hero-right">
+    <div class="hero-photo-main">
+      <img src="assets/alaias-hero.jpg"
+           alt="Alaias Fittz — Creator, Speaker, Miss Lake Nona USA, Founder of The Health Co."
+           onerror="this.style.display='none'; this.parentElement.querySelector('.hero-photo-placeholder').style.display='flex';" />
+      <div class="hero-photo-placeholder" style="display:none;">
+        <span>Add assets/alaias-hero.jpg<br>to display hero photo</span>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- DATA -->
