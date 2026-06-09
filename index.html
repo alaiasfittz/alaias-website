@@ -67,6 +67,8 @@
   }
   .nav-links a:hover { color: var(--cream); }
   .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--gold) !important; font-weight: 600; }
+  .nav-links a.active::after { width: 100%; }
   .nav-cta {
     background: rgba(201,169,110,0.14) !important; color: var(--gold) !important;
     border: 1px solid rgba(201,169,110,0.45) !important;
@@ -907,7 +909,7 @@
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-menu">
-    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
     <li><a href="healthco-brand-overview.html">Brand Overview</a></li>
     <li><a href="healthco-services.html">Services</a></li>
     <li><a href="healthco-pageant-journey.html">Pageant Journey</a></li>
