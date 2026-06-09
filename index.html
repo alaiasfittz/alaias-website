@@ -6,7 +6,7 @@
 <title>Alaias Fittz · The Health Co.</title>
 <meta name="description" content="Alaias Fittz is the CEO of The Health Co., a media and wellness company on a mission to reach 100 million women. D1 athlete, EA Sports brand strategist, and Miss Lake Nona competing in Miss Florida USA 2026.">
 <meta property="og:title" content="Alaias Fittz · The Health Co.">
-<meta property="og:description" content="Creator. CEO. Competitor. Helping women believe they can do hard things. Because she did. 26M+ YouTube views, The Health Co., Miss Florida USA 2026.">
+<meta property="og:description" content="Creator. CEO. Competitor. Helping women believe they can do hard things. Because she did. 27M+ YouTube views, The Health Co., Miss Florida USA 2026.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thehealthco.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -424,14 +424,21 @@
   .video-card { cursor: pointer; text-decoration: none; color: inherit; display: block; }
   .video-thumb {
     aspect-ratio: 16/9; background: var(--cream); border-radius: 2px;
-    margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;
-    position: relative;
+    margin-bottom: 1rem; position: relative; overflow: hidden;
   }
+  .video-thumb img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+  }
+  .video-card:hover .video-thumb img { transform: scale(1.03); }
   .play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 3rem; height: 3rem; border-radius: 50%;
-    background: rgba(35,51,32,0.5);
+    background: rgba(35,51,32,0.65);
     display: flex; align-items: center; justify-content: center;
+    transition: background 0.25s;
   }
+  .video-card:hover .play-btn { background: rgba(201,169,110,0.85); }
   .play-btn::after {
     content: ''; border-left: 0.8rem solid var(--cream);
     border-top: 0.5rem solid transparent; border-bottom: 0.5rem solid transparent;
@@ -904,7 +911,7 @@
         <div class="hub-card-num">05</div>
         <div class="hub-card-tag">YouTube · @alaias.fit</div>
         <div class="hub-card-title">Watch me do the<br><em>hard things first.</em></div>
-        <p class="hub-card-desc">26M+ views. Challenge series. Transformation content. Health, mindset, lifestyle. Built to make you believe you can do it too. This is where the mission lives.</p>
+        <p class="hub-card-desc">27M+ views. Challenge series. Transformation content. Health, mindset, lifestyle. Built to make you believe you can do it too. This is where the mission lives.</p>
       </div>
       <span class="hub-card-link">Watch on YouTube →</span>
     </a>
@@ -919,36 +926,46 @@
       <h2>Watch me do the<br><em>hard things first.</em></h2>
     </div>
     <div class="yt-views">
-      <div class="num">26M+</div>
+      <div class="num">27M+</div>
       <div class="lbl">YouTube Views</div>
     </div>
   </div>
+  <!-- VIDEO GRID: update hrefs + thumbnail src to refresh featured videos -->
   <div class="video-grid">
-    <a class="video-card" href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer" aria-label="Watch: I Trained Like an MMA Fighter for a Week on YouTube">
-      <div class="video-thumb"><div class="play-btn" aria-hidden="true"></div></div>
-      <div class="video-cat">MMA Challenge</div>
-      <div class="video-title">I Trained Like an MMA Fighter for a Week</div>
+    <a class="video-card" href="https://youtu.be/sN_3_ozPwEI?si=v_bggxGt1BTUib_P" target="_blank" rel="noopener noreferrer" aria-label="Watch: I Tried NO Sugar & Carbs for 30 Days on YouTube">
+      <div class="video-thumb">
+        <img src="https://i.ytimg.com/vi/sN_3_ozPwEI/maxresdefault.jpg" alt="I Tried NO Sugar & Carbs for 30 Days" loading="lazy" />
+        <div class="play-btn" aria-hidden="true"></div>
+      </div>
+      <div class="video-cat">Health Challenge</div>
+      <div class="video-title">I Tried NO Sugar &amp; Carbs for 30 Days</div>
     </a>
-    <a class="video-card" href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer" aria-label="Watch: I Followed a Princess's Daily Routine on YouTube">
-      <div class="video-thumb"><div class="play-btn" aria-hidden="true"></div></div>
+    <a class="video-card" href="https://youtu.be/zHyMlpdqAM4?si=0fMsbRwqRtHROjgY" target="_blank" rel="noopener noreferrer" aria-label="Watch: I Trained Like A Victoria's Secret Model For 8 Weeks on YouTube">
+      <div class="video-thumb">
+        <img src="https://i.ytimg.com/vi/zHyMlpdqAM4/maxresdefault.jpg" alt="I Trained Like A Victoria's Secret Model For 8 Weeks" loading="lazy" />
+        <div class="play-btn" aria-hidden="true"></div>
+      </div>
+      <div class="video-cat">Fitness Challenge</div>
+      <div class="video-title">I Trained Like A Victoria's Secret Model For 8 Weeks</div>
+    </a>
+    <a class="video-card" href="https://youtu.be/mZ2fLxB2bac?si=4p58dcbASUdMC8NM" target="_blank" rel="noopener noreferrer" aria-label="Watch: I Got My Home Professionally Organized in 24 Hours on YouTube">
+      <div class="video-thumb">
+        <img src="https://i.ytimg.com/vi/mZ2fLxB2bac/maxresdefault.jpg" alt="I Got My Home Professionally Organized in 24 Hours" loading="lazy" />
+        <div class="play-btn" aria-hidden="true"></div>
+      </div>
       <div class="video-cat">Lifestyle Reset</div>
-      <div class="video-title">I Followed a Princess's Daily Routine</div>
-    </a>
-    <a class="video-card" href="https://youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer" aria-label="Watch: My 75 lb Weight Loss: The Full Story on YouTube">
-      <div class="video-thumb"><div class="play-btn" aria-hidden="true"></div></div>
-      <div class="video-cat">Transformation</div>
-      <div class="video-title">My 75 lb Weight Loss: The Full Story</div>
+      <div class="video-title">I Got My Home Professionally Organized in 24 Hours</div>
     </a>
   </div>
   <div class="youtube-bottom">
-    <a href="https://youtube.com/@alaias.fit" target="_blank" class="btn-yt">Watch on YouTube</a>
+    <a href="https://www.youtube.com/@alaias.fit" target="_blank" rel="noopener noreferrer" class="btn-yt">Watch on YouTube</a>
     <div class="yt-membership">
       <div>
         <div class="section-label">YouTube Membership</div>
         <h3>Go deeper.<br>Join the community.</h3>
         <p>Exclusive content, behind-the-scenes, early access, and a community of women doing hard things together.</p>
       </div>
-      <a href="https://youtube.com/@alaias.fit" target="_blank" class="btn-sage" style="white-space:nowrap;">Join Now</a>
+      <a href="https://www.youtube.com/channel/UCOmXfX6mwaEtTAVXkzpdhvQ/join" target="_blank" rel="noopener noreferrer" class="btn-sage" style="white-space:nowrap;">Join Now</a>
     </div>
   </div>
 </section>
