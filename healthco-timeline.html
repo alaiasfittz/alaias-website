@@ -81,7 +81,7 @@
   }
   .hero-headline {
     font-family: var(--font-serif);
-    font-size: clamp(3.5rem, 6vw, 7rem); font-weight: 300;
+    font-size: clamp(2.8rem, 4.8vw, 5.6rem); font-weight: 300;
     line-height: 0.95; color: var(--cream); margin-bottom: 2.5rem;
   }
   .hero-headline em { font-style: italic; color: var(--gold); display: block; }
@@ -111,31 +111,76 @@
     background: var(--forest-mid);
     display: flex; flex-direction: column; justify-content: center;
     padding: 5rem 4rem;
+    position: relative; overflow: hidden;
   }
-  .hero-chapters { display: flex; flex-direction: column; gap: 0; }
+
+  /* Hover photo layer */
+  .chapter-photo-preview {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 0;
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .chapter-photo-preview img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.35);
+  }
+  .hero-right.photo-active .chapter-photo-preview.active { opacity: 1; }
+
+  /* Vertical progress line */
+  .hero-chapters {
+    display: flex; flex-direction: column; gap: 0;
+    position: relative; z-index: 1;
+    padding-left: 1.2rem;
+  }
+  .hero-chapters::before {
+    content: ''; position: absolute; left: 0; top: 1.4rem; bottom: 1.4rem;
+    width: 1px; background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.25) 15%, rgba(201,169,110,0.25) 85%, transparent);
+  }
   .hero-chapter {
-    display: flex; gap: 1.5rem; align-items: baseline;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid rgba(240,236,228,0.07);
-    cursor: pointer; transition: background 0.2s;
-    text-decoration: none;
+    display: flex; gap: 1.5rem; align-items: center;
+    padding: 1.1rem 1rem;
+    border-bottom: 1px solid rgba(240,236,228,0.06);
+    cursor: pointer; transition: background 0.25s;
+    text-decoration: none; border-radius: 2px;
+    position: relative;
   }
   .hero-chapter:last-child { border-bottom: none; }
+  .hero-chapter::before {
+    content: ''; position: absolute; left: -1.2rem;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(201,169,110,0.25); border: 1px solid rgba(201,169,110,0.4);
+    transition: background 0.25s, transform 0.25s;
+    top: 50%; transform: translateY(-50%);
+  }
+  .hero-chapter:hover { background: rgba(201,169,110,0.06); }
+  .hero-chapter:hover::before { background: var(--gold); transform: translateY(-50%) scale(1.3); }
   .hero-chapter:hover .chapter-title { color: var(--cream); }
+  .hero-chapter:hover .chapter-era { color: rgba(240,236,228,0.55); }
+
+  /* Dim non-hovered rows when any row is hovered */
+  .hero-chapters:has(.hero-chapter:hover) .hero-chapter:not(:hover) { opacity: 0.4; }
+  .hero-chapters:has(.hero-chapter:hover) .hero-chapter:not(:hover) { transition: opacity 0.25s; }
+
   .chapter-num {
-    font-family: var(--font-serif); font-size: 0.9rem; font-weight: 300;
-    color: var(--gold); min-width: 2rem; flex-shrink: 0;
+    font-family: var(--font-serif); font-size: 0.85rem; font-weight: 300;
+    color: var(--gold); min-width: 2rem; flex-shrink: 0; opacity: 0.7;
   }
   .chapter-info { flex: 1; }
   .chapter-era {
-    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(240,236,228,0.35); margin-bottom: 0.2rem;
+    font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(240,236,228,0.28); margin-bottom: 0.15rem;
+    transition: color 0.25s;
   }
   .chapter-title {
-    font-family: var(--font-serif); font-size: 1rem; font-weight: 300;
-    color: rgba(240,236,228,0.65); line-height: 1.3;
-    transition: color 0.2s;
+    font-family: var(--font-serif); font-size: 1.05rem; font-weight: 400;
+    color: rgba(240,236,228,0.75); line-height: 1.2;
+    transition: color 0.25s;
   }
+  .chapter-arrow {
+    font-size: 0.7rem; color: rgba(201,169,110,0); transition: color 0.25s;
+    flex-shrink: 0;
+  }
+  .hero-chapter:hover .chapter-arrow { color: var(--gold); }
 
   /* INTRO QUOTE */
   .intro-quote {
@@ -440,63 +485,93 @@
       From insecure<br>Cleveland girl<br><em>to CEO.</em>
     </h1>
     <p class="hero-bio">
-      This isn't a highlight reel. It's the full story — the weight, the family chaos, the discipline, the grind, the burnout, and the leap. <strong>Seven chapters. One mission.</strong>
+      Before the views, the business, and the stage, there was a girl trying to believe she was capable of more.
     </p>
     <div class="hero-buttons">
       <a href="#chapter-1" class="btn-sage">Read the Story</a>
       <a href="#bio" class="btn-outline">Creator. CEO. Competitor.</a>
     </div>
   </div>
-  <div class="hero-right">
+  <div class="hero-right" id="timeline-right">
+    <!-- Photo preview layers (one per chapter) -->
+    <div class="chapter-photo-preview" data-chapter="1">
+      <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800&q=60" alt="">
+    </div>
+    <div class="chapter-photo-preview" data-chapter="2">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=60" alt="">
+    </div>
+    <div class="chapter-photo-preview" data-chapter="3">
+      <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&q=60" alt="">
+    </div>
+    <div class="chapter-photo-preview" data-chapter="4">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=60" alt="">
+    </div>
+    <div class="chapter-photo-preview" data-chapter="5">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=60" alt="">
+    </div>
+    <div class="chapter-photo-preview" data-chapter="6">
+      <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=800&q=60" alt="">
+    </div>
+    <div class="chapter-photo-preview" data-chapter="7">
+      <img src="assets/Alaias-Hero.jpg" alt="">
+    </div>
+
     <div class="hero-chapters">
-      <a href="#chapter-1" class="hero-chapter">
+      <a href="#chapter-1" class="hero-chapter" data-chapter="1">
         <span class="chapter-num">01</span>
         <div class="chapter-info">
           <div class="chapter-era">Cleveland, Ohio</div>
           <div class="chapter-title">The Early Years</div>
         </div>
+        <span class="chapter-arrow">→</span>
       </a>
-      <a href="#chapter-2" class="hero-chapter">
+      <a href="#chapter-2" class="hero-chapter" data-chapter="2">
         <span class="chapter-num">02</span>
         <div class="chapter-info">
           <div class="chapter-era">High School</div>
           <div class="chapter-title">The Transformation</div>
         </div>
+        <span class="chapter-arrow">→</span>
       </a>
-      <a href="#chapter-3" class="hero-chapter">
+      <a href="#chapter-3" class="hero-chapter" data-chapter="3">
         <span class="chapter-num">03</span>
         <div class="chapter-info">
           <div class="chapter-era">2019 — 2022</div>
           <div class="chapter-title">Michigan State University</div>
         </div>
+        <span class="chapter-arrow">→</span>
       </a>
-      <a href="#chapter-4" class="hero-chapter">
+      <a href="#chapter-4" class="hero-chapter" data-chapter="4">
         <span class="chapter-num">04</span>
         <div class="chapter-info">
           <div class="chapter-era">2022 — 2025</div>
           <div class="chapter-title">EA Sports</div>
         </div>
+        <span class="chapter-arrow">→</span>
       </a>
-      <a href="#chapter-5" class="hero-chapter">
+      <a href="#chapter-5" class="hero-chapter" data-chapter="5">
         <span class="chapter-num">05</span>
         <div class="chapter-info">
           <div class="chapter-era">2022 — 2025</div>
           <div class="chapter-title">Building in Parallel</div>
         </div>
+        <span class="chapter-arrow">→</span>
       </a>
-      <a href="#chapter-6" class="hero-chapter">
+      <a href="#chapter-6" class="hero-chapter" data-chapter="6">
         <span class="chapter-num">06</span>
         <div class="chapter-info">
           <div class="chapter-era">August 2025</div>
           <div class="chapter-title">The Leap</div>
         </div>
+        <span class="chapter-arrow">→</span>
       </a>
-      <a href="#chapter-7" class="hero-chapter">
+      <a href="#chapter-7" class="hero-chapter" data-chapter="7">
         <span class="chapter-num">07</span>
         <div class="chapter-info">
           <div class="chapter-era">Today</div>
           <div class="chapter-title">The Health Co. & Miss Florida USA</div>
         </div>
+        <span class="chapter-arrow">→</span>
       </a>
     </div>
   </div>
@@ -819,6 +894,23 @@
       btn.setAttribute('aria-expanded', 'false');
     }));
   }
+
+  // Chapter hover photo previews
+  const timelineRight = document.getElementById('timeline-right');
+  const chapters = document.querySelectorAll('.hero-chapter[data-chapter]');
+  const previews = document.querySelectorAll('.chapter-photo-preview[data-chapter]');
+
+  chapters.forEach(ch => {
+    ch.addEventListener('mouseenter', () => {
+      const n = ch.dataset.chapter;
+      previews.forEach(p => p.classList.toggle('active', p.dataset.chapter === n));
+      timelineRight.classList.add('photo-active');
+    });
+    ch.addEventListener('mouseleave', () => {
+      timelineRight.classList.remove('photo-active');
+      previews.forEach(p => p.classList.remove('active'));
+    });
+  });
 </script>
 </body>
 </html>
