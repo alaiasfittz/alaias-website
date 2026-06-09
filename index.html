@@ -295,12 +295,11 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
   }
   .about-photo {
-    aspect-ratio: 3/4; background: var(--forest-mid); border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 3/4; border-radius: 2px; overflow: hidden;
+    background: var(--forest-mid);
   }
-  .about-photo span {
-    font-family: var(--font-serif); font-style: italic;
-    color: rgba(240,236,228,0.2); font-size: 0.9rem; text-align: center; line-height: 1.8;
+  .about-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
   }
   .about-headline {
     font-family: var(--font-serif);
@@ -813,15 +812,17 @@
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
-  <div class="about-photo" role="img" aria-label="Photo of Alaias Fittz">
+  <div class="about-photo">
+    <img src="assets/Alaias-About.jpg" alt="Alaias Fittz" onerror="this.parentElement.style.background='var(--forest-mid)'; this.style.display='none';" />
   </div>
   <div>
     <div class="section-label light">Who Is Alaias Fittz?</div>
     <h2 class="about-headline">Creator.<br><em>CEO. Competitor.</em></h2>
     <div class="about-body">
-      <p>Alaias Fittz is the founder and CEO of <strong>The Health Co.</strong>, a media and production company on a mission to reach 100 million women, changing how they think about themselves, their health, and what's possible.</p>
-      <p>Her story starts in Cleveland, Ohio: overweight, deeply insecure, and surrounded by a family environment marked by addiction and loss. She lost 75+ pounds, earned a <strong>Division I Track & Field scholarship to Michigan State University</strong>, graduated with a double major, and went on to create <a href="healthco-timeline.html">"Field the Future"</a> at EA Sports, impacting 1,000+ youth annually through Nike, Microsoft, and the NFL.</p>
-      <p>Today: <strong>26M+ YouTube views</strong>, a team of six, executive consulting clients, and competing as Miss Lake Nona in Miss Florida USA 2026.</p>
+      <p>Alaias Fittz is the founder and CEO of <strong>The Health Co.</strong>, a media and production company on a mission to reach 100 million women and change how they think about themselves, their health, and what's possible.</p>
+      <p>Her story begins in Cleveland: overweight, deeply insecure, and surrounded by a family environment marked by addiction and loss. Determined to create a different future, she lost more than 75 pounds, earned a <strong>Division I Track & Field scholarship to Michigan State University</strong>, and graduated with a double major in Accounting and Marketing.</p>
+      <p>After college, she joined EA Sports, where she created and led <a href="healthco-timeline.html">Field the Future</a>, a brand marketing program that impacted more than 1,000 students annually and provided over $100,000 in scholarships for students pursuing STEM degrees. Alaias successfully pitched and secured support from organizations including Nike, Microsoft, and the NFL to help bring the vision to life.</p>
+      <p>Today, her work has generated more than <strong>27 million YouTube views</strong>, supports a growing team of six, serves executive consulting clients, and continues to expand through her platform as Miss Lake Nona USA, competing at Miss Florida USA 2026.</p>
       <p>She isn't just a content creator. She's proof that the story you tell yourself determines the life you build.</p>
     </div>
   </div>
