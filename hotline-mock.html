@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotline Section Mock</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1c1c1a; font-family: 'DM Sans', system-ui, sans-serif; }
+
+  /* ── MASTHEAD ── */
+  .hotline-masthead {
+    background: #1a281a;
+    text-align: center;
+    padding: 3rem 2rem 2.6rem;
+    border-top: 1px solid rgba(201,169,110,0.5);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+  .hotline-masthead-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.55);
+    margin-bottom: 1rem;
+  }
+  .hotline-masthead-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    letter-spacing: 0.18em;
+    color: #f0ece4;
+    line-height: 1;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+  .hotline-masthead-rule {
+    width: 3rem;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,169,110,0.5), transparent);
+    margin: 0.8rem auto;
+  }
+  .hotline-masthead-sub {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    color: #c9a96e;
+    line-height: 1;
+  }
+
+  /* ── FIELD ── */
+  .hotline-field {
+    background: #233320;
+    padding: 5rem 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+  }
+
+  /* ── CARD ── */
+  .hotline-card {
+    background: #f5f2ec;
+    border-radius: 2px;
+    border: 1px solid rgba(201,169,110,0.3);
+    padding: 3.5rem 3.5rem;
+    max-width: 540px;
+    flex: 1;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+  }
+  .hotline-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #7d8f6a;
+    margin-bottom: 1.2rem;
+  }
+  .hotline-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    color: #1e2218;
+    line-height: 1.1;
+    margin-bottom: 0;
+  }
+  .hotline-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    color: #c9a96e;
+    line-height: 1;
+    display: block;
+    margin-bottom: 1.6rem;
+  }
+  .hotline-divider {
+    width: 2.5rem;
+    height: 1px;
+    background: linear-gradient(to right, rgba(201,169,110,0.6), transparent);
+    margin-bottom: 1.4rem;
+  }
+  .hotline-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #5a5a50;
+    margin-bottom: 2rem;
+  }
+  .hotline-sig {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2rem;
+    color: #1e2218;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .hotline-sig-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #7d8f6a;
+    margin-bottom: 2.2rem;
+  }
+  .hotline-cta {
+    display: inline-block;
+    background: transparent;
+    color: #1e2218;
+    text-decoration: none;
+    padding: 0.85rem 2.2rem;
+    border-radius: 3rem;
+    border: 1px solid rgba(30,34,24,0.4);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .hotline-cta:hover {
+    background: #233320;
+    color: #f0ece4;
+    border-color: #233320;
+  }
+
+  /* ── POLAROID ── */
+  .hotline-polaroid-wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 300px;
+  }
+  .hotline-stamp {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 64px;
+    height: 64px;
+    background: #233320;
+    border: 1px solid rgba(201,169,110,0.4);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transform: rotate(6deg);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .hotline-stamp img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 1px;
+  }
+  .hotline-polaroid {
+    background: white;
+    padding: 10px 10px 42px;
+    border-radius: 1px;
+    transform: rotate(-2.5deg);
+    box-shadow: 0 16px 50px rgba(0,0,0,0.35);
+    position: relative;
+    z-index: 1;
+  }
+  .hotline-polaroid img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+  .hotline-caption {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 1.4rem;
+    color: #1e2218;
+    text-align: center;
+    margin-top: 4px;
+    opacity: 0.65;
+  }
+</style>
+</head>
+<body>
+
+<section aria-label="Hotline mock">
+  <!-- Masthead -->
+  <div class="hotline-masthead">
+    <div class="hotline-masthead-eyebrow">Alaias Fittz · Substack Newsletter</div>
+    <div class="hotline-masthead-title">The Health Co.</div>
+    <div class="hotline-masthead-rule"></div>
+    <div class="hotline-masthead-sub">a weekly letter on living well</div>
+  </div>
+
+  <!-- Field -->
+  <div class="hotline-field">
+    <div class="hotline-card">
+      <div class="hotline-eyebrow">A Weekly Letter from Alaias Fittz · The Health Co. on Substack</div>
+      <h2 class="hotline-headline">Welcome to the</h2>
+      <span class="hotline-script">Hotline.</span>
+      <div class="hotline-divider"></div>
+      <p class="hotline-body">Every Sunday I write you the honest version, the thinking behind the hard decisions, the challenge we're taking on, and the recipes getting me through the week. Like a text from a friend who actually gets it.</p>
+      <div class="hotline-sig">xo, Alaias</div>
+      <div class="hotline-sig-title">Founder, The Health Co.</div>
+      <a href="#" class="hotline-cta">Read on Substack →</a>
+    </div>
+
+    <!-- Polaroid -->
+    <div class="hotline-polaroid-wrap">
+      <div class="hotline-stamp">
+        <img src="assets/HealthCo-Logo.jpeg" alt="The Health Co." />
+      </div>
+      <div class="hotline-polaroid">
+        <img src="assets/Newsletter-Image.jpeg" alt="Alaias Fittz" />
+        <div class="hotline-caption">that's me</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
