@@ -258,25 +258,33 @@
   }
 
   /* Bullet items */
-  .bullet-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; }
-  .bullet-item {
-    display: flex; gap: 1rem; align-items: baseline;
-    padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);
-    font-size: 0.85rem; line-height: 1.65; color: var(--text-mid);
+  .achievement-list { display: flex; flex-direction: column; margin-bottom: 2rem; }
+  .achievement {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
-  .bullet-item:last-child { border-bottom: none; }
-  .bullet-item::before {
-    content: '—'; color: var(--sage); flex-shrink: 0; font-size: 0.8rem;
+  .achievement:last-child { border-bottom: none; }
+  .achievement-label {
+    font-size: 0.88rem; font-weight: 500;
+    color: var(--text-dark); line-height: 1.4; margin-bottom: 0.2rem;
   }
-  .bullet-item strong { color: var(--text-dark); font-weight: 500; }
+  .achievement-label .hl { color: var(--sage); font-weight: 600; }
+  .achievement-note {
+    font-size: 0.8rem; color: var(--text-mid); line-height: 1.65;
+  }
+  .achievement-tags {
+    display: flex; flex-wrap: wrap; gap: 0.2rem 1.8rem; margin-top: 0.5rem;
+  }
+  .achievement-tag {
+    font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;
+  }
 
-  /* Sub-bullets */
-  .sub-bullets { padding-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.3rem; }
-  .sub-bullet {
-    font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;
-    display: flex; gap: 0.8rem; align-items: baseline;
-  }
-  .sub-bullet::before { content: '·'; color: var(--sage-pale); flex-shrink: 0; }
+  /* Dark variant overrides */
+  .chapter-content.dark-bg .achievement { border-color: rgba(240,236,228,0.07); }
+  .chapter-content.dark-bg .achievement-label { color: var(--cream); }
+  .chapter-content.dark-bg .achievement-label .hl { color: var(--gold); }
+  .chapter-content.dark-bg .achievement-note { color: rgba(240,236,228,0.5); }
+  .chapter-content.dark-bg .achievement-tag { color: rgba(240,236,228,0.3); }
 
   /* Highlight stat boxes */
   .stat-boxes {
@@ -599,22 +607,24 @@
     </div>
     <div class="chapter-content">
       <h2 class="chapter-heading">The Early <em>Years.</em></h2>
-      <p class="chapter-intro">Growing up in Cleveland, Ohio wasn't easy. Alaias was overweight, deeply insecure, and navigating an identity that didn't fit neatly into the world around her — and a home environment that required her to grow up fast.</p>
-      <div class="bullet-list">
-        <div class="bullet-item">Grew up in a predominantly white neighborhood as <strong>one of few Black girls in school</strong> — identity, belonging, and self-worth were daily struggles</div>
-        <div class="bullet-item"><strong>Over 200 lbs as a teenager</strong> — deep insecurity, body image challenges, sense of not belonging</div>
-        <div class="bullet-item">
-          <div>
-            <strong>Family environment marked by substance abuse</strong> across multiple family members
-            <div class="sub-bullets">
-              <div class="sub-bullet">Parents met in recovery</div>
-              <div class="sub-bullet">Lost both of mother's brothers to overdose</div>
-              <div class="sub-bullet">Brother began using drugs during adolescence</div>
-              <div class="sub-bullet">Close family friend also lost to drug abuse</div>
-            </div>
-          </div>
+      <p class="chapter-intro">Growing up in Cleveland wasn't easy. Overweight, deeply insecure, navigating a home shaped by addiction and loss — Alaias had every reason to shrink. She didn't.</p>
+      <div class="achievement-list">
+        <div class="achievement">
+          <div class="achievement-label">One of few Black girls in a predominantly white school</div>
+          <div class="achievement-note">Identity, belonging, and self-worth were daily struggles.</div>
         </div>
-        <div class="bullet-item">Despite the chaos — <strong>channeled pain into discipline and purpose.</strong> The foundation was being built, even when it didn't feel like it.</div>
+        <div class="achievement">
+          <div class="achievement-label"><span class="hl">Over 200 lbs</span> as a teenager</div>
+          <div class="achievement-note">Body image challenges and a persistent sense of not fitting in.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Family shaped by substance abuse</div>
+          <div class="achievement-note">Parents met in recovery. Lost two uncles to overdose. Brother followed the same path during adolescence.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Channeled the chaos into discipline</div>
+          <div class="achievement-note">The foundation was forming — even when it didn't feel like it.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -632,13 +642,26 @@
     </div>
     <div class="chapter-content">
       <h2 class="chapter-heading">The <em>Transformation.</em></h2>
-      <p class="chapter-intro">This is where everything changed. Not just physically — but at the identity level. Alaias didn't just lose weight. She rebuilt who she was and what she believed she was capable of.</p>
-      <div class="bullet-list">
-        <div class="bullet-item"><strong>Lost 75+ pounds</strong> — a physical AND identity-level transformation that became the foundation of her entire mission</div>
-        <div class="bullet-item">Fell in love with fitness as <strong>a vehicle for confidence, not just weight loss</strong> — this distinction became the core of The Health Co.</div>
-        <div class="bullet-item">Graduated with a <strong>4.2 GPA and high honors</strong></div>
-        <div class="bullet-item">Earned a <strong>Division I Track & Field scholarship to Michigan State University</strong></div>
-        <div class="bullet-item">Earned multiple awards in the <strong>DECA Program</strong> — her first real introduction to marketing and business strategy</div>
+      <p class="chapter-intro">This is where everything changed. Not just the weight — the identity. Alaias rebuilt who she was and what she believed was possible.</p>
+      <div class="achievement-list">
+        <div class="achievement">
+          <div class="achievement-label">Lost <span class="hl">75+ pounds</span></div>
+          <div class="achievement-note">A physical and identity-level shift that became the foundation of her entire mission.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Found fitness as a vehicle for confidence — not just weight loss</div>
+          <div class="achievement-note">This distinction became the core philosophy of The Health Co.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label"><span class="hl">4.2 GPA</span>, graduated with high honors</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label"><span class="hl">Division I</span> Track & Field scholarship to Michigan State University</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Multiple DECA Program awards</div>
+          <div class="achievement-note">Her first real introduction to marketing and business strategy.</div>
+        </div>
       </div>
       <div class="stat-boxes">
         <div class="stat-box">
@@ -670,22 +693,29 @@
     </div>
     <div class="chapter-content">
       <h2 class="chapter-heading">Michigan State <em>University.</em></h2>
-      <p class="chapter-intro">College was where Alaias proved she could do everything at once — compete at the D1 level, excel academically, intern at the world's best companies, and start building what would become The Health Co.</p>
-      <div class="bullet-list">
-        <div class="bullet-item"><strong>D1 Track & Field athlete at MSU</strong> — competing at the highest collegiate level while maintaining academic excellence</div>
-        <div class="bullet-item"><strong>Double major: Accounting + Marketing</strong> — Broad College of Business</div>
-        <div class="bullet-item">
-          <div>
-            Completed <strong>5 internships</strong> across four disciplines
-            <div class="sub-bullets">
-              <div class="sub-bullet">Accounting & finance: Plante Moran, EY, KPMG</div>
-              <div class="sub-bullet">Marketing: EA Sports</div>
-              <div class="sub-bullet">Ad sales: Disney</div>
+      <p class="chapter-intro">College proved Alaias could do everything at once — compete at the D1 level, intern at world-class companies, and begin building what would become The Health Co.</p>
+      <div class="achievement-list">
+        <div class="achievement">
+          <div class="achievement-label"><span class="hl">D1 Track & Field</span> athlete, Michigan State University</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Double major: Accounting + Marketing</div>
+          <div class="achievement-note">Broad College of Business.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label"><span class="hl">5 internships</span> across four disciplines</div>
+          <div class="achievement-note">
+            <div class="achievement-tags">
+              <span class="achievement-tag">Accounting & Finance — Plante Moran, EY, KPMG</span>
+              <span class="achievement-tag">Marketing — EA Sports</span>
+              <span class="achievement-tag">Ad Sales — Disney</span>
             </div>
           </div>
         </div>
-        <div class="bullet-item">Junior year: <strong>started The Health Co.</strong>, launched YouTube channel, and began training clients — all simultaneously</div>
-        <div class="bullet-item">Deepened faith as an <strong>anchoring foundation</strong> through the pressure of athletic and academic demands</div>
+        <div class="achievement">
+          <div class="achievement-label">Junior year: founded The Health Co., launched YouTube, began training clients</div>
+          <div class="achievement-note">All simultaneously.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -703,24 +733,27 @@
     </div>
     <div class="chapter-content dark-bg">
       <h2 class="chapter-heading">EA Sports — <em>Corporate Career.</em></h2>
-      <p class="chapter-intro">After graduating, Alaias accepted a full-time role at EA Sports and relocated to Orlando. Within her first year, she created something that had never existed at the company before.</p>
-      <div class="bullet-list">
-        <div class="bullet-item">
-          <div>
-            Year 1: Created and launched <strong>'Field the Future'</strong> — EA's first brand marketing program of its kind
-            <div class="sub-bullets">
-              <div class="sub-bullet">Partnerships: Nike, Microsoft, NFL (Raiders, Cardinals, Saints)</div>
-              <div class="sub-bullet">4+ consecutive years — program continues today</div>
-              <div class="sub-bullet">1,000+ youth impacted annually</div>
-              <div class="sub-bullet">25 STEM scholarships per year at $1,000 each ($25,000 total) for minority students</div>
-              <div class="sub-bullet">Connected youth with top NFL athletes for real-world mentorship</div>
-              <div class="sub-bullet">Supported launches: Madden 23/24/25, College Football 25, EA Sports PGA Tour</div>
+      <p class="chapter-intro">Alaias joined EA Sports full-time after graduating and, within her first year, built something the company had never had before.</p>
+      <div class="achievement-list">
+        <div class="achievement">
+          <div class="achievement-label">Created <span class="hl">'Field the Future'</span> — EA's first brand marketing program of its kind</div>
+          <div class="achievement-note">
+            <div class="achievement-tags">
+              <span class="achievement-tag">Partners: Nike, Microsoft, NFL</span>
+              <span class="achievement-tag">1,000+ youth impacted annually</span>
+              <span class="achievement-tag">$25K in STEM scholarships per year</span>
+              <span class="achievement-tag">4+ consecutive years — program continues today</span>
             </div>
           </div>
         </div>
-        <div class="bullet-item">Worked directly for and alongside EA's <strong>CFO and CMO</strong> — enterprise-level executive exposure</div>
-        <div class="bullet-item">Shifted EA's approach from <strong>product marketing → brand equity and audience trust</strong></div>
-        <div class="bullet-item">Built expertise in <strong>consumer insights, brand strategy, analytics, and marketing</strong> at scale</div>
+        <div class="achievement">
+          <div class="achievement-label">Worked directly alongside EA's <span class="hl">CFO and CMO</span></div>
+          <div class="achievement-note">Enterprise-level executive exposure from day one.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Shifted EA's approach from product marketing to brand equity</div>
+          <div class="achievement-note">Supported launches: Madden 23/24/25, College Football 25, EA Sports PGA Tour.</div>
+        </div>
       </div>
       <div class="stat-boxes">
         <div class="stat-box">
@@ -752,20 +785,32 @@
     </div>
     <div class="chapter-content">
       <h2 class="chapter-heading">Two full-time <em>jobs.</em></h2>
-      <p class="chapter-intro">For four years, Alaias ran EA Sports and The Health Co. simultaneously — two full-time roles, fully self-funded, building a team and a brand from nothing while holding down a corporate career.</p>
-      <div class="bullet-list">
-        <div class="bullet-item">Grew YouTube to <strong>26M+ views and 130K+ subscribers</strong> while employed full-time at EA Sports</div>
-        <div class="bullet-item">Founded <strong>Fit Media</strong> — a boutique social media consulting practice serving C-suite executives and corporate leaders</div>
-        <div class="bullet-item">Retained as personal brand strategist for <strong>Kat Cole, CEO of AG1</strong> — a multi-billion dollar global health brand</div>
-        <div class="bullet-item">Grew The Health Co. from solo operation to <strong>a team of 6</strong>, including a full creative and production department</div>
-        <div class="bullet-item">Secured and managed brand partnerships with national health and wellness companies across UGC and integrated content campaigns</div>
-        <div class="bullet-item">Architected a full content system and long-term programming strategy to scale toward <strong>10M+ women</strong> across YouTube, Instagram, and TikTok</div>
+      <p class="chapter-intro">For four years, Alaias ran EA Sports and The Health Co. simultaneously — fully self-funded, building a brand from nothing while holding down a corporate career.</p>
+      <div class="achievement-list">
+        <div class="achievement">
+          <div class="achievement-label">Grew YouTube to <span class="hl">26M+ views</span> and 130K+ subscribers</div>
+          <div class="achievement-note">Built entirely while employed full-time.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Founded <span class="hl">Fit Media</span> — boutique personal brand consulting</div>
+          <div class="achievement-note">Serving C-suite executives and corporate leaders.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Retained as personal brand strategist for <span class="hl">Kat Cole, CEO of AG1</span></div>
+          <div class="achievement-note">A multi-billion dollar global health brand.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Scaled The Health Co. from solo to <span class="hl">a team of 6</span></div>
+          <div class="achievement-note">Full creative and production department built from scratch.</div>
+        </div>
       </div>
       <div class="reckoning-box">
         <p>"Success cannot come at the expense of your health. I collapsed from chronic stress and dehydration. That was the reckoning."</p>
       </div>
-      <div class="bullet-list">
-        <div class="bullet-item"><strong>August 2025</strong> — left EA Sports to go all in on The Health Co.</div>
+      <div class="achievement-list">
+        <div class="achievement">
+          <div class="achievement-label"><span class="hl">August 2025</span> — left EA Sports to go all in on The Health Co.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -783,11 +828,20 @@
     </div>
     <div class="chapter-content dark-bg">
       <h2 class="chapter-heading"><em>The Leap.</em></h2>
-      <p class="chapter-intro">She walked away from a stable, well-paying corporate career at one of the world's biggest gaming companies. Not because it was safe. Because it was time.</p>
-      <div class="bullet-list">
-        <div class="bullet-item">CEO and founder of <strong>The Health Co.</strong> — 26M+ YouTube views, team of 6, three business pillars</div>
-        <div class="bullet-item">Competing as <strong>Miss Lake Nona in Miss Florida USA 2026</strong> — July 10–12, Orlando</div>
-        <div class="bullet-item">Mission: reach and impact <strong>10 million women</strong> — changing how they think about themselves and what's possible</div>
+      <p class="chapter-intro">She walked away from a stable corporate career at one of the world's biggest gaming companies. Not because it was safe. Because it was time.</p>
+      <div class="achievement-list">
+        <div class="achievement">
+          <div class="achievement-label">Full-time CEO of <span class="hl">The Health Co.</span></div>
+          <div class="achievement-note">26M+ YouTube views. Team of 6. Three business pillars.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Competing as <span class="hl">Miss Lake Nona</span> in Miss Florida USA 2026</div>
+          <div class="achievement-note">July 10–12, Orlando.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Mission: reach <span class="hl">10 million women</span></div>
+          <div class="achievement-note">Changing how they think about themselves and what's possible.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -806,14 +860,33 @@
     <div class="chapter-content">
       <h2 class="chapter-heading">The Health Co. &<br><em>Miss Florida USA.</em></h2>
       <p class="chapter-intro">This is where the story is right now — and it's just getting started.</p>
-      <div class="bullet-list">
-        <div class="bullet-item">Built <strong>one of the most-watched women's health and lifestyle channels on YouTube</strong> — 26M+ views and 130K+ subscribers, independently</div>
-        <div class="bullet-item">CEO and founder of The Health Co. — parent company with three pillars: <strong>Alaias.Fit</strong> (owned content), <strong>Fit Media</strong> (consulting), <strong>Brand Partnerships</strong></div>
-        <div class="bullet-item">Crowned <strong>Miss Lake Nona</strong> and competing in Miss Florida USA 2026 — July 10–12, Orlando</div>
-        <div class="bullet-item">Leading full-service personal brand management for a <strong>Fortune-level CEO</strong> — from strategy through content production, publishing, and performance reporting</div>
-        <div class="bullet-item">Partnered with <strong>OrangeTheory Fitness</strong> as brand ambassador and content creator — UGC and integrated campaigns across owned channels</div>
-        <div class="bullet-item">Built and leads a <strong>creative and production team</strong> across strategy, analytics, editing, and videography</div>
-        <div class="bullet-item">Developing a suite of <strong>health and mindset resources</strong> for distribution at speaking engagements, live appearances, and community events</div>
+      <div class="achievement-list">
+        <div class="achievement">
+          <div class="achievement-label">One of the most-watched women's health channels on YouTube</div>
+          <div class="achievement-note"><span style="color:var(--sage);font-weight:500;">26M+ views · 130K+ subscribers</span> — built independently.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">CEO & Founder, The Health Co.</div>
+          <div class="achievement-note">
+            <div class="achievement-tags">
+              <span class="achievement-tag">Alaias.Fit — owned content platform</span>
+              <span class="achievement-tag">Fit Media — brand consulting</span>
+              <span class="achievement-tag">Brand Partnerships</span>
+            </div>
+          </div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Personal brand strategist for a <span class="hl">Fortune-level CEO</span></div>
+          <div class="achievement-note">Full-service: strategy, content production, publishing, and performance reporting.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Brand ambassador, <span class="hl">OrangeTheory Fitness</span></div>
+          <div class="achievement-note">UGC and integrated campaigns across owned channels.</div>
+        </div>
+        <div class="achievement">
+          <div class="achievement-label">Crowned <span class="hl">Miss Lake Nona</span> · Miss Florida USA 2026</div>
+          <div class="achievement-note">July 10–12, Orlando.</div>
+        </div>
       </div>
       <div class="stat-boxes">
         <div class="stat-box">
@@ -825,7 +898,7 @@
           <div class="stat-box-label">Subscribers</div>
         </div>
         <div class="stat-box">
-          <div class="stat-box-num">100M</div>
+          <div class="stat-box-num">10M</div>
           <div class="stat-box-label">Women to Impact</div>
         </div>
       </div>
