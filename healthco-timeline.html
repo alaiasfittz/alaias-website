@@ -344,31 +344,37 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
   }
   .bio-photo {
-    aspect-ratio: 3/4; background: var(--forest-mid);
-    border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 3/4; border-radius: 2px; overflow: hidden;
+    background: var(--forest-mid);
   }
-  .bio-photo span {
-    font-family: var(--font-serif); font-style: italic;
-    color: rgba(240,236,228,0.2); font-size: 0.9rem;
-    text-align: center; line-height: 1.8;
+  .bio-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
   }
-  .bio-content .section-label {
-    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--sage-pale); margin-bottom: 1rem;
-  }
-  .bio-headline {
+  .about-headline {
     font-family: var(--font-serif);
     font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300;
     color: var(--cream); line-height: 1.0; margin-bottom: 2.5rem;
   }
-  .bio-headline em { font-style: italic; color: var(--gold); }
-  .bio-body {
-    font-size: 0.92rem; line-height: 1.9; color: rgba(240,236,228,0.65);
+  .about-headline em { font-style: italic; color: var(--gold); }
+  .about-body { font-size: 0.92rem; line-height: 1.9; color: rgba(240,236,228,0.65); }
+  .about-body p { margin-bottom: 1.2rem; }
+  .about-body strong { color: var(--cream); font-weight: 400; }
+  .about-body a { color: var(--gold); text-decoration: none; }
+  .btn-lets-talk {
+    display: inline-flex; align-items: center; gap: 1.2rem;
+    background: transparent; border: none; padding: 0;
+    font-family: var(--font-sans); font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    text-decoration: none; cursor: pointer; margin-top: 2rem;
+    position: relative;
   }
-  .bio-body p { margin-bottom: 1.2rem; }
-  .bio-body strong { color: var(--cream); font-weight: 400; }
-  .bio-body a { color: var(--gold); text-decoration: none; }
+  .btn-lets-talk::after {
+    content: ''; display: block;
+    width: 100%; height: 1px; background: var(--gold);
+    position: absolute; bottom: -6px; left: 0; transition: width 0.3s;
+  }
+  .btn-lets-talk .arrow { font-size: 1.1rem; transition: transform 0.3s; }
+  .btn-lets-talk:hover .arrow { transform: translateX(5px); }
 
   /* ── CTA ── */
   .cta-section { background: var(--near-black); padding: 9rem 5rem; text-align: center; }
@@ -910,31 +916,37 @@
 <!-- BIO -->
 <section class="bio-section" id="bio">
   <div class="bio-photo">
-    <span>Carlos headshot<br>— editorial/business</span>
+    <img src="assets/Alaias-About.jpg" alt="Alaias Fittz" onerror="this.parentElement.style.background='var(--forest-mid)'; this.style.display='none';" />
   </div>
-  <div class="bio-content">
-    <div class="section-label">Creator. CEO. Competitor.</div>
-    <h2 class="bio-headline">Alaias<br><em>Fittz.</em></h2>
-    <div class="bio-body">
-      <p>Alaias Fittz is the founder and CEO of <strong>The Health Co.</strong>, a media and production company on a mission to reach 100 million women, changing how they think about themselves, their health, and what's possible.</p>
-      <p>Her story starts in Cleveland, Ohio — overweight, deeply insecure, and surrounded by a family environment marked by addiction and loss, she lost 75+ pounds, earned a <strong>Division I Track & Field scholarship to Michigan State University</strong>, graduated with a double major, and went on to create <a href="#">"Field the Future"</a> at EA Sports, a first-of-its-kind brand marketing program that impacted 1,000+ youth annually through partnerships with Nike, Microsoft, and the NFL.</p>
-      <p>After four years of building The Health Co. alongside her corporate career, Alaias made the leap. Today, her platform has generated <strong>26M+ YouTube views</strong>, she leads a team of six, consults for executives at billion-dollar companies, and is competing as <strong>Miss Lake Nona</strong> in Miss Florida USA 2026.</p>
+  <div>
+    <div class="section-label light">Who Is Alaias Fittz?</div>
+    <h2 class="about-headline">Creator.<br><em>CEO. Competitor.</em></h2>
+    <div class="about-body">
+      <p>Alaias Fittz is the founder and CEO of <strong>The Health Co.</strong>, a media and production company on a mission to reach 100 million women and change how they think about themselves, their health, and what's possible.</p>
+      <p>Her story begins in Cleveland: overweight, deeply insecure, and surrounded by a family environment marked by addiction and loss. Determined to create a different future, she lost more than 75 pounds, earned a <strong>Division I Track & Field scholarship to Michigan State University</strong>, and graduated with a double major in Accounting and Marketing.</p>
+      <p>After college, she joined EA Sports, where she created and led <a href="healthco-timeline.html">Field the Future</a>, a brand marketing program that impacted more than 1,000 students annually and provided over <strong>$100,000</strong> in scholarships for students pursuing <strong>STEM degrees.</strong> Alaias successfully pitched and secured support from organizations including Nike, Microsoft, and the NFL to help bring the vision to life.</p>
+      <p>Today, her work has generated more than <strong>27 million YouTube views</strong>, supports a growing team of six, serves executive consulting clients, and continues to expand through her platform as <strong>Miss Lake Nona USA</strong>, competing at <strong>Miss Florida USA 2026.</strong></p>
       <p>She isn't just a content creator. She's proof that the story you tell yourself determines the life you build.</p>
+      <a href="healthco-services.html" class="btn-lets-talk">Let's Talk <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-  <div class="cta-label">Work Together</div>
+  <div class="section-label light" style="margin-bottom:2rem;">Let's Talk</div>
   <h2 class="cta-headline">What would you<br>like to <em>discuss?</em></h2>
-  <p class="cta-sub">Whether you're a brand, a judge, a podcast host, or a woman ready to change her life, there's a way in.</p>
-  <div class="cta-buttons">
+  <p class="cta-sub">If you're a brand, podcast host or a woman ready to change her life, there are many ways we can work together.</p>
+  <div class="cta-primary" style="margin-bottom:4rem;">
     <a href="mailto:hello@thehealthco.com" class="btn-sage">Book a Discovery Call</a>
-    <a href="healthco-services.html#speaking" class="btn-ghost-pill">Speaking Engagement</a>
+  </div>
+  <p class="cta-divider" style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(240,236,228,0.25);margin-bottom:2.5rem;">or tell me more about what you're looking for</p>
+  <div class="cta-buttons">
+    <a href="healthco-services.html#speaking" class="btn-ghost-pill">Speaking Engagements</a>
+    <a href="mailto:hello@thehealthco.com?subject=Brand%20Partnership%20Inquiry" class="btn-ghost-pill">Brand Partnerships</a>
     <a href="healthco-services.html#consulting" class="btn-ghost-pill">Brand Consulting</a>
-    <a href="healthco-services.html" class="btn-ghost-pill">Guest / Interview</a>
-    <a href="mailto:hello@thehealthco.com" class="btn-ghost-pill">Media Inquiry</a>
+    <a href="mailto:hello@thehealthco.com?subject=Media%20Inquiry" class="btn-ghost-pill">Media Inquiry</a>
+    <a href="healthco-services.html#sessions" class="btn-ghost-pill">Health &amp; Fitness</a>
   </div>
   <p class="cta-contact">@alaias.fit · <a href="mailto:hello@thehealthco.com">hello@thehealthco.com</a></p>
 </section>
