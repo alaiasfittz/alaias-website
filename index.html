@@ -796,33 +796,17 @@
   .cta-sub { font-size: 0.95rem; line-height: 1.8; color: rgba(240,236,228,0.45); max-width: 560px; margin: 0 auto 3rem; }
   .cta-primary { margin-bottom: 4rem; }
   .cta-divider { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(240,236,228,0.25); margin-bottom: 2.5rem; }
-  .cta-categories { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; max-width: 1000px; margin: 0 auto 3.5rem; background: rgba(240,236,228,0.08); border: 1px solid rgba(240,236,228,0.08); border-radius: 4px; overflow: hidden; }
-  .cta-cat {
-    background: var(--near-black); padding: 2rem 1.4rem;
-    text-decoration: none; text-align: center;
-    transition: background 0.25s, transform 0.2s;
-    display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
-    cursor: pointer;
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-ghost-pill {
+    background: transparent; color: rgba(240,236,228,0.65);
+    border: 1px solid rgba(240,236,228,0.2);
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
   }
-  .cta-cat:hover { background: rgba(201,169,110,0.07); }
-  .cta-cat-title {
-    font-family: var(--font-sans); font-size: 0.62rem; font-weight: 600;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream);
-    line-height: 1.4;
-  }
-  .cta-cat-for {
-    font-family: var(--font-sans); font-size: 0.6rem; font-weight: 400;
-    letter-spacing: 0.05em; color: rgba(240,236,228,0.35); line-height: 1.5;
-  }
-  .cta-cat-icon {
-    font-size: 1.1rem; margin-bottom: 0.2rem; opacity: 0.7;
-  }
+  .btn-ghost-pill:hover { border-color: rgba(240,236,228,0.5); color: var(--cream); }
   .cta-contact { font-size: 0.78rem; color: rgba(240,236,228,0.3); }
   .cta-contact a { color: rgba(240,236,228,0.4); text-decoration: none; }
-  @media (max-width: 768px) {
-    .cta-categories { grid-template-columns: repeat(2, 1fr); max-width: 420px; }
-    .cta-categories .cta-cat:last-child { grid-column: 1 / -1; }
-  }
 
   /* FOOTER */
   footer {
@@ -1268,38 +1252,18 @@
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="section-label light" style="margin-bottom:2rem;">Work Together</div>
-  <h2 class="cta-headline">Let's <em>connect.</em></h2>
+  <h2 class="cta-headline">What would you<br>like to <em>discuss?</em></h2>
   <p class="cta-sub">Whether you're a brand, event organizer, media outlet, creator, or a woman looking to transform her life, there are many ways we can work together.</p>
   <div class="cta-primary">
     <a href="mailto:hello@thehealthco.com" class="btn-sage">Book a Discovery Call</a>
   </div>
   <p class="cta-divider">or tell me more about what you're looking for</p>
-  <div class="cta-categories">
-    <a href="mailto:hello@thehealthco.com?subject=Speaking%20Engagement%20Inquiry" class="cta-cat">
-      <span class="cta-cat-icon">🎤</span>
-      <span class="cta-cat-title">Speaking<br>Engagements</span>
-      <span class="cta-cat-for">Conferences, universities, panels, corporate events</span>
-    </a>
-    <a href="mailto:hello@thehealthco.com?subject=Brand%20Partnership%20Inquiry" class="cta-cat">
-      <span class="cta-cat-icon">🤝</span>
-      <span class="cta-cat-title">Brand<br>Partnerships</span>
-      <span class="cta-cat-for">Sponsorships, YouTube integrations, campaigns</span>
-    </a>
-    <a href="mailto:hello@thehealthco.com?subject=Consulting%20Inquiry" class="cta-cat">
-      <span class="cta-cat-icon">💡</span>
-      <span class="cta-cat-title">Consulting</span>
-      <span class="cta-cat-for">Brand strategy, wellness programs, creative direction</span>
-    </a>
-    <a href="mailto:hello@thehealthco.com?subject=Podcast%20%2F%20Media%20Inquiry" class="cta-cat">
-      <span class="cta-cat-icon">🎙️</span>
-      <span class="cta-cat-title">Podcast &amp; Media<br>Inquiries</span>
-      <span class="cta-cat-for">Guest interviews, press features, TV &amp; digital media</span>
-    </a>
-    <a href="mailto:hello@thehealthco.com?subject=Health%20%26%20Fitness%20Inquiry" class="cta-cat">
-      <span class="cta-cat-icon">✨</span>
-      <span class="cta-cat-title">Health &amp;<br>Fitness</span>
-      <span class="cta-cat-for">1:1 coaching, programs, women's transformation</span>
-    </a>
+  <div class="cta-buttons">
+    <a href="mailto:hello@thehealthco.com?subject=Speaking%20Engagement%20Inquiry" class="btn-ghost-pill">Speaking Engagements</a>
+    <a href="mailto:hello@thehealthco.com?subject=Brand%20Partnership%20Inquiry" class="btn-ghost-pill">Brand Partnerships</a>
+    <a href="mailto:hello@thehealthco.com?subject=Consulting%20Inquiry" class="btn-ghost-pill">Consulting</a>
+    <a href="mailto:hello@thehealthco.com?subject=Podcast%20%2F%20Media%20Inquiry" class="btn-ghost-pill">Podcast &amp; Media</a>
+    <a href="mailto:hello@thehealthco.com?subject=Health%20%26%20Fitness%20Inquiry" class="btn-ghost-pill">Health &amp; Fitness</a>
   </div>
   <p class="cta-contact">@alaias.fit · <a href="mailto:hello@thehealthco.com">hello@thehealthco.com</a></p>
 </section>
