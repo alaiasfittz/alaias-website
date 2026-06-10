@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Health Co. · Brand Overview</title>
-<meta name="description" content="The Health Co. is a media and wellness company founded by Alaias Fittz, on a mission to reach 100 million women. Three pillars: owned content, consulting, and brand partnerships.">
+<meta name="description" content="The Health Co. is a media and production company founded by Alaias Fittz, on a mission to reach 100 million women. Three pillars: owned content, consulting, and brand partnerships.">
 <meta property="og:title" content="The Health Co. · Brand Overview">
 <meta property="og:description" content="A media and production company on a mission to help 100 million women transform their health — not just physically, but at the identity level.">
 <meta property="og:type" content="website">
@@ -37,444 +37,416 @@
   }
 
   html { scroll-behavior: smooth; }
-  body { font-family: var(--font-sans); color: var(--text-dark); overflow-x: hidden; background: var(--linen); }
+  body { font-family: var(--font-sans); color: var(--text-dark); overflow-x: hidden; background: var(--near-black); }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.1rem 3.5rem;
-    background: rgba(35,51,32,0.97);
-    backdrop-filter: blur(8px);
+    background: rgba(35,51,32,0.97); backdrop-filter: blur(8px);
   }
-  .nav-logo {
-    font-family: var(--font-serif); font-size: 1rem; font-weight: 400;
-    font-style: italic; color: var(--cream); letter-spacing: 0.04em;
-    text-decoration: none;
-  }
+  .nav-logo { font-family: var(--font-serif); font-size: 1rem; font-weight: 400; font-style: italic; color: var(--cream); letter-spacing: 0.04em; text-decoration: none; }
   .nav-links { display: flex; gap: 1.4rem; list-style: none; align-items: center; }
-  .nav-links a {
-    font-size: 0.94rem; font-weight: 600; letter-spacing: 0.22em;
-    text-transform: uppercase; color: rgba(240,236,228,0.9);
-    text-decoration: none; transition: color 0.2s;
-    position: relative; padding-bottom: 3px;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; left: 0; bottom: 0;
-    width: 0; height: 1px; background: var(--gold); transition: width 0.3s;
-  }
+  .nav-links a { font-size: 0.94rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(240,236,228,0.9); text-decoration: none; transition: color 0.2s; position: relative; padding-bottom: 3px; }
+  .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
   .nav-links a:hover { color: var(--cream); }
   .nav-links a:hover::after { width: 100%; }
   .nav-links a.active { color: var(--gold) !important; font-weight: 700; }
   .nav-links a.active::after { width: 100%; }
-  .nav-cta {
-    background: var(--sage) !important; color: var(--cream) !important;
-    padding: 0.5rem 1.3rem; border-radius: 2rem;
-    letter-spacing: 0.12em !important;
-  }
+  .nav-cta { background: var(--sage) !important; color: var(--cream) !important; padding: 0.5rem 1.3rem; border-radius: 2rem; letter-spacing: 0.12em !important; }
 
   /* SECTION LABEL */
-  .section-label {
-    font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--sage); margin-bottom: 1rem;
-  }
+  .section-label { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); margin-bottom: 1rem; }
   .section-label.light { color: var(--sage-pale); }
   .section-label.gold { color: var(--gold); }
+  .section-label.white { color: rgba(255,255,255,0.5); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.12s; }
+  .reveal-d2 { transition-delay: 0.24s; }
+  .reveal-d3 { transition-delay: 0.36s; }
+  .reveal-d4 { transition-delay: 0.48s; }
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh; background: var(--forest);
-    display: grid; grid-template-columns: 1fr 1fr;
-    padding-top: 4.5rem;
+    height: 100vh; min-height: 640px; position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
   }
-  .hero-left {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 5rem 4rem 5rem 5rem;
+  .hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      155deg,
+      rgba(0,0,0,0.02) 0%,
+      rgba(0,0,0,0.08) 25%,
+      rgba(24,25,22,0.6) 60%,
+      rgba(24,25,22,0.96) 100%
+    );
+  }
+  .hero-badge {
+    position: absolute; top: 5.5rem; left: 5rem; z-index: 3;
+    display: flex; flex-direction: column; gap: 0.25rem;
+  }
+  .hero-badge span {
+    font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase;
+    color: rgba(240,236,228,0.4); font-family: var(--font-sans); line-height: 2;
+  }
+  .hero-top-right {
+    position: absolute; top: 5.5rem; right: 5rem; z-index: 3; text-align: right;
+  }
+  .hero-top-right-num {
+    font-family: var(--font-serif); font-size: 3rem; font-weight: 300;
+    color: var(--gold); line-height: 1; display: block;
+  }
+  .hero-top-right-label {
+    font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,236,228,0.3);
+  }
+  .hero-content {
+    position: relative; z-index: 3;
+    width: 100%; padding: 0 5rem 5rem;
+    display: grid; grid-template-columns: 1fr auto; align-items: flex-end; gap: 5rem;
   }
   .hero-eyebrow {
-    display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 3rem;
-  }
-  .hero-eyebrow span {
-    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(240,236,228,0.45); line-height: 1.9;
+    font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.6rem; font-family: var(--font-sans);
   }
   .hero-headline {
     font-family: var(--font-serif);
-    font-size: clamp(4rem, 7vw, 8rem); font-weight: 300;
-    line-height: 0.95; color: var(--cream); margin-bottom: 2.5rem;
+    font-size: clamp(3.5rem, 7.5vw, 9rem); font-weight: 300;
+    color: var(--cream); line-height: 0.9; margin-bottom: 2.2rem;
   }
-  .hero-headline em { font-style: italic; color: var(--gold); display: block; }
-  .hero-mission {
-    font-size: 1rem; line-height: 1.85; font-weight: 300;
-    color: rgba(240,236,228,0.65); max-width: 420px; margin-bottom: 3rem;
+  .hero-headline em { font-style: italic; color: var(--cream); display: block; }
+  .hero-tagline {
+    font-size: 1rem; font-weight: 300; line-height: 1.8;
+    color: rgba(240,236,228,0.6); max-width: 480px;
+    border-left: 1px solid rgba(201,169,110,0.5); padding-left: 1.6rem;
   }
-  .hero-mission strong { color: var(--cream); font-weight: 400; }
-  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-sage {
-    background: var(--sage); color: var(--cream);
-    padding: 0.85rem 2rem; border-radius: 3rem;
-    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-    text-decoration: none; transition: background 0.2s; display: inline-block;
+  .hero-side-meta { padding-bottom: 0.5rem; }
+  .hero-side-ghost {
+    font-family: var(--font-serif); font-size: 7rem; font-weight: 300;
+    color: rgba(240,236,228,0.04); line-height: 1; text-align: right;
+    white-space: nowrap; display: block; letter-spacing: -0.02em;
   }
-  .btn-sage:hover { background: var(--sage-lt); }
-  .btn-outline {
-    background: transparent; color: var(--cream);
-    border: 1px solid rgba(240,236,228,0.3);
-    padding: 0.85rem 2rem; border-radius: 3rem;
-    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-    text-decoration: none; transition: border-color 0.2s; display: inline-block;
+  .hero-scroll {
+    position: absolute; bottom: 2.8rem; left: 50%; transform: translateX(-50%);
+    z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
   }
-  .btn-outline:hover { border-color: rgba(240,236,228,0.7); }
-  .hero-right {
-    background: var(--forest-mid);
+  .hero-scroll span {
+    font-size: 0.52rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(240,236,228,0.25);
+  }
+  .scroll-line {
+    width: 1px; height: 44px;
+    background: linear-gradient(to bottom, rgba(240,236,228,0.3), transparent);
+    animation: linePulse 2s ease-in-out infinite;
+  }
+  @keyframes linePulse { 0%,100%{opacity:.3} 50%{opacity:.9} }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--near-black); overflow: hidden; padding: 1.2rem 0;
+    border-top: 1px solid rgba(201,169,110,0.12);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+  }
+  .ticker-track {
+    display: flex; gap: 0; white-space: nowrap; width: max-content;
+    animation: tickerScroll 40s linear infinite;
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+  .ticker-item {
+    font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,236,228,0.35); padding: 0 2.5rem; font-family: var(--font-sans);
+  }
+  .ticker-sep { color: var(--gold); opacity: 0.5; padding: 0 0.5rem; font-size: 0.45rem; }
+  @keyframes tickerScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── MISSION ── */
+  .mission-section {
+    background: var(--warm-white); padding: 10rem 5rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .mission-bg-quote {
+    position: absolute; top: -2rem; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-serif); font-size: 28rem; font-weight: 300;
+    color: rgba(0,0,0,0.03); line-height: 1; pointer-events: none; user-select: none;
+    white-space: nowrap;
+  }
+  .mission-label { position: relative; z-index: 1; }
+  .mission-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.8vw, 4.2rem); font-weight: 300;
+    color: var(--text-dark); line-height: 1.25; max-width: 880px;
+    margin: 0 auto 2.5rem; position: relative; z-index: 1;
+  }
+  .mission-quote em { font-style: italic; color: var(--forest); }
+  .mission-body {
+    font-size: 0.95rem; line-height: 1.9; color: var(--text-mid);
+    max-width: 600px; margin: 0 auto 3rem; position: relative; z-index: 1;
+  }
+  .mission-attr {
+    font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--sage); position: relative; z-index: 1;
+  }
+
+  /* ── METRICS STRIP ── */
+  .metrics-strip {
+    background: var(--near-black); display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .metric-item {
+    padding: 5rem 3.5rem; border-right: 1px solid rgba(240,236,228,0.06);
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .metric-item:last-child { border-right: none; }
+  .metric-num {
+    font-family: var(--font-serif); font-size: clamp(3rem, 4.5vw, 5.5rem);
+    font-weight: 300; color: var(--gold); line-height: 1;
+  }
+  .metric-label {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(240,236,228,0.28);
+  }
+  .metric-desc { font-size: 0.78rem; color: rgba(240,236,228,0.32); line-height: 1.65; max-width: 200px; }
+
+  /* ── EDITORIAL DATA ── */
+  .data-editorial {
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 55vh; overflow: hidden;
+  }
+  .data-editorial.light-bg { background: var(--linen); }
+  .data-editorial.dark-bg  { background: var(--charcoal); }
+  .data-editorial.mid-bg   { background: var(--forest-mid); }
+
+  .data-stat-col {
     display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
+    padding: 5rem 4rem; position: relative;
   }
-  .hero-right-content {
-    padding: 4rem; display: flex; flex-direction: column; gap: 2rem;
-    width: 100%;
-  }
-  .hero-stat {
-    border-bottom: 1px solid rgba(240,236,228,0.08); padding-bottom: 2rem;
-  }
-  .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
-  .hero-stat-num {
-    font-family: var(--font-serif); font-size: 4rem; font-weight: 300;
-    color: var(--gold); line-height: 1; margin-bottom: 0.4rem;
-  }
-  .hero-stat-label {
-    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-    color: rgba(240,236,228,0.4);
-  }
-
-  /* ── CORE BELIEF ── */
-  .belief-section {
-    background: var(--charcoal); padding: 8rem 5rem;
-    text-align: center;
-  }
-  .belief-quote {
+  .data-stat-col .big-num {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 3.5vw, 3.8rem); font-weight: 300;
-    color: var(--cream); line-height: 1.25; max-width: 860px;
-    margin: 0 auto 2rem;
+    font-size: clamp(9rem, 16vw, 20rem); font-weight: 300;
+    line-height: 0.85; letter-spacing: -0.02em; user-select: none;
   }
-  .belief-quote em { font-style: italic; color: var(--gold); }
-  .belief-sub {
-    font-size: 0.9rem; line-height: 1.8; color: rgba(240,236,228,0.45);
-    max-width: 620px; margin: 0 auto;
-  }
+  .data-editorial.light-bg .big-num { color: var(--sage);    opacity: 0.22; }
+  .data-editorial.dark-bg  .big-num { color: var(--gold);    opacity: 0.18; }
+  .data-editorial.mid-bg   .big-num { color: var(--cream);   opacity: 0.10; }
 
-  /* ── DATA: WHY THIS MATTERS ── */
-  .data-section { background: var(--linen); padding: 7rem 5rem 0; }
-  .data-intro {
-    margin-bottom: 0;
+  .data-copy-col {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 5rem 5rem 3rem;
   }
-  .data-headline {
+  .data-editorial.dark-bg  .data-copy-col,
+  .data-editorial.mid-bg   .data-copy-col { padding: 5rem 3rem 5rem 5rem; }
+
+  .data-copy-col h3 {
     font-family: var(--font-serif);
-    font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300;
-    color: var(--text-dark); line-height: 1.05; margin-bottom: 1.5rem;
+    font-size: clamp(1.8rem, 2.8vw, 3rem); font-weight: 300;
+    line-height: 1.1; margin-bottom: 1.4rem;
   }
-  .data-headline em { font-style: italic; color: var(--sage); }
-  .data-sub {
-    font-size: 0.95rem; line-height: 1.85; color: var(--text-mid);
-    max-width: 540px; margin-bottom: 5rem;
-  }
-  .data-cards {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(0,0,0,0.1);
-  }
-  .data-card {
-    padding: 3.5rem 2.5rem 3.5rem 0;
-    border-right: 1px solid rgba(0,0,0,0.08);
-  }
-  .data-card:nth-child(2) { padding-left: 2.5rem; }
-  .data-card:nth-child(3) { padding-left: 2.5rem; border-right: none; }
-  .data-num {
-    font-family: var(--font-serif); font-size: clamp(3.5rem, 5vw, 6rem);
-    font-weight: 300; color: var(--sage); line-height: 1; margin-bottom: 1.2rem;
-  }
-  .data-title {
-    font-size: 0.9rem; font-weight: 500; color: var(--text-dark);
-    line-height: 1.5; margin-bottom: 0.8rem;
-  }
-  .data-body {
-    font-size: 0.8rem; line-height: 1.75; color: var(--text-mid); margin-bottom: 0.8rem;
-  }
+  .data-editorial.light-bg .data-copy-col h3 { color: var(--text-dark); }
+  .data-editorial.dark-bg  .data-copy-col h3 { color: var(--cream); }
+  .data-editorial.mid-bg   .data-copy-col h3 { color: var(--cream); }
+  .data-editorial.light-bg h3 em { color: var(--sage); font-style: italic; }
+  .data-editorial.dark-bg  h3 em { color: var(--gold); font-style: italic; }
+  .data-editorial.mid-bg   h3 em { color: var(--gold); font-style: italic; }
+
+  .data-copy-col p { font-size: 0.88rem; line-height: 1.85; margin-bottom: 0.6rem; }
+  .data-editorial.light-bg .data-copy-col p { color: var(--text-mid); }
+  .data-editorial.dark-bg  .data-copy-col p { color: rgba(240,236,228,0.5); }
+  .data-editorial.mid-bg   .data-copy-col p { color: rgba(240,236,228,0.55); }
+
   .data-source {
-    font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-muted);
+    font-size: 0.57rem; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 1.2rem;
   }
+  .data-editorial.light-bg .data-source { color: var(--text-muted); }
+  .data-editorial.dark-bg  .data-source { color: rgba(240,236,228,0.2); }
+  .data-editorial.mid-bg   .data-source { color: rgba(240,236,228,0.25); }
   .data-source a { color: var(--sage); text-decoration: none; }
   .data-source a:hover { text-decoration: underline; }
 
-  /* ── IDENTITY CRISIS ── */
-  .identity-section {
-    background: var(--charcoal); padding: 7rem 5rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start;
+  /* ── WELLNESS STATEMENT ── */
+  .wellness-statement {
+    background: var(--sage); padding: 8rem 5rem; text-align: center;
   }
-  .identity-headline {
+  .wellness-statement blockquote {
     font-family: var(--font-serif);
-    font-size: clamp(2.8rem, 4.5vw, 5rem); font-weight: 300;
-    color: var(--cream); line-height: 1.05; margin-bottom: 2rem;
+    font-size: clamp(1.8rem, 3vw, 3.2rem); font-weight: 300;
+    color: var(--cream); line-height: 1.5; max-width: 1000px;
+    margin: 0 auto; quotes: none;
   }
-  .identity-headline em { font-style: italic; color: var(--gold); }
-  .identity-source-title {
-    font-size: 0.82rem; font-weight: 500; color: var(--cream); margin-bottom: 0.4rem;
+  .wellness-statement em { font-style: italic; }
+  .wellness-statement strong { font-weight: 500; }
+  .wellness-source {
+    font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(240,236,228,0.45); margin-top: 2rem;
   }
-  .identity-source-body {
-    font-size: 0.78rem; line-height: 1.7; color: rgba(240,236,228,0.4);
+  .wellness-source a { color: rgba(240,236,228,0.55); text-decoration: none; }
+
+  /* ── THREE PILLARS ── */
+  .pillars-section { background: var(--near-black); padding: 8rem 5rem 0; }
+  .pillars-intro { max-width: 720px; margin-bottom: 5.5rem; }
+  .pillars-intro h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 5.5vw, 6.5rem); font-weight: 300;
+    color: var(--cream); line-height: 0.93;
   }
-  .identity-stats { display: flex; flex-direction: column; }
-  .identity-stat {
-    display: grid; grid-template-columns: 160px 1fr; gap: 2rem;
-    align-items: baseline; padding: 2rem 0;
-    border-bottom: 1px solid rgba(240,236,228,0.08);
+  .pillars-intro h2 em { font-style: italic; color: var(--gold); display: block; }
+
+  .pillar-row {
+    border-top: 1px solid rgba(240,236,228,0.07);
+    display: grid; grid-template-columns: 100px 1fr 1fr;
+    transition: background 0.35s;
   }
-  .identity-stat:first-child { padding-top: 0; }
-  .identity-stat:last-child { border-bottom: none; }
-  .identity-stat-num {
-    font-family: var(--font-serif); font-size: clamp(1.8rem, 2.5vw, 2.8rem);
-    font-weight: 300; color: var(--gold); line-height: 1;
+  .pillar-row:last-child { border-bottom: 1px solid rgba(240,236,228,0.07); margin-bottom: 0; }
+  .pillar-row:hover { background: rgba(35,51,32,0.3); }
+
+  .pillar-ord {
+    padding: 4rem 0; display: flex; align-items: flex-start; padding-top: 4.2rem;
   }
-  .identity-stat-text {
-    font-size: 0.85rem; line-height: 1.6; color: rgba(240,236,228,0.6);
+  .pillar-ord span {
+    font-family: var(--font-serif); font-size: 4.5rem; font-weight: 300;
+    color: rgba(240,236,228,0.04); line-height: 1;
+  }
+  .pillar-main {
+    padding: 4rem 4rem 4rem 0;
+    border-right: 1px solid rgba(240,236,228,0.06);
+  }
+  .pillar-tag {
+    font-size: 0.57rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--sage-lt); margin-bottom: 1rem;
+  }
+  .pillar-name {
+    font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 3.5rem);
+    font-weight: 300; color: var(--cream); line-height: 1.05; margin-bottom: 0.4rem;
+  }
+  .pillar-sub {
+    font-family: var(--font-serif); font-size: 1.05rem; font-style: italic;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .pillar-desc {
+    font-size: 0.84rem; line-height: 1.8; color: rgba(240,236,228,0.42);
+    max-width: 400px;
+  }
+  .pillar-detail {
+    padding: 4rem 0 4rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .pd-stat {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 0.85rem 0; border-bottom: 1px solid rgba(240,236,228,0.06);
+    font-size: 0.8rem;
+  }
+  .pd-stat:last-of-type { border-bottom: none; }
+  .pd-key { color: rgba(240,236,228,0.28); }
+  .pd-val { color: var(--cream); text-align: right; max-width: 55%; }
+  .pillar-brands {
+    font-size: 0.74rem; line-height: 1.9; color: rgba(240,236,228,0.26); margin-top: 1rem;
+  }
+  .pillar-brands strong {
+    color: rgba(240,236,228,0.42); font-weight: 400;
+    display: block; margin-bottom: 0.3rem;
+    font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
   }
 
-  /* ── WELLNESS QUOTE BANNER ── */
-  .wellness-banner {
-    background: var(--sage); padding: 6rem 5rem; text-align: center;
-  }
-  .wellness-banner p {
-    font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 2.8vw, 2.8rem); font-weight: 300;
-    color: var(--cream); line-height: 1.45; max-width: 980px; margin: 0 auto;
-  }
-  .wellness-banner strong { font-weight: 600; }
-  .wellness-banner em { font-style: italic; }
-  .wellness-banner a { color: var(--cream); opacity: 0.7; font-size: 0.75rem; }
-
-  /* ── YOUTUBE REPRESENTATION ── */
-  .youtube-section {
-    background: var(--linen); padding: 7rem 5rem;
+  /* ── REPRESENTATION ── */
+  .rep-section {
+    background: var(--linen); padding: 8rem 5rem;
     display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center;
   }
-  .youtube-left h2 {
+  .rep-left h2 {
     font-family: var(--font-serif);
     font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
     color: var(--text-dark); line-height: 1.05; margin-bottom: 1.5rem;
   }
-  .youtube-left h2 em { font-style: italic; color: var(--sage); }
-  .youtube-left p {
-    font-size: 0.9rem; line-height: 1.85; color: var(--text-mid); margin-bottom: 1rem;
+  .rep-left h2 em { font-style: italic; color: var(--sage); }
+  .rep-left p { font-size: 0.9rem; line-height: 1.85; color: var(--text-mid); margin-bottom: 1rem; }
+  .rep-stats { display: flex; flex-direction: column; }
+  .rep-stat {
+    padding: 2.2rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+    display: grid; grid-template-columns: 110px 1fr; gap: 2rem; align-items: baseline;
   }
-  .youtube-right { display: flex; flex-direction: column; gap: 0; }
-  .yt-stat {
-    padding: 2rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);
-    display: grid; grid-template-columns: 120px 1fr; gap: 2rem; align-items: baseline;
-  }
-  .yt-stat:last-child { border-bottom: none; }
-  .yt-stat-num {
-    font-family: var(--font-serif); font-size: 2.5rem; font-weight: 300;
-    color: var(--sage); line-height: 1;
-  }
-  .yt-stat-text { font-size: 0.85rem; line-height: 1.6; color: var(--text-mid); }
-
-  /* ── THREE PILLARS ── */
-  .pillars-section { background: var(--near-black); padding: 7rem 5rem; }
-  .pillars-intro { margin-bottom: 5rem; }
-  .pillars-intro h2 {
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300;
-    color: var(--cream); line-height: 1.0;
-  }
-  .pillars-intro h2 em { font-style: italic; color: var(--gold); }
-  .pillars-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: rgba(240,236,228,0.06);
-  }
-  .pillar-card {
-    background: var(--near-black); padding: 3.5rem 2.5rem;
-    transition: background 0.3s;
-  }
-  .pillar-card:hover { background: rgba(35,51,32,0.5); }
-  .pillar-num {
-    font-family: var(--font-serif); font-size: 5rem; font-weight: 300;
-    color: rgba(240,236,228,0.05); line-height: 1; margin-bottom: -1.5rem;
-  }
-  .pillar-tag {
-    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--sage-lt); margin-bottom: 0.6rem;
-  }
-  .pillar-name {
-    font-family: var(--font-serif); font-size: 2rem; font-weight: 300;
-    color: var(--cream); line-height: 1.1; margin-bottom: 0.4rem;
-  }
-  .pillar-subtitle {
-    font-family: var(--font-serif); font-size: 1rem; font-style: italic;
-    color: var(--gold); margin-bottom: 1.5rem;
-  }
-  .pillar-desc {
-    font-size: 0.83rem; line-height: 1.75; color: rgba(240,236,228,0.55);
-    margin-bottom: 2rem;
-  }
-  .pillar-stats { display: flex; flex-direction: column; gap: 0; }
-  .pillar-stat {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 0.6rem 0; border-bottom: 1px solid rgba(240,236,228,0.07);
-    font-size: 0.78rem;
-  }
-  .pillar-stat:last-child { border-bottom: none; }
-  .pillar-stat-key { color: rgba(240,236,228,0.4); }
-  .pillar-stat-val { color: var(--cream); font-weight: 400; text-align: right; max-width: 60%; }
-  .pillar-brands {
-    font-size: 0.75rem; line-height: 1.8; color: rgba(240,236,228,0.35);
-    margin-top: 1.2rem;
-  }
-  .pillar-brands strong { color: rgba(240,236,228,0.55); font-weight: 400; display: block; margin-bottom: 0.3rem; }
+  .rep-stat:first-child { padding-top: 0; }
+  .rep-stat:last-child { border-bottom: none; }
+  .rep-num { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 300; color: var(--sage); line-height: 1; }
+  .rep-text { font-size: 0.85rem; line-height: 1.6; color: var(--text-mid); }
 
   /* ── TEAM ── */
-  .team-section { background: var(--linen); padding: 7rem 5rem; }
-  .team-section h2 {
+  .team-section { background: var(--near-black); padding: 8rem 5rem; }
+  .team-header { margin-bottom: 5rem; max-width: 620px; }
+  .team-header h2 {
     font-family: var(--font-serif);
-    font-size: clamp(3rem, 5vw, 5rem); font-weight: 300;
-    color: var(--text-dark); line-height: 1.0; margin-bottom: 1rem;
+    font-size: clamp(2.5rem, 4vw, 5rem); font-weight: 300;
+    color: var(--cream); line-height: 1.0; margin-bottom: 1rem;
   }
-  .team-section h2 em { font-style: italic; color: var(--sage); }
-  .team-intro {
-    font-size: 0.92rem; line-height: 1.8; color: var(--text-mid);
-    max-width: 540px; margin-bottom: 4rem;
+  .team-header h2 em { font-style: italic; color: var(--gold); }
+  .team-header p { font-size: 0.9rem; line-height: 1.8; color: rgba(240,236,228,0.4); }
+  .team-list {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(240,236,228,0.07);
   }
-  .team-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  .team-item {
+    padding: 2.5rem 3rem 2.5rem 0;
+    border-bottom: 1px solid rgba(240,236,228,0.06);
+    transition: opacity 0.3s;
   }
-  .team-card {
-    background: var(--warm-white); padding: 2.5rem 2rem;
-    border-bottom: 2px solid transparent; transition: border-color 0.3s;
-  }
-  .team-card:hover { border-color: var(--sage); }
-  .team-avatar {
-    width: 3rem; height: 3rem; border-radius: 50%;
-    background: var(--forest); display: flex; align-items: center;
-    justify-content: center; margin-bottom: 1.2rem;
-    font-family: var(--font-serif); font-size: 1rem; font-weight: 300;
-    color: var(--cream); font-style: italic;
-  }
-  .team-name {
-    font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400;
-    color: var(--text-dark); margin-bottom: 0.3rem;
-  }
-  .team-role {
-    font-size: 0.72rem; letter-spacing: 0.1em; color: var(--sage);
-    text-transform: uppercase; margin-bottom: 0.6rem;
-  }
-  .team-note { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
-  .team-card.founder .team-avatar { background: var(--forest-lt); }
+  .team-item:hover { opacity: 0.7; }
+  .t-name { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 300; color: var(--cream); margin-bottom: 0.3rem; }
+  .t-role { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-lt); margin-bottom: 0.5rem; }
+  .t-note { font-size: 0.78rem; color: rgba(240,236,228,0.28); line-height: 1.5; }
 
   /* ── RESOURCES ── */
-  .resources-section {
-    background: var(--forest); padding: 7rem 5rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-  }
+  .resources-section { background: var(--forest); padding: 8rem 5rem; }
+  .resources-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
   .resources-left h2 {
     font-family: var(--font-serif);
     font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
-    color: var(--cream); line-height: 1.05; margin-bottom: 1.5rem;
+    color: var(--cream); line-height: 1.05; margin-bottom: 1rem;
   }
   .resources-left h2 em { font-style: italic; color: var(--gold); }
-  .resources-left p {
-    font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,228,0.6);
-    margin-bottom: 2.5rem;
-  }
-  .resources-list { display: flex; flex-direction: column; gap: 0; }
-  .resource-item {
-    display: flex; align-items: center; gap: 1.5rem;
-    padding: 1.5rem 0; border-bottom: 1px solid rgba(240,236,228,0.08);
-  }
+  .resources-left p { font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,228,0.45); margin-bottom: 3rem; }
+  .resource-list { display: flex; flex-direction: column; }
+  .resource-item { display: flex; align-items: center; gap: 1.5rem; padding: 1.4rem 0; border-bottom: 1px solid rgba(240,236,228,0.07); }
   .resource-item:last-child { border-bottom: none; }
-  .resource-badge {
-    font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--gold); background: rgba(201,169,110,0.1);
-    border: 1px solid rgba(201,169,110,0.2);
-    padding: 0.3rem 0.8rem; border-radius: 2rem; white-space: nowrap;
-  }
-  .resource-badge.coming { color: var(--sage-pale); background: rgba(143,166,122,0.1); border-color: rgba(143,166,122,0.2); }
-  .resource-name {
-    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400;
-    color: var(--cream);
-  }
-  .resource-desc { font-size: 0.78rem; color: rgba(240,236,228,0.4); margin-top: 0.2rem; }
-  .resources-right {
-    background: var(--forest-mid); border-radius: 2px;
-    padding: 3rem; display: flex; flex-direction: column; gap: 1.5rem;
-  }
-  .media-kit-card {
-    background: rgba(240,236,228,0.05); border: 1px solid rgba(240,236,228,0.1);
-    padding: 2rem;
-  }
-  .media-kit-label {
-    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--sage-lt); margin-bottom: 0.8rem;
-  }
-  .media-kit-title {
-    font-family: var(--font-serif); font-size: 1.5rem; font-weight: 300;
-    color: var(--cream); margin-bottom: 0.6rem;
-  }
-  .media-kit-desc {
-    font-size: 0.8rem; line-height: 1.7; color: rgba(240,236,228,0.45);
-    margin-bottom: 1.2rem;
-  }
-  .btn-small-outline {
-    border: 1px solid rgba(240,236,228,0.25); color: var(--cream);
-    background: transparent; padding: 0.6rem 1.4rem; border-radius: 2rem;
-    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
-    font-family: var(--font-sans); cursor: pointer; text-decoration: none;
-    display: inline-block; transition: all 0.2s;
-  }
-  .btn-small-outline:hover { background: rgba(240,236,228,0.07); }
+  .res-badge { font-size: 0.54rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.2); padding: 0.3rem 0.8rem; border-radius: 2rem; white-space: nowrap; flex-shrink: 0; }
+  .res-badge.soon { color: var(--sage-pale); background: rgba(143,166,122,0.1); border-color: rgba(143,166,122,0.2); }
+  .res-name { font-family: var(--font-serif); font-size: 1.05rem; color: var(--cream); }
+  .res-desc { font-size: 0.74rem; color: rgba(240,236,228,0.3); margin-top: 0.2rem; }
+  .resources-right { display: flex; flex-direction: column; gap: 1.5rem; }
+  .kit-card { border: 1px solid rgba(240,236,228,0.09); padding: 2.2rem 2rem; background: rgba(240,236,228,0.02); transition: background 0.3s, border-color 0.3s; }
+  .kit-card:hover { background: rgba(240,236,228,0.05); border-color: rgba(201,169,110,0.3); }
+  .kit-label { font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-lt); margin-bottom: 0.6rem; }
+  .kit-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
+  .kit-desc { font-size: 0.78rem; line-height: 1.65; color: rgba(240,236,228,0.38); margin-bottom: 1.2rem; }
+  .btn-kit { border: 1px solid rgba(240,236,228,0.2); color: var(--cream); background: transparent; padding: 0.6rem 1.4rem; border-radius: 2rem; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; font-family: var(--font-sans); cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+  .btn-kit:hover { background: rgba(240,236,228,0.07); border-color: rgba(240,236,228,0.4); }
 
   /* ── CTA ── */
   .cta-section { background: var(--near-black); padding: 9rem 5rem; text-align: center; }
-  .cta-headline {
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 6vw, 7rem); font-weight: 300;
-    color: var(--cream); line-height: 1.0; margin-bottom: 1.5rem;
-  }
+  .cta-headline { font-family: var(--font-serif); font-size: clamp(3rem, 6vw, 7rem); font-weight: 300; color: var(--cream); line-height: 1.0; margin-bottom: 1.5rem; }
   .cta-headline em { font-style: italic; color: var(--gold); }
-  .cta-sub {
-    font-size: 0.95rem; line-height: 1.8; color: rgba(240,236,228,0.45);
-    max-width: 480px; margin: 0 auto 3rem;
-  }
+  .cta-sub { font-size: 0.95rem; line-height: 1.8; color: rgba(240,236,228,0.45); max-width: 480px; margin: 0 auto 1.5rem; }
+  .cta-primary { margin-bottom: 1.5rem; }
+  .cta-divider { font-size: 0.7rem; letter-spacing: 0.1em; color: rgba(240,236,228,0.2); margin-bottom: 1.5rem; }
   .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
-  .btn-ghost-pill {
-    background: transparent; color: rgba(240,236,228,0.65);
-    border: 1px solid rgba(240,236,228,0.2);
-    padding: 0.85rem 2rem; border-radius: 3rem;
-    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-    text-decoration: none; transition: all 0.2s; display: inline-block;
-  }
+  .btn-sage { background: var(--sage); color: var(--cream); padding: 0.85rem 2rem; border-radius: 3rem; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-sage:hover { background: var(--sage-lt); }
+  .btn-ghost-pill { background: transparent; color: rgba(240,236,228,0.65); border: 1px solid rgba(240,236,228,0.2); padding: 0.85rem 2rem; border-radius: 3rem; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; display: inline-block; }
   .btn-ghost-pill:hover { border-color: rgba(240,236,228,0.5); color: var(--cream); }
-  .cta-contact {
-    font-size: 0.78rem; color: rgba(240,236,228,0.3); letter-spacing: 0.06em;
-  }
+  .cta-contact { font-size: 0.78rem; color: rgba(240,236,228,0.3); letter-spacing: 0.06em; }
   .cta-contact a { color: rgba(240,236,228,0.4); text-decoration: none; transition: color 0.2s; }
   .cta-contact a:hover { color: var(--cream); }
 
   /* FOOTER */
-  footer {
-    background: var(--forest); padding: 1.8rem 3.5rem;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  footer { background: var(--forest); padding: 1.8rem 3.5rem; display: flex; align-items: center; justify-content: space-between; }
   .footer-brand { font-family: var(--font-serif); font-size: 0.9rem; font-style: italic; color: rgba(240,236,228,0.55); }
   .footer-nav { display: flex; gap: 2.5rem; }
   .footer-nav a { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,228,0.35); text-decoration: none; transition: color 0.2s; }
   .footer-nav a:hover { color: var(--cream); }
   .footer-copy { font-size: 0.65rem; color: rgba(240,236,228,0.25); }
 
-  /* ── HAMBURGER ── */
-  .nav-hamburger {
-    display: none; flex-direction: column; gap: 5px;
-    cursor: pointer; background: none; border: none; padding: 0.4rem;
-  }
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0.4rem; }
   .nav-hamburger span { width: 22px; height: 1px; background: var(--cream); display: block; transition: all 0.25s; }
   .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; }
@@ -484,52 +456,60 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-hamburger { display: flex; }
-    .nav-links {
-      display: none; flex-direction: column; gap: 0;
-      position: absolute; top: 100%; left: 0; right: 0;
-      background: rgba(35,51,32,0.99); padding: 0.5rem 1.5rem 1rem;
-      border-top: 1px solid rgba(240,236,228,0.08);
-    }
+    .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 100%; left: 0; right: 0; background: rgba(35,51,32,0.99); padding: 0.5rem 1.5rem 1rem; border-top: 1px solid rgba(240,236,228,0.08); }
     .nav-links.open { display: flex; }
     .nav-links li { padding: 0.8rem 0; border-bottom: 1px solid rgba(240,236,228,0.07); }
     .nav-links li:last-child { border-bottom: none; }
     .nav-cta { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
 
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 6rem 1.5rem 3rem; }
-    .hero-right { min-height: 280px; }
+    .hero-badge { left: 1.5rem; top: 5rem; }
+    .hero-top-right { right: 1.5rem; top: 5rem; }
+    .hero-content { padding: 0 1.5rem 4rem; grid-template-columns: 1fr; }
+    .hero-side-meta { display: none; }
 
-    .belief-section { padding: 4rem 1.5rem; }
+    .mission-section { padding: 6rem 1.5rem; }
+    .mission-bg-quote { display: none; }
 
-    .data-section { padding: 4rem 1.5rem 0; }
-    .data-cards { grid-template-columns: 1fr; border-top: none; }
-    .data-card { border-right: none; border-top: 1px solid rgba(0,0,0,0.1); padding: 2.5rem 0; }
-    .data-card:nth-child(2), .data-card:nth-child(3) { padding-left: 0; }
+    .metrics-strip { grid-template-columns: 1fr 1fr; }
+    .metric-item { padding: 3rem 1.5rem; }
+    .metric-item:nth-child(2) { border-right: none; }
+    .metric-item:nth-child(3) { border-right: none; border-top: 1px solid rgba(240,236,228,0.06); }
+    .metric-item:nth-child(4) { border-top: 1px solid rgba(240,236,228,0.06); }
 
-    .identity-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-    .identity-stat { grid-template-columns: 100px 1fr; }
+    .data-editorial { grid-template-columns: 1fr; }
+    .data-stat-col { padding: 3rem 1.5rem 0; justify-content: flex-start; }
+    .data-stat-col .big-num { font-size: clamp(7rem, 22vw, 11rem); }
+    .data-copy-col,
+    .data-editorial.dark-bg .data-copy-col,
+    .data-editorial.mid-bg .data-copy-col { padding: 1rem 1.5rem 4rem; }
 
-    .wellness-banner { padding: 4rem 1.5rem; }
+    .wellness-statement { padding: 5rem 1.5rem; }
 
-    .youtube-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .pillars-section { padding: 5rem 1.5rem 0; }
+    .pillar-row { grid-template-columns: 55px 1fr; }
+    .pillar-detail { display: none; }
+    .pillar-ord span { font-size: 3rem; }
+    .pillar-main { padding: 3rem 0 3rem 0.5rem; border-right: none; }
 
-    .pillars-section { padding: 4rem 1.5rem; }
-    .pillars-grid { grid-template-columns: 1fr; }
+    .rep-section { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+    .team-section { padding: 5rem 1.5rem; }
+    .team-list { grid-template-columns: 1fr 1fr; }
+    .team-item { padding: 2rem 1.5rem 2rem 0; }
 
-    .team-section { padding: 4rem 1.5rem; }
-    .team-grid { grid-template-columns: 1fr 1fr; }
-
-    .resources-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .resources-section { padding: 5rem 1.5rem; }
+    .resources-inner { grid-template-columns: 1fr; gap: 3rem; }
     .resources-right { display: none; }
 
     .cta-section { padding: 5rem 1.5rem; }
     .cta-buttons { flex-direction: column; align-items: center; }
-
     footer { flex-direction: column; gap: 1.2rem; padding: 2rem 1.5rem; text-align: center; }
     .footer-nav { flex-wrap: wrap; justify-content: center; gap: 1rem; }
   }
   @media (max-width: 480px) {
-    .team-grid { grid-template-columns: 1fr; }
+    .metrics-strip { grid-template-columns: 1fr; }
+    .metric-item { border-right: none !important; border-top: 1px solid rgba(240,236,228,0.06) !important; }
+    .metric-item:first-child { border-top: none !important; }
+    .team-list { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -551,353 +531,368 @@
   </ul>
 </nav>
 
-<!-- SKIP NAV -->
-<a href="#mission" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
-
 <!-- HERO -->
-<section class="hero" id="mission">
-  <div class="hero-left">
-    <div class="hero-eyebrow">
-      <span>Media · Production · Consulting</span>
-      <span>Founded by Alaias Fittz</span>
-      <span>Orlando, Florida · Est. 2022</span>
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="assets/Alaias-Hero.jpg" alt="Alaias Fittz — Founder & CEO, The Health Co."
+         onerror="this.parentElement.style.background='var(--forest)'; this.style.display='none';" />
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-badge">
+    <span>The Health Co.</span>
+    <span>Brand Overview</span>
+    <span>Orlando, FL · Est. 2022</span>
+  </div>
+
+  <div class="hero-top-right">
+    <span class="hero-top-right-num">100M</span>
+    <span class="hero-top-right-label">Women to Reach</span>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-text reveal">
+      <div class="hero-eyebrow">Media · Production · Consulting</div>
+      <h1 class="hero-headline">A media company<br><em>built for women.</em></h1>
+      <p class="hero-tagline">
+        Helping 100 million women transform their health, confidence, and identity — through cinematic storytelling, challenge-based content, and a message that goes beyond fitness.
+      </p>
     </div>
-    <h1 class="hero-headline">
-      The Health<br><em>Co.</em>
-    </h1>
-    <p class="hero-mission">
-      A media and production company on a mission to help <strong>100 million women</strong> transform their health — not just physically, but at the identity level. We do this through cinematic storytelling, challenge-based content, and a message that goes beyond fitness.
-    </p>
-    <div class="hero-buttons">
-      <a href="#pillars" class="btn-sage">Our Three Pillars</a>
-      <a href="#data" class="btn-outline">Why This Matters</a>
+    <div class="hero-side-meta reveal reveal-d2">
+      <span class="hero-side-ghost">The<br>Health<br>Co.</span>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-right-content">
-      <div class="hero-stat">
-        <div class="hero-stat-num">26M+</div>
-        <div class="hero-stat-label">Total YouTube Views</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">130K+</div>
-        <div class="hero-stat-label">Subscribers & Followers</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">3</div>
-        <div class="hero-stat-label">Core Business Pillars</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">6</div>
-        <div class="hero-stat-label">Person Team</div>
-      </div>
-    </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- CORE BELIEF -->
-<section class="belief-section">
-  <div class="section-label light" style="margin-bottom:2rem;">Core Belief</div>
-  <p class="belief-quote">
-    "When you change the way you think,<br>you change your life. And you change your life<br>by doing <em>the hard things, daily.</em>"
-  </p>
-  <p class="belief-sub">This isn't just a tagline. It's backed by neuroscience. When you do hard things, your brain releases dopamine and builds new neural pathways that make confidence and discipline easier over time. Our content is designed to make women <em>experience</em> this, not just hear about it.</p>
-</section>
-
-<!-- DATA: WHY THIS MATTERS -->
-<section class="data-section" id="data">
-  <div class="section-label">Why This Work Matters</div>
-  <h2 class="data-headline">The data is clear.<br>Women are still <em>not okay.</em></h2>
-  <p class="data-sub">My story started as one girl's struggle with her body and her confidence. But the data shows it was never just my story — it's a global crisis. This is why I do what I do.</p>
-  <div class="data-cards">
-    <div class="data-card">
-      <div class="data-num">2%</div>
-      <div class="data-title">of women globally considered themselves beautiful in 2004.</div>
-      <div class="data-body">Dove spent 20 years and billions of dollars trying to fix that. In 2024, women feel less confident than they did in 2016. It's getting worse, not better.</div>
-      <div class="data-source">Dove Real State of Beauty Report, 2024 · <a href="https://www.prnewswire.com/news-releases/dove-marks-20-years-of-real-beauty-302111130.html" target="_blank">PR Newswire</a> · Harvard University</div>
-    </div>
-    <div class="data-card">
-      <div class="data-num">52%</div>
-      <div class="data-title">happier when women exercise regularly. 50% more energized. 80% less frustrated.</div>
-      <div class="data-body">And still, over half of women globally have stopped exercising completely. 74% cite time pressure. 44% say intimidating environments. 42% don't feel fit or sporty enough.</div>
-      <div class="data-source"><a href="https://newsmakers.pk/asics-study-confirms-positive-link-between-exercise-and-womens-mental-health" target="_blank">ASICS Global Gender Exercise Study, 2024</a> · 25,000 Women · 40 Countries</div>
-    </div>
-    <div class="data-card">
-      <div class="data-num">1%</div>
-      <div class="data-title">of global healthcare research is invested in female-specific conditions.</div>
-      <div class="data-body">The entire medical system was built around male bodies as the default. For every $1 invested in women's health, the projected return is $3 in economic growth. The solution is right there.</div>
-      <div class="data-source"><a href="https://www.weforum.org/stories/2024/02/women-health-gender-gap-equality/" target="_blank">World Economic Forum</a> · <a href="https://www.gavi.org/vaccineswork/5-conditions-highlight-womens-health-gap" target="_blank">Gavi, the Vaccine Alliance</a></div>
-    </div>
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">The Health Co.</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">27M+ YouTube Views</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">100K+ Subscribers</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Media · Production · Consulting</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Business Insider</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">EA Sports Alumni</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Miss Lake Nona USA</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">D1 Athlete · Michigan State</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">100 Million Women</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Team of Six</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Kat Cole · AG1</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">OrangeTheory Fitness</span><span class="ticker-sep">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">The Health Co.</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">27M+ YouTube Views</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">100K+ Subscribers</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Media · Production · Consulting</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Business Insider</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">EA Sports Alumni</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Miss Lake Nona USA</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">D1 Athlete · Michigan State</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">100 Million Women</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Team of Six</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Kat Cole · AG1</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">OrangeTheory Fitness</span><span class="ticker-sep">·</span>
   </div>
-</section>
-
-<!-- IDENTITY CRISIS -->
-<section class="identity-section">
-  <div class="identity-left">
-    <div class="section-label light">The Identity Crisis</div>
-    <h2 class="identity-headline">1 in 3 women would give up <em>a year of her life</em> for the "perfect" body.</h2>
-    <p class="identity-source-title">Dove Real State of Beauty Report, April 2024</p>
-    <p class="identity-source-body">33,000 women surveyed across 20 countries — the largest study ever conducted by a beauty brand. Commissioned with Dr. Nancy Etcoff, Harvard University, and Dr. Susie Orbach, London School of Economics.</p>
-  </div>
-  <div class="identity-stats">
-    <div class="identity-stat">
-      <div class="identity-stat-num">9 in 10</div>
-      <div class="identity-stat-text">women and girls have been exposed to harmful beauty content online</div>
-    </div>
-    <div class="identity-stat">
-      <div class="identity-stat-num">1 in 5</div>
-      <div class="identity-stat-text">women feels confident in her appearance. More than half don't believe other people even like them.</div>
-    </div>
-    <div class="identity-stat">
-      <div class="identity-stat-num">2 in 3</div>
-      <div class="identity-stat-text">women believe today's woman is expected to be more physically attractive than her mother's generation</div>
-    </div>
-    <div class="identity-stat">
-      <div class="identity-stat-num">86%</div>
-      <div class="identity-stat-text">of Americans now turn to social media for health advice — yet only 2.1% of nutrition content on TikTok is based on public health guidelines</div>
-    </div>
-  </div>
-</section>
-
-<!-- WELLNESS BANNER -->
-<div class="wellness-banner">
-  <p>The wellness industry is worth <em>$6.8 trillion</em> and growing toward $10 trillion by 2029. Women drive most of that spending. And they are still being <strong>underserved, underrepresented, and undertold.</strong> That's why this exists. Not to go viral. To close the gap, one woman at a time, until we've reached <em>100 million.</em> <a href="https://www.prnewswire.com/news-releases/the-global-wellness-economy-hits-a-record-6-8-trillion-302615214.html" target="_blank">[Source]</a></p>
 </div>
 
-<!-- YOUTUBE REPRESENTATION -->
-<section class="youtube-section">
-  <div class="youtube-left">
-    <div class="section-label">The Representation Gap</div>
-    <h2>Women are half the audience.<br><em>Almost none of the voice.</em></h2>
-    <p>50.9% of YouTube's US audience is women. Among the top 50 most-subscribed YouTube creators, only 3 are adult women. The gap isn't just cultural, it's financial.</p>
-    <p>The Health Co. is building directly in response. As a visible example for girls who didn't see themselves reflected in media, health, or entrepreneurship.</p>
+<!-- MISSION STATEMENT -->
+<section class="mission-section">
+  <div class="mission-bg-quote" aria-hidden="true">"</div>
+  <div class="section-label gold mission-label reveal">The Mission</div>
+  <p class="mission-quote reveal reveal-d1">
+    "When you change the way you think,<br>you change your life. And you change<br>your life by doing <em>the hard things, daily.</em>"
+  </p>
+  <p class="mission-body reveal reveal-d2">
+    The Health Co. is a media and production company dedicated to helping women transform — not just their bodies, but their identity, their confidence, and what they believe is possible. We reach them through storytelling, challenge-based content, and a message built for women who are ready to do the hard thing.
+  </p>
+  <p class="mission-attr reveal reveal-d3">— Alaias Fittz · Founder &amp; CEO, The Health Co.</p>
+</section>
+
+<!-- METRICS STRIP -->
+<div class="metrics-strip">
+  <div class="metric-item reveal">
+    <div class="metric-num">27M+</div>
+    <div class="metric-label">YouTube Views</div>
+    <div class="metric-desc">Built independently, one challenge at a time</div>
   </div>
-  <div class="youtube-right">
-    <div class="yt-stat">
-      <div class="yt-stat-num">50.9%</div>
-      <div class="yt-stat-text">of YouTube's US audience is women — yet only 3 of the top 50 most-subscribed creators are adult women</div>
-    </div>
-    <div class="yt-stat">
-      <div class="yt-stat-num">28.4%</div>
-      <div class="yt-stat-text">of YouTube creators are women, while men constitute 71.6%</div>
-    </div>
-    <div class="yt-stat">
-      <div class="yt-stat-num">40%</div>
-      <div class="yt-stat-text">more per collaboration that male creators earn vs. female creators — the gap isn't just cultural, it's financial</div>
-    </div>
+  <div class="metric-item reveal reveal-d1">
+    <div class="metric-num">100K+</div>
+    <div class="metric-label">Subscribers</div>
+    <div class="metric-desc">Women 18–50 seeking real transformation</div>
+  </div>
+  <div class="metric-item reveal reveal-d2">
+    <div class="metric-num">3</div>
+    <div class="metric-label">Business Pillars</div>
+    <div class="metric-desc">Content · Consulting · Brand Partnerships</div>
+  </div>
+  <div class="metric-item reveal reveal-d3">
+    <div class="metric-num">6</div>
+    <div class="metric-label">Person Team</div>
+    <div class="metric-desc">Full creative, production & strategy function</div>
+  </div>
+</div>
+
+<!-- DATA 1 — light -->
+<section class="data-editorial light-bg" id="data">
+  <div class="data-stat-col reveal">
+    <span class="big-num">2%</span>
+  </div>
+  <div class="data-copy-col reveal reveal-d1">
+    <div class="section-label">Why This Work Matters</div>
+    <h3>Women's confidence<br>is getting <em>worse.</em></h3>
+    <p>Only 2% of women globally considered themselves beautiful in 2004. Dove spent 20 years and billions of dollars trying to fix that. In 2024, women feel less confident than they did in 2016.</p>
+    <p>The problem isn't awareness. It's approach. Telling women they're beautiful isn't enough. Women need to do hard things and prove to themselves that they are capable.</p>
+    <div class="data-source">Dove Real State of Beauty Report, 2024 · <a href="https://www.prnewswire.com/news-releases/dove-marks-20-years-of-real-beauty-302111130.html" target="_blank" rel="noopener noreferrer">PR Newswire</a> · Harvard University</div>
   </div>
 </section>
+
+<!-- DATA 2 — dark -->
+<section class="data-editorial dark-bg">
+  <div class="data-copy-col reveal">
+    <div class="section-label light">The Exercise Gap</div>
+    <h3>More than half of women<br>have stopped <em>exercising entirely.</em></h3>
+    <p>74% cite time pressure. 44% say intimidating environments. 42% don't feel fit or sporty enough. Yet women who exercise regularly are 52% happier, 50% more energized, and 80% less frustrated.</p>
+    <p>The barrier isn't motivation. It's environment, identity, and access to a voice that reflects them.</p>
+    <div class="data-source"><a href="https://newsmakers.pk/asics-study-confirms-positive-link-between-exercise-and-womens-mental-health" target="_blank" rel="noopener noreferrer">ASICS Global Gender Exercise Study, 2024</a> · 25,000 Women · 40 Countries</div>
+  </div>
+  <div class="data-stat-col reveal reveal-d1">
+    <span class="big-num">52%</span>
+  </div>
+</section>
+
+<!-- DATA 3 — forest mid -->
+<section class="data-editorial mid-bg">
+  <div class="data-stat-col reveal">
+    <span class="big-num">1%</span>
+  </div>
+  <div class="data-copy-col reveal reveal-d1">
+    <div class="section-label light">The Research Gap</div>
+    <h3>The entire medical system<br>was built around <em>male bodies.</em></h3>
+    <p>Only 1% of global healthcare research is invested in female-specific conditions. For every $1 invested in women's health, the projected return is $3 in economic growth.</p>
+    <p>Women are driving the wellness industry. They are still being underserved, underrepresented, and undertold.</p>
+    <div class="data-source"><a href="https://www.weforum.org/stories/2024/02/women-health-gender-gap-equality/" target="_blank" rel="noopener noreferrer">World Economic Forum</a> · <a href="https://www.gavi.org/vaccineswork/5-conditions-highlight-womens-health-gap" target="_blank" rel="noopener noreferrer">Gavi, the Vaccine Alliance</a></div>
+  </div>
+</section>
+
+<!-- WELLNESS STATEMENT -->
+<div class="wellness-statement">
+  <blockquote class="reveal">
+    The wellness industry is worth <em>$6.8 trillion</em> and growing toward $10 trillion by 2029. Women drive most of that spending. And they are still being <strong>underserved, underrepresented, and undertold.</strong> That's why this exists. Not to go viral. To close the gap, one woman at a time, until we've reached <em>100 million.</em>
+  </blockquote>
+  <p class="wellness-source"><a href="https://www.prnewswire.com/news-releases/the-global-wellness-economy-hits-a-record-6-8-trillion-302615214.html" target="_blank" rel="noopener noreferrer">Global Wellness Institute, 2024</a></p>
+</div>
 
 <!-- THREE PILLARS -->
 <section class="pillars-section" id="pillars">
-  <div class="pillars-intro">
+  <div class="pillars-intro reveal">
     <div class="section-label light">How We Do It</div>
-    <h2>The three <em>pillars.</em></h2>
+    <h2>The three<br><em>pillars.</em></h2>
   </div>
-  <div class="pillars-grid">
 
-    <!-- Pillar 1 -->
-    <div class="pillar-card">
-      <div class="pillar-num">01</div>
-      <div class="pillar-tag">Pillar 1 — Owned Content</div>
+  <div class="pillar-row reveal">
+    <div class="pillar-ord"><span>01</span></div>
+    <div class="pillar-main">
+      <div class="pillar-tag">Pillar One — Owned Content</div>
       <h3 class="pillar-name">Alaias.Fit</h3>
-      <div class="pillar-subtitle">Content Creation</div>
-      <p class="pillar-desc">Cinematic storytelling-driven content on YouTube and short-form platforms. Challenge-based transformation series covering health, wellness, lifestyle, and mindset. Designed to make women experience transformation, not just watch it.</p>
-      <div class="pillar-stats">
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">YouTube Views</span>
-          <span class="pillar-stat-val">26M+ total</span>
-        </div>
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Subscribers</span>
-          <span class="pillar-stat-val">130,000+</span>
-        </div>
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Individual Videos</span>
-          <span class="pillar-stat-val">1M+ views</span>
-        </div>
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Target Audience</span>
-          <span class="pillar-stat-val">Women 18–50, ambitious, identity-driven</span>
-        </div>
-      </div>
+      <div class="pillar-sub">Content Creation</div>
+      <p class="pillar-desc">Cinematic, challenge-based content on YouTube and short-form platforms. Designed to make women experience transformation, not just watch it. Built on storytelling that goes beyond fitness into identity.</p>
     </div>
+    <div class="pillar-detail">
+      <div class="pd-stat"><span class="pd-key">YouTube Views</span><span class="pd-val">27M+ total</span></div>
+      <div class="pd-stat"><span class="pd-key">Subscribers</span><span class="pd-val">100,000+</span></div>
+      <div class="pd-stat"><span class="pd-key">Individual Videos</span><span class="pd-val">1M+ views</span></div>
+      <div class="pd-stat"><span class="pd-key">Target Audience</span><span class="pd-val">Women 18–50, identity-driven</span></div>
+    </div>
+  </div>
 
-    <!-- Pillar 2 -->
-    <div class="pillar-card">
-      <div class="pillar-num">02</div>
-      <div class="pillar-tag">Pillar 2 — Consulting</div>
+  <div class="pillar-row reveal">
+    <div class="pillar-ord"><span>02</span></div>
+    <div class="pillar-main">
+      <div class="pillar-tag">Pillar Two — Consulting</div>
       <h3 class="pillar-name">Fit Media</h3>
-      <div class="pillar-subtitle">Social Media & Marketing Consulting</div>
-      <p class="pillar-desc">Partners with executives and corporate leaders to build their social media presence — from strategy through full-service execution. Intentionally boutique: a small, selective client roster focused on quality over volume.</p>
-      <div class="pillar-stats">
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Flagship Client</span>
-          <span class="pillar-stat-val">Kat Cole, CEO of AG1</span>
-        </div>
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Platforms</span>
-          <span class="pillar-stat-val">YouTube, LinkedIn, Instagram</span>
-        </div>
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Services</span>
-          <span class="pillar-stat-val">Strategy, content, analytics, growth</span>
-        </div>
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Model</span>
-          <span class="pillar-stat-val">Boutique, high-quality roster</span>
-        </div>
-      </div>
+      <div class="pillar-sub">Executive Brand Consulting</div>
+      <p class="pillar-desc">Partners with executives and founders to build influential personal brands — from strategy through full-service execution. Intentionally boutique. A small, selective client roster focused on quality over volume.</p>
     </div>
+    <div class="pillar-detail">
+      <div class="pd-stat"><span class="pd-key">Flagship Client</span><span class="pd-val">Kat Cole, CEO of AG1</span></div>
+      <div class="pd-stat"><span class="pd-key">Platforms</span><span class="pd-val">YouTube, LinkedIn, Instagram</span></div>
+      <div class="pd-stat"><span class="pd-key">Services</span><span class="pd-val">Strategy, content, analytics, growth</span></div>
+      <div class="pd-stat"><span class="pd-key">Model</span><span class="pd-val">Boutique, high-quality roster</span></div>
+    </div>
+  </div>
 
-    <!-- Pillar 3 -->
-    <div class="pillar-card">
-      <div class="pillar-num">03</div>
-      <div class="pillar-tag">Pillar 3 — Partnerships</div>
+  <div class="pillar-row reveal">
+    <div class="pillar-ord"><span>03</span></div>
+    <div class="pillar-main">
+      <div class="pillar-tag">Pillar Three — Partnerships</div>
       <h3 class="pillar-name">Brand Partnerships</h3>
-      <div class="pillar-subtitle">UGC & Brand Content</div>
-      <p class="pillar-desc">Creates high-performing, conversion-driven content for brands — blending storytelling with platform-native strategy to drive reach, engagement, and sales. Built to feel authentic, not like an ad.</p>
-      <div class="pillar-stats">
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Focus</span>
-          <span class="pillar-stat-val">Health, wellness, lifestyle brands</span>
-        </div>
-        <div class="pillar-stat">
-          <span class="pillar-stat-key">Deliverable</span>
-          <span class="pillar-stat-val">Storytelling + platform-native content</span>
-        </div>
-      </div>
+      <div class="pillar-sub">UGC · Sponsored Collaborations · Speaking</div>
+      <p class="pillar-desc">High-performing, conversion-driven content for brands — blending storytelling with platform-native strategy. Built to feel authentic, not like an ad. For health, wellness, and lifestyle brands aligned with the mission.</p>
+    </div>
+    <div class="pillar-detail">
+      <div class="pd-stat"><span class="pd-key">Focus</span><span class="pd-val">Health, wellness, lifestyle</span></div>
+      <div class="pd-stat"><span class="pd-key">Deliverable</span><span class="pd-val">Storytelling-native content</span></div>
       <div class="pillar-brands">
         <strong>Partner Brands Include:</strong>
-        Heritage Store · Solaray · Tula · OrangeTheory · Orgain · Aveeno · Gruns · Ativafit · Caliwater · Nuritas · TikTok Lite · ProSupps · Halara · Meridian · Everybody's Juice · Garnish · and more
+        Heritage Store · Solaray · Tula · OrangeTheory · Orgain · Aveeno · Gruns · Ativafit · Caliwater · Nuritas · ProSupps · Halara · Meridian · and more
       </div>
     </div>
+  </div>
+</section>
 
+<!-- REPRESENTATION GAP -->
+<section class="rep-section">
+  <div class="rep-left reveal">
+    <div class="section-label">The Representation Gap</div>
+    <h2>Women are half the audience.<br><em>Almost none of the voice.</em></h2>
+    <p>50.9% of YouTube's US audience is women. Among the top 50 most-subscribed YouTube creators, only 3 are adult women. The gap isn't just cultural — it's financial.</p>
+    <p>The Health Co. is building directly in response. As a visible example for girls who didn't see themselves reflected in media, health, or entrepreneurship.</p>
+  </div>
+  <div class="rep-stats reveal reveal-d1">
+    <div class="rep-stat">
+      <div class="rep-num">50.9%</div>
+      <div class="rep-text">of YouTube's US audience is women — yet only 3 of the top 50 most-subscribed creators are adult women</div>
+    </div>
+    <div class="rep-stat">
+      <div class="rep-num">28.4%</div>
+      <div class="rep-text">of YouTube creators are women, while men constitute 71.6% of the creator pool</div>
+    </div>
+    <div class="rep-stat">
+      <div class="rep-num">40%</div>
+      <div class="rep-text">more per collaboration that male creators earn vs. female creators — the gap isn't just cultural, it's financial</div>
+    </div>
   </div>
 </section>
 
 <!-- TEAM -->
 <section class="team-section" id="team">
-  <div class="section-label">The People Behind It</div>
-  <h2>Built by a <em>real team.</em></h2>
-  <p class="team-intro">While Alaias is the face of the content, The Health Co. is powered by an incredible team of creatives, strategists, and producers working together to execute this vision at the highest level.</p>
-  <div class="team-grid">
-    <div class="team-card founder">
-      <div class="team-avatar">AF</div>
-      <div class="team-name">Alaias Fittz</div>
-      <div class="team-role">CEO & Founder</div>
-      <div class="team-note">D1 Athlete · EA Sports Alumni · Miss Lake Nona · Content Creator</div>
+  <div class="team-header reveal">
+    <div class="section-label light">The People Behind It</div>
+    <h2>Built by a <em>real team.</em></h2>
+    <p>While Alaias is the face of the content, The Health Co. is powered by an incredible team of creatives, strategists, and producers working together to execute this vision at the highest level.</p>
+  </div>
+  <div class="team-list">
+    <div class="team-item reveal">
+      <div class="t-name">Alaias Fittz</div>
+      <div class="t-role">CEO &amp; Founder</div>
+      <div class="t-note">D1 Athlete · EA Sports Alumni · Miss Lake Nona · Content Creator</div>
     </div>
-    <div class="team-card">
-      <div class="team-avatar">CM</div>
-      <div class="team-name">Caitlyn Morton</div>
-      <div class="team-role">Creative Lead & Strategist</div>
-      <div class="team-note">Brand strategy, creative direction, and content systems</div>
+    <div class="team-item reveal reveal-d1">
+      <div class="t-name">Caitlyn Morton</div>
+      <div class="t-role">Creative Lead &amp; Strategist</div>
+      <div class="t-note">Brand strategy, creative direction, and content systems</div>
     </div>
-    <div class="team-card">
-      <div class="team-avatar">LM</div>
-      <div class="team-name">Letter Media</div>
-      <div class="team-role">Agency Partner & Videographer</div>
-      <div class="team-note">Rachel, Christopher & Alessendra — cinematic production team</div>
+    <div class="team-item reveal reveal-d2">
+      <div class="t-name">Letter Media</div>
+      <div class="t-role">Agency Partner &amp; Videographer</div>
+      <div class="t-note">Rachel, Christopher &amp; Alessendra — cinematic production team</div>
     </div>
-    <div class="team-card">
-      <div class="team-avatar">IY</div>
-      <div class="team-name">Iyanu</div>
-      <div class="team-role">Lead Content Editor</div>
-      <div class="team-note">Post-production, storytelling edits, and platform optimization</div>
+    <div class="team-item reveal">
+      <div class="t-name">Iyanu</div>
+      <div class="t-role">Lead Content Editor</div>
+      <div class="t-note">Post-production, storytelling edits, and platform optimization</div>
     </div>
-    <div class="team-card">
-      <div class="team-avatar">AN</div>
-      <div class="team-name">Ant</div>
-      <div class="team-role">Lead Thumbnail Designer</div>
-      <div class="team-note">Click-through optimized visual design across all platforms</div>
+    <div class="team-item reveal reveal-d1">
+      <div class="t-name">Ant</div>
+      <div class="t-role">Lead Thumbnail Designer</div>
+      <div class="t-note">Click-through optimized visual design across all platforms</div>
     </div>
-    <div class="team-card">
-      <div class="team-avatar">JB</div>
-      <div class="team-name">Justin Brown</div>
-      <div class="team-role">Brand Strategist</div>
-      <div class="team-note">Brand positioning, messaging, and long-term growth strategy</div>
+    <div class="team-item reveal reveal-d2">
+      <div class="t-name">Justin Brown</div>
+      <div class="t-role">Brand Strategist</div>
+      <div class="t-note">Brand positioning, messaging, and long-term growth strategy</div>
     </div>
   </div>
 </section>
 
 <!-- RESOURCES -->
 <section class="resources-section" id="resources">
-  <div class="resources-left">
-    <div class="section-label light">Resources & Guides</div>
-    <h2>Tools for the <em>journey.</em></h2>
-    <p>Built for distribution at speaking events, Miss USA appearances, and direct to our community. Every resource is designed to give women a practical starting point for real change.</p>
-    <div class="resources-list">
-      <div class="resource-item">
-        <span class="resource-badge">Available Now</span>
-        <div>
-          <div class="resource-name">Shred — The Book</div>
-          <div class="resource-desc">Mindset + nutrition guide · $29</div>
+  <div class="resources-inner">
+    <div class="resources-left reveal">
+      <div class="section-label light">Resources &amp; Guides</div>
+      <h2>Tools for the <em>journey.</em></h2>
+      <p>Built for distribution at speaking events, Miss USA appearances, and direct to our community. Every resource is designed to give women a practical starting point for real change.</p>
+      <div class="resource-list">
+        <div class="resource-item">
+          <span class="res-badge">Available Now</span>
+          <div>
+            <div class="res-name">Shred — The Book</div>
+            <div class="res-desc">Mindset + nutrition guide · $29</div>
+          </div>
         </div>
-      </div>
-      <div class="resource-item">
-        <span class="resource-badge">Available Now</span>
-        <div>
-          <div class="resource-name">Shred — 12 Week Program</div>
-          <div class="resource-desc">Full workout guide · $49</div>
+        <div class="resource-item">
+          <span class="res-badge">Available Now</span>
+          <div>
+            <div class="res-name">Shred — 12 Week Program</div>
+            <div class="res-desc">Full workout guide · $49</div>
+          </div>
         </div>
-      </div>
-      <div class="resource-item">
-        <span class="resource-badge coming">In Development</span>
-        <div>
-          <div class="resource-name">Nutrition Guide</div>
-          <div class="resource-desc">For appearances & speaking events</div>
+        <div class="resource-item">
+          <span class="res-badge soon">In Development</span>
+          <div>
+            <div class="res-name">Nutrition Guide</div>
+            <div class="res-desc">For appearances &amp; speaking events</div>
+          </div>
         </div>
-      </div>
-      <div class="resource-item">
-        <span class="resource-badge coming">In Development</span>
-        <div>
-          <div class="resource-name">Exercise Guide</div>
-          <div class="resource-desc">Beginner-accessible movement framework</div>
+        <div class="resource-item">
+          <span class="res-badge soon">In Development</span>
+          <div>
+            <div class="res-name">Exercise Guide</div>
+            <div class="res-desc">Beginner-accessible movement framework</div>
+          </div>
         </div>
-      </div>
-      <div class="resource-item">
-        <span class="resource-badge coming">In Development</span>
-        <div>
-          <div class="resource-name">Mindset & Confidence Guide</div>
-          <div class="resource-desc">Identity-level change workbook</div>
+        <div class="resource-item">
+          <span class="res-badge soon">In Development</span>
+          <div>
+            <div class="res-name">Mindset &amp; Confidence Guide</div>
+            <div class="res-desc">Identity-level change workbook</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="resources-right">
-    <div class="media-kit-card">
-      <div class="media-kit-label">Press & Media</div>
-      <div class="media-kit-title">Media Kit</div>
-      <div class="media-kit-desc">Brand assets, stats, bio, and partnership details for press, podcast hosts, and brand collaborators.</div>
-      <a href="mailto:hello@thehealthco.com" class="btn-small-outline">Request Media Kit →</a>
-    </div>
-    <div class="media-kit-card">
-      <div class="media-kit-label">Miss Florida USA 2026</div>
-      <div class="media-kit-title">Pageant Press Kit</div>
-      <div class="media-kit-desc">Alaias's platform, bio, and appearance availability for Miss Florida USA and Miss USA 2026.</div>
-      <a href="mailto:hello@thehealthco.com" class="btn-small-outline">Request Press Kit →</a>
-    </div>
-    <div class="media-kit-card">
-      <div class="media-kit-label">Brand Partnerships</div>
-      <div class="media-kit-title">Partnership Deck</div>
-      <div class="media-kit-desc">Audience data, case studies, and collaboration opportunities across all three pillars.</div>
-      <a href="mailto:hello@thehealthco.com" class="btn-small-outline">Request Partnership Deck →</a>
+    <div class="resources-right reveal reveal-d1">
+      <div class="kit-card">
+        <div class="kit-label">Press &amp; Media</div>
+        <div class="kit-title">Media Kit</div>
+        <div class="kit-desc">Brand assets, stats, bio, and partnership details for press, podcast hosts, and brand collaborators.</div>
+        <a href="mailto:hello@thehealthco.com" class="btn-kit">Request Media Kit →</a>
+      </div>
+      <div class="kit-card">
+        <div class="kit-label">Miss Florida USA 2026</div>
+        <div class="kit-title">Pageant Press Kit</div>
+        <div class="kit-desc">Alaias's platform, bio, and appearance availability for Miss Florida USA and Miss USA 2026.</div>
+        <a href="mailto:hello@thehealthco.com" class="btn-kit">Request Press Kit →</a>
+      </div>
+      <div class="kit-card">
+        <div class="kit-label">Brand Partnerships</div>
+        <div class="kit-title">Partnership Deck</div>
+        <div class="kit-desc">Audience data, case studies, and collaboration opportunities across all three pillars.</div>
+        <a href="mailto:hello@thehealthco.com" class="btn-kit">Request Partnership Deck →</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-  <div class="section-label light" style="margin-bottom:2rem;">Work Together</div>
-  <h2 class="cta-headline">What would you<br>like to <em>discuss?</em></h2>
-  <p class="cta-sub">Whether you're a brand, a judge, a podcast host, or a woman ready to change her life — there's a way in.</p>
-  <div class="cta-buttons">
+  <div class="section-label light" style="margin-bottom:2rem;">Let's Talk</div>
+  <h2 class="cta-headline reveal">What would you<br>like to <em>discuss?</em></h2>
+  <p class="cta-sub reveal reveal-d1">If you're a brand, podcast host or a woman ready to change her life, there are many ways we can work together.</p>
+  <div class="cta-primary reveal reveal-d2">
     <a href="mailto:hello@thehealthco.com" class="btn-sage">Book a Discovery Call</a>
-    <a href="healthco-services.html#speaking" class="btn-ghost-pill">Speaking Engagement</a>
+  </div>
+  <p class="cta-divider reveal reveal-d2">or tell me more about what you're looking for</p>
+  <div class="cta-buttons reveal reveal-d3">
+    <a href="healthco-services.html#speaking" class="btn-ghost-pill">Speaking Engagements</a>
+    <a href="mailto:hello@thehealthco.com?subject=Brand%20Partnership%20Inquiry" class="btn-ghost-pill">Brand Partnerships</a>
     <a href="healthco-services.html#consulting" class="btn-ghost-pill">Brand Consulting</a>
-    <a href="healthco-services.html" class="btn-ghost-pill">Guest / Interview</a>
-    <a href="mailto:hello@thehealthco.com" class="btn-ghost-pill">Media Inquiry</a>
+    <a href="mailto:hello@thehealthco.com?subject=Media%20Inquiry" class="btn-ghost-pill">Media Inquiry</a>
+    <a href="healthco-services.html#sessions" class="btn-ghost-pill">Health &amp; Fitness</a>
   </div>
   <p class="cta-contact">@alaias.fit · <a href="mailto:hello@thehealthco.com">hello@thehealthco.com</a></p>
 </section>
@@ -916,20 +911,27 @@
 </footer>
 
 <script>
-  const btn = document.querySelector('.nav-hamburger');
-  const menu = document.getElementById('nav-menu');
-  if (btn && menu) {
-    btn.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      btn.classList.toggle('open', open);
-      btn.setAttribute('aria-expanded', open);
+  // Nav hamburger
+  const navBtn = document.querySelector('.nav-hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  if (navBtn && navMenu) {
+    navBtn.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      navBtn.classList.toggle('open', open);
+      navBtn.setAttribute('aria-expanded', open);
     });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      menu.classList.remove('open');
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navBtn.classList.remove('open');
+      navBtn.setAttribute('aria-expanded', 'false');
     }));
   }
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
