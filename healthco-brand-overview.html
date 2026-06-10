@@ -194,10 +194,10 @@
 
   /* ── METRICS STRIP ── */
   .metrics-strip {
-    background: var(--near-black); display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--linen); display: grid; grid-template-columns: repeat(4, 1fr);
   }
   .metric-item {
-    padding: 5rem 3.5rem; border-right: 1px solid rgba(240,236,228,0.06);
+    padding: 5rem 3.5rem; border-right: 1px solid rgba(0,0,0,0.08);
     display: flex; flex-direction: column; gap: 0.7rem;
     position: relative; overflow: hidden;
     transition: background 0.4s ease;
@@ -209,7 +209,7 @@
     transform: scaleX(0); transform-origin: left;
     transition: transform 0.45s ease;
   }
-  .metric-item:hover { background: rgba(201,169,110,0.04); }
+  .metric-item:hover { background: rgba(201,169,110,0.1); }
   .metric-item:hover::before { transform: scaleX(1); }
   .metric-item:last-child { border-right: none; }
   .metric-num {
@@ -223,12 +223,12 @@
     color: rgba(240,236,228,0.28);
     transition: color 0.3s ease;
   }
-  .metric-item:hover .metric-label { color: rgba(240,236,228,0.55); }
+  .metric-item:hover .metric-label { color: var(--text-dark); }
   .metric-desc {
     font-size: 0.78rem; color: rgba(240,236,228,0.32); line-height: 1.65; max-width: 200px;
     transition: color 0.3s ease;
   }
-  .metric-item:hover .metric-desc { color: rgba(240,236,228,0.55); }
+  .metric-item:hover .metric-desc { color: var(--text-dark); }
 
   /* ── EDITORIAL DATA ── */
   .data-editorial {
@@ -492,8 +492,8 @@
     .metrics-strip { grid-template-columns: 1fr 1fr; }
     .metric-item { padding: 3rem 1.5rem; }
     .metric-item:nth-child(2) { border-right: none; }
-    .metric-item:nth-child(3) { border-right: none; border-top: 1px solid rgba(240,236,228,0.06); }
-    .metric-item:nth-child(4) { border-top: 1px solid rgba(240,236,228,0.06); }
+    .metric-item:nth-child(3) { border-right: none; border-top: 1px solid rgba(0,0,0,0.08); }
+    .metric-item:nth-child(4) { border-top: 1px solid rgba(0,0,0,0.08); }
 
     .data-editorial { grid-template-columns: 1fr; }
     .data-stat-col { padding: 3rem 1.5rem 0; justify-content: flex-start; }
@@ -526,7 +526,7 @@
   }
   @media (max-width: 480px) {
     .metrics-strip { grid-template-columns: 1fr; }
-    .metric-item { border-right: none !important; border-top: 1px solid rgba(240,236,228,0.06) !important; }
+    .metric-item { border-right: none !important; border-top: 1px solid rgba(0,0,0,0.08) !important; }
     .metric-item:first-child { border-top: none !important; }
     .team-list { grid-template-columns: 1fr; }
   }
@@ -630,30 +630,6 @@
   </p>
   <p class="mission-attr reveal reveal-d3">— Alaias Fittz · Founder &amp; CEO, The Health Co.</p>
 </section>
-
-<!-- METRICS STRIP -->
-<div class="metrics-strip">
-  <div class="metric-item reveal">
-    <div class="metric-num" data-count="27" data-suffix="M+">27M+</div>
-    <div class="metric-label">YouTube Views</div>
-    <div class="metric-desc">Built independently, one challenge at a time</div>
-  </div>
-  <div class="metric-item reveal reveal-d1">
-    <div class="metric-num" data-count="100" data-suffix="K+">100K+</div>
-    <div class="metric-label">Subscribers</div>
-    <div class="metric-desc">Women 18–50 seeking real transformation</div>
-  </div>
-  <div class="metric-item reveal reveal-d2">
-    <div class="metric-num" data-count="3" data-suffix="">3</div>
-    <div class="metric-label">Business Pillars</div>
-    <div class="metric-desc">Content · Consulting · Brand Partnerships</div>
-  </div>
-  <div class="metric-item reveal reveal-d3">
-    <div class="metric-num" data-count="6" data-suffix="">6</div>
-    <div class="metric-label">Person Team</div>
-    <div class="metric-desc">Full creative, production & strategy function</div>
-  </div>
-</div>
 
 <!-- THREE PILLARS -->
 <section class="pillars-section" id="pillars">
@@ -845,6 +821,31 @@
     </div>
   </div>
 </section>
+
+
+<!-- METRICS STRIP -->
+<div class="metrics-strip">
+  <div class="metric-item reveal">
+    <div class="metric-num" data-count="27" data-suffix="M+">27M+</div>
+    <div class="metric-label">YouTube Views</div>
+    <div class="metric-desc">Built independently, one challenge at a time</div>
+  </div>
+  <div class="metric-item reveal reveal-d1">
+    <div class="metric-num" data-count="100" data-suffix="K+">100K+</div>
+    <div class="metric-label">Subscribers</div>
+    <div class="metric-desc">Women 18–50 seeking real transformation</div>
+  </div>
+  <div class="metric-item reveal reveal-d2">
+    <div class="metric-num" data-count="3" data-suffix="">3</div>
+    <div class="metric-label">Business Pillars</div>
+    <div class="metric-desc">Content · Consulting · Brand Partnerships</div>
+  </div>
+  <div class="metric-item reveal reveal-d3">
+    <div class="metric-num" data-count="6" data-suffix="">6</div>
+    <div class="metric-label">Person Team</div>
+    <div class="metric-desc">Full creative, production & strategy function</div>
+  </div>
+</div>
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
