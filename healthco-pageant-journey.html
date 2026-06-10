@@ -443,7 +443,7 @@
     color: var(--cream); line-height: 1.2; margin-bottom: 0.8rem;
     cursor: default; position: relative; display: inline-block;
   }
-  .service-card-title[data-hover-img]:hover { color: var(--gold-lt); }
+  .service-card[data-hover-img]:hover .service-card-title { color: var(--gold-lt); }
   .service-card-desc {
     font-size: 0.78rem; line-height: 1.7; color: rgba(240,236,228,0.45);
   }
@@ -1017,40 +1017,40 @@
     <p class="service-context">This work didn't start with a title. It started years ago, in recovery centers, yoga rooms, community workshops, and high school gyms.</p>
   </div>
   <div class="service-grid">
-    <div class="service-card">
+    <div class="service-card" data-hover-img="assets/WeeklyHealth.jpg" data-hover-label="Weekly Sessions">
       <span class="service-card-icon" aria-hidden="true">01</span>
       <div class="service-card-org">Northern Ohio Recovery Association (NORA)</div>
-      <div class="service-card-title" data-hover-img="assets/WeeklyHealth.jpg" data-hover-label="Weekly Sessions">Weekly Health &amp; Wellness Sessions</div>
+      <div class="service-card-title">Weekly Health &amp; Wellness Sessions</div>
       <div class="service-card-desc">Leads weekly sessions for individuals in substance recovery — movement, mindset, and lifestyle habits to support long-term wellbeing. Has done this consistently for years.</div>
     </div>
-    <div class="service-card">
+    <div class="service-card" data-hover-img="assets/yoga.jpeg" data-hover-label="Yoga &amp; Recovery">
       <span class="service-card-icon" aria-hidden="true">02</span>
       <div class="service-card-org">Griffin Home · Alliant Treatment · Moore Counseling</div>
-      <div class="service-card-title" data-hover-img="assets/yoga.jpeg" data-hover-label="Yoga &amp; Recovery">Yoga &amp; Recovery Workshops</div>
+      <div class="service-card-title">Yoga &amp; Recovery Workshops</div>
       <div class="service-card-desc">Led yoga sessions for women in recovery — using movement as a tool for stress relief, discipline, and rebuilding a positive relationship with the body across multiple organizations.</div>
     </div>
-    <div class="service-card">
+    <div class="service-card" data-hover-img="assets/Girls.jpeg" data-hover-label="Confidence &amp; Poise">
       <span class="service-card-icon" aria-hidden="true">03</span>
       <div class="service-card-org">Girls Inc. Atlanta</div>
-      <div class="service-card-title" data-hover-img="assets/Girls.jpeg" data-hover-label="Confidence &amp; Poise">Confidence &amp; Poise Workshop</div>
+      <div class="service-card-title">Confidence &amp; Poise Workshop</div>
       <div class="service-card-desc">Led a confidence and poise workshop for young girls and boys — emphasizing self-expression, confidence, and personal development. (And yes, one week she was training like an MMA fighter; the next she was in a full princess gown with Girls Inc.)</div>
     </div>
-    <div class="service-card">
+    <div class="service-card" data-hover-img="assets/FTF.jpeg" data-hover-label="Field the Future">
       <span class="service-card-icon" aria-hidden="true">04</span>
       <div class="service-card-org">EA Sports · Nike · NFL · Microsoft</div>
-      <div class="service-card-title" data-hover-img="assets/FTF.jpeg" data-hover-label="Field the Future">Field the Future — Founder</div>
+      <div class="service-card-title">Field the Future — Founder</div>
       <div class="service-card-desc">Created EA Sports' first community-driven brand marketing program. 1,000+ youth impacted annually. 25 STEM scholarships per year. Connected youth with NFL athletes for real-world mentorship.</div>
     </div>
-    <div class="service-card">
+    <div class="service-card" data-hover-img="assets/Men.png" data-hover-label="Men's Health">
       <span class="service-card-icon" aria-hidden="true">05</span>
       <div class="service-card-org">Recovery Communities · Men's Program</div>
-      <div class="service-card-title" data-hover-img="assets/Men.png" data-hover-label="Men's Health">Men's Health &amp; Mindset Coaching</div>
+      <div class="service-card-title">Men's Health &amp; Mindset Coaching</div>
       <div class="service-card-desc">Currently coaches men in recovery on foundational health, fitness, and mindset principles — building the habits that support a healthier, more structured life.</div>
     </div>
-    <div class="service-card">
+    <div class="service-card" data-hover-img="assets/Keynotes.jpeg" data-hover-label="Sustainable Habits">
       <span class="service-card-icon" aria-hidden="true">06</span>
       <div class="service-card-org">Health &amp; Wellness Seminar · 2024</div>
-      <div class="service-card-title" data-hover-img="assets/Keynotes.jpeg" data-hover-label="Sustainable Habits">Sustainable Habits Workshop</div>
+      <div class="service-card-title">Sustainable Habits Workshop</div>
       <div class="service-card-desc">Hosted a 2024 health and wellness seminar focused on building sustainable habits and improving overall wellbeing — practical, accessible, and free to attend.</div>
     </div>
   </div>
@@ -1271,7 +1271,7 @@
       preview.style.top  = Math.max(10, Math.min(y, vh - 175)) + 'px';
     }
 
-    document.querySelectorAll('.service-card-title[data-hover-img]').forEach(function (el) {
+    document.querySelectorAll('.service-card[data-hover-img]').forEach(function (el) {
       el.addEventListener('mouseenter', function (e) {
         activeEl = el;
         previewImg.src = (el.dataset.hoverImg === 'placeholder') ? PLACEHOLDER : el.dataset.hoverImg;
