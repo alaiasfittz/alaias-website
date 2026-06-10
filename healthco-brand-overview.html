@@ -359,6 +359,12 @@
   .pd-stat:last-of-type { border-bottom: none; }
   .pd-key { color: rgba(240,236,228,0.28); }
   .pd-val { color: var(--cream); text-align: right; max-width: 55%; }
+  .pd-services-label { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,236,228,0.28); margin-top: 1.6rem; margin-bottom: 0.8rem; }
+  .pd-services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem 1rem; }
+  .pd-service-item { font-size: 0.74rem; color: var(--cream); display: flex; align-items: center; gap: 0.5rem; }
+  .pd-service-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .btn-consulting { display: inline-block; margin-top: 2.2rem; border: none; border-bottom: 1px solid rgba(201,169,110,0.5); color: var(--gold); background: transparent; padding: 0 0 0.4rem; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; font-family: var(--font-sans); text-decoration: none; transition: border-color 0.25s, color 0.25s, letter-spacing 0.25s; cursor: pointer; }
+  .btn-consulting:hover { border-color: var(--gold); color: var(--cream); letter-spacing: 0.22em; }
   .pillar-brands {
     font-size: 0.74rem; line-height: 1.9; color: rgba(240,236,228,0.26); margin-top: 1rem;
   }
@@ -669,15 +675,23 @@
     <div class="pillar-main">
       <div class="pillar-tag">Pillar Two — Consulting</div>
       <h3 class="pillar-name">Fit Media</h3>
-      <div class="pillar-sub">Executive Brand Consulting</div>
-      <p class="pillar-desc">Partners with executives and founders to build influential personal brands — from strategy through full-service execution. Intentionally boutique. A small, selective client roster focused on quality over volume.</p>
-      <a href="mailto:hello@thehealthco.com?subject=Consulting%20Inquiry" class="btn-partner" style="margin-top:2rem;">Inquire About Consulting →</a>
+      <div class="pillar-sub">Executive Brand &amp; Marketing Consulting</div>
+      <p class="pillar-desc">Partners with executives, founders, and organizations to build influential brands and strategic content ecosystems. From high-level positioning and growth strategy to content production, publishing, and performance analysis, Fit Media provides both advisory support and full-service execution.</p>
+      <p class="pillar-desc" style="margin-top:1rem;">Intentionally boutique. A small, selective client roster focused on quality over volume.</p>
+      <a href="#services" class="btn-consulting" id="consulting-scroll-btn">View Consulting Services →</a>
     </div>
     <div class="pillar-detail">
-      <div class="pd-stat"><span class="pd-key">Flagship Client</span><span class="pd-val">Kat Cole, CEO of AG1</span></div>
-      <div class="pd-stat"><span class="pd-key">Platforms</span><span class="pd-val">YouTube, LinkedIn, Instagram</span></div>
-      <div class="pd-stat"><span class="pd-key">Services</span><span class="pd-val">Strategy, content, analytics, growth</span></div>
-      <div class="pd-stat"><span class="pd-key">Model</span><span class="pd-val">Boutique, high-quality roster</span></div>
+      <div class="pd-stat"><span class="pd-key">Platforms</span><span class="pd-val">YouTube, LinkedIn, Instagram, Substack, X</span></div>
+      <div class="pd-services-label">Services</div>
+      <div class="pd-services-grid">
+        <div class="pd-service-item">Brand Strategy</div>
+        <div class="pd-service-item">Content Strategy</div>
+        <div class="pd-service-item">Personal Branding</div>
+        <div class="pd-service-item">Social Media Management</div>
+        <div class="pd-service-item">Content Production</div>
+        <div class="pd-service-item">Analytics &amp; Reporting</div>
+        <div class="pd-service-item">Executive Thought Leadership</div>
+      </div>
     </div>
   </div>
 
@@ -892,6 +906,16 @@
 </footer>
 
 <script>
+  // Consulting scroll CTA
+  const consultingBtn = document.getElementById('consulting-scroll-btn');
+  if (consultingBtn) {
+    consultingBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById('resources');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
   // Nav hamburger
   const navBtn = document.querySelector('.nav-hamburger');
   const navMenu = document.getElementById('nav-menu');
