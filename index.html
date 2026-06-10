@@ -755,12 +755,11 @@
     background: var(--charcoal); border-radius: 4px;
     padding: 5rem; display: grid; grid-template-columns: 1fr auto;
     gap: 4rem; align-items: start;
-    cursor: pointer;
     border: 1px solid transparent;
     transition: box-shadow 0.4s ease, border-color 0.4s ease;
     position: relative; overflow: hidden;
   }
-  /* Article image reveal layer */
+  /* Article image reveal layer — triggered by hovering the button */
   .press-card-bg {
     position: absolute; inset: 0; z-index: 0;
     opacity: 0; transition: opacity 0.5s ease;
@@ -768,19 +767,14 @@
   }
   .press-card-bg img {
     width: 100%; height: 100%; object-fit: cover; object-position: top;
-    filter: brightness(0.22) saturate(0.6);
+    filter: brightness(0.18) saturate(0.5) blur(1px);
   }
-  /* Placeholder shown when no image uploaded */
-  .press-card-bg-placeholder {
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(201,169,110,0.04) 0%, rgba(35,51,32,0.3) 100%);
-  }
-  .press-card:hover .press-card-bg { opacity: 1; }
-  .press-card:hover {
+  .press-card.reveal-active .press-card-bg { opacity: 1; }
+  .press-card.reveal-active {
     box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(201,169,110,0.35);
     border-color: rgba(201,169,110,0.35);
   }
-  /* Keep text above the bg layer */
+  /* Keep all text above the bg layer */
   .press-card > * { position: relative; z-index: 1; }
   .press-outlet { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage-pale); margin-bottom: 1.5rem; }
   .press-headline {
@@ -1258,27 +1252,21 @@
 <!-- PRESS -->
 <section class="press-section">
   <div class="section-label">In the Press</div>
-  <a href="https://www.businessinsider.com/woman-lost-75-pounds-making-2-simple-lifestyle-changes-2024-10" target="_blank" rel="noopener noreferrer" class="press-card">
-    <!--
-      ARTICLE IMAGE REVEAL
-      Upload a screenshot of the Business Insider article saved as:
-        assets/BusinessInsider.jpeg
-      The image will automatically appear as a darkened background on hover.
-      Until then, a subtle gradient placeholder is shown.
-    -->
+  <div class="press-card" id="press-card">
+    <!-- Article screenshot — fades in on button hover. To swap image rename your file to assets/BusinessInsider.jpeg -->
     <div class="press-card-bg">
-      <img src="assets/BusinessInsider.jpeg" alt=""
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-      <div class="press-card-bg-placeholder" style="display:none;"></div>
+      <img src="assets/BusinessInsider.jpeg" alt="" />
     </div>
     <div>
       <div class="press-outlet">Business Insider</div>
       <h2 class="press-headline">How Alaias Fittz Lost 75 Pounds and Kept It Off</h2>
       <p class="press-body">Before losing 75 pounds, Alaias spent years chasing restrictive diets, quick fixes, and unsustainable solutions that left her feeling frustrated and defeated.<br><br>Her breakthrough came when she stopped focusing on becoming smaller and started focusing on becoming healthier. By building simple, sustainable habits and changing the way she thought about fitness, she transformed her life and maintained that transformation for more than six years.<br><br>Her story was later featured by Business Insider as an example of long-term, sustainable weight loss.</p>
-      <span class="btn-article">Read the Article →</span>
+      <a href="https://www.businessinsider.com/woman-lost-75-pounds-making-2-simple-lifestyle-changes-2024-10"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-article" id="btn-article">Read the Article →</a>
     </div>
     <div class="press-ghost">Business<br>Insider</div>
-  </a>
+  </div>
 </section>
 
 <!-- CTA -->
@@ -1314,6 +1302,14 @@
 </footer>
 
 <script>
+  // Press card: reveal screenshot on button hover
+  const articleBtn = document.getElementById('btn-article');
+  const pressCard = document.getElementById('press-card');
+  if (articleBtn && pressCard) {
+    articleBtn.addEventListener('mouseenter', () => pressCard.classList.add('reveal-active'));
+    articleBtn.addEventListener('mouseleave', () => pressCard.classList.remove('reveal-active'));
+  }
+
   const btn = document.querySelector('.nav-hamburger');
   const menu = document.getElementById('nav-menu');
   if (btn && menu) {
