@@ -143,6 +143,24 @@
     margin: 3rem 0;
   }
 
+  /* ── SECTION ACCENTS ── */
+  .sessions-section,
+  .consulting-section,
+  .speaking-section {
+    border-top: 1px solid rgba(201,169,110,0.35);
+  }
+  .sessions-section .section-label::before,
+  .consulting-section .section-label::before,
+  .speaking-section .section-label::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+  }
+
   /* ── INDIVIDUAL SESSIONS ── */
   .sessions-section { background: var(--linen); }
   .sessions-intro {
@@ -619,9 +637,11 @@
 <section class="section consulting-section" id="consulting">
   <div class="section-label">Brand & Business Consulting</div>
   <div class="consulting-intro">
-    <h2 class="section-headline">Full-service<br><em>partnerships.</em></h2>
+    <div>
+      <h2 class="section-headline">Full-service<br><em>partnerships.</em></h2>
+      <a href="healthco-brand-overview.html#pillars" style="display:inline-block;margin-top:1.5rem;color:var(--gold);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;">Learn more about Fit Media →</a>
+    </div>
     <p class="consulting-intro-right">We work with a small, selective roster of brands and executives. Every engagement is built from scratch — no templates, no shortcuts.</p>
-    <p class="consulting-intro-right" style="margin-top:1rem;"><a href="healthco-brand-overview.html#pillars" style="color:var(--gold);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;">Learn more about Fit Media →</a></p>
   </div>
 
   <!-- Tier 01 — Light -->
