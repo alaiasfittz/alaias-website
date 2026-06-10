@@ -206,6 +206,37 @@
   }
   .btn-book:hover { background: var(--forest-mid); }
 
+
+  /* ── BRAND PARTNERSHIPS ── */
+  .partnerships-section { background: var(--near-black); }
+  .partnerships-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: end; margin-bottom: 4rem;
+  }
+  .partnerships-intro-right { font-size: 0.95rem; line-height: 1.8; color: rgba(240,236,228,0.5); text-align: right; }
+  .partnerships-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(240,236,228,0.07);
+  }
+  .partnership-item {
+    padding: 2rem 1.5rem 2rem 0;
+    border-right: 1px solid rgba(240,236,228,0.07);
+    font-size: 0.8rem; color: rgba(240,236,228,0.55); line-height: 1.6;
+    display: flex; align-items: flex-start; gap: 0.7rem;
+  }
+  .partnership-item:last-child { border-right: none; padding-right: 0; }
+  .partnership-item::before {
+    content: '→'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; margin-top: 0.15rem;
+  }
+  .partnerships-cta-row {
+    margin-top: 3.5rem; display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(240,236,228,0.07); padding-top: 2.5rem;
+  }
+  .partnerships-learn { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,236,228,0.35); text-decoration: none; transition: color 0.2s; border-bottom: 1px solid rgba(240,236,228,0.15); padding-bottom: 2px; }
+  .partnerships-learn:hover { color: var(--cream); border-color: rgba(240,236,228,0.4); }
+  .btn-partner-inquiry { background: var(--gold); color: var(--near-black); padding: 0.85rem 2.2rem; border-radius: 3rem; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-family: var(--font-sans); text-decoration: none; transition: background 0.2s; display: inline-block; font-weight: 600; }
+  .btn-partner-inquiry:hover { background: #d4b47a; }
+
   /* ── BRAND CONSULTING ── */
   .consulting-section { background: var(--linen); padding-top: 0; }
   .consulting-intro {
@@ -523,7 +554,7 @@
   <div class="hero-nav">
     <a href="#sessions" class="hero-nav-btn active">1-Hour Sessions</a>
     <a href="#consulting" class="hero-nav-btn">Brand Consulting</a>
-    <a href="mailto:management@alaias-bertrand.com?subject=Brand%20Partnership%20Inquiry" class="hero-nav-btn">Brand Sponsorships</a>
+    <a href="#partnerships" class="hero-nav-btn">Brand Partnerships</a>
     <a href="#speaking" class="hero-nav-btn">Speaking</a>
     <a href="#contact" class="hero-nav-btn">Podcast & Media</a>
   </div>
@@ -590,6 +621,7 @@
   <div class="consulting-intro">
     <h2 class="section-headline">Full-service<br><em>partnerships.</em></h2>
     <p class="consulting-intro-right">We work with a small, selective roster of brands and executives. Every engagement is built from scratch — no templates, no shortcuts.</p>
+    <p class="consulting-intro-right" style="margin-top:1rem;"><a href="healthco-brand-overview.html#pillars" style="color:var(--gold);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;">Learn more about Fit Media →</a></p>
   </div>
 
   <!-- Tier 01 — Light -->
@@ -701,6 +733,29 @@
 
 </section>
 
+<!-- BRAND PARTNERSHIPS -->
+<section class="section partnerships-section" id="partnerships">
+  <div class="section-label light">Pillar One — Alaias.Fit</div>
+  <div class="partnerships-intro">
+    <h2 class="section-headline" style="color:var(--cream);">Brand Partnerships<br><em style="color:var(--gold);">& Sponsored Content.</em></h2>
+    <p class="partnerships-intro-right">Partner with The Health Co. to reach highly engaged audiences through YouTube integrations, sponsored social content, UGC, speaking engagements, and custom campaigns. Every partnership is designed to feel authentic, story-driven, and aligned with the audience.</p>
+  </div>
+  <div class="partnerships-grid">
+    <div class="partnership-item">YouTube Integrations</div>
+    <div class="partnership-item">Sponsored Social Content</div>
+    <div class="partnership-item">UGC Content Creation</div>
+    <div class="partnership-item">TikTok Campaigns</div>
+    <div class="partnership-item">Instagram Partnerships</div>
+    <div class="partnership-item">Product Launch Support</div>
+    <div class="partnership-item">Event Partnerships</div>
+    <div class="partnership-item">Custom Campaign Activations</div>
+  </div>
+  <div class="partnerships-cta-row">
+    <a href="healthco-brand-overview.html#pillars" class="partnerships-learn">Learn more about Alaias.Fit →</a>
+    <a href="mailto:management@alaias-bertrand.com?subject=Brand%20Partnership%20Inquiry" class="btn-partner-inquiry">Inquire About A Partnership</a>
+  </div>
+</section>
+
 <!-- SPEAKING -->
 <section class="section speaking-section" id="speaking">
   <div class="section-label">Speaking & Media</div>
@@ -723,12 +778,14 @@
         <h3 class="speaking-title">Keynotes & Panel Appearances</h3>
         <p class="speaking-desc">From corporate stages to university campuses to women's conferences — Alaias speaks on health, identity, entrepreneurship, and what it actually takes to transform your life.</p>
         <div class="topic-pills">
-          <span class="topic-pill">Losing 75+ Pounds</span>
-          <span class="topic-pill">Confidence & Identity</span>
+          <span class="topic-pill">Personal Brand Building</span>
+          <span class="topic-pill">Women's Health & Transformation</span>
           <span class="topic-pill">Entrepreneurship</span>
-          <span class="topic-pill">Reinventing Yourself</span>
-          <span class="topic-pill">Building a Creator Business</span>
-          <span class="topic-pill">Women's Health Myths</span>
+          <span class="topic-pill">Storytelling & Content Strategy</span>
+          <span class="topic-pill">Leadership</span>
+          <span class="topic-pill">Building a Business in Public</span>
+          <span class="topic-pill">Transformation</span>
+          <span class="topic-pill">Manifesting</span>
         </div>
         <a href="#contact" class="speaking-link">Book a Speaking Engagement →</a>
       </div>
