@@ -132,27 +132,28 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem;
   }
   .event-card {
-    background: rgba(240,236,228,0.04);
+    background: transparent;
     border: 1px solid rgba(240,236,228,0.1);
-    border-radius: 8px; padding: 1.4rem 1.5rem;
+    border-radius: 2px; padding: 1.6rem 1.8rem;
   }
   .event-row {
-    display: flex; align-items: baseline; gap: 0.7rem;
-    padding: 0.45rem 0; border-bottom: 1px solid rgba(240,236,228,0.06);
+    display: flex; align-items: baseline; gap: 0;
+    padding: 0.55rem 0; border-bottom: 1px solid rgba(240,236,228,0.06);
   }
   .event-row:last-child { border-bottom: none; }
-  .event-icon { font-size: 0.7rem; opacity: 0.4; flex-shrink: 0; width: 1rem; }
+  .event-icon { display: none; }
   .event-key {
     font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase;
-    color: rgba(240,236,228,0.3); flex-shrink: 0;
+    color: rgba(240,236,228,0.3); flex-shrink: 0; min-width: 5.5rem;
   }
   .event-val { color: rgba(240,236,228,0.75); font-weight: 300; font-size: 0.72rem; }
   .event-val.gold-c { color: var(--gold); }
   .quote-card {
-    background: rgba(201,169,110,0.05);
-    border: 1px solid rgba(201,169,110,0.15);
-    border-radius: 8px; padding: 1.4rem 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 2px; padding: 1.6rem 1.8rem;
     display: flex; flex-direction: column; justify-content: space-between;
+    border-left: 2px solid rgba(201,169,110,0.4);
   }
   .quote-label {
     font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase;
@@ -735,27 +736,27 @@
     <div class="hero-cards">
       <div class="event-card">
         <div class="event-row">
-          <span class="event-icon">♛</span>
+          
           <span class="event-key">Event</span>
           <span class="event-val">Miss Florida USA 2026</span>
         </div>
         <div class="event-row">
-          <span class="event-icon">🗓</span>
+          
           <span class="event-key">Dates</span>
           <span class="event-val">July 10–12, 2026</span>
         </div>
         <div class="event-row">
-          <span class="event-icon">📍</span>
+          
           <span class="event-key">Venue</span>
           <span class="event-val">Linda W. Chapin Theater, Orlando, FL</span>
         </div>
         <div class="event-row">
-          <span class="event-icon">☆</span>
+          
           <span class="event-key">Platform</span>
           <span class="event-val gold-c">Confidence Beyond the Scale</span>
         </div>
         <div class="event-row">
-          <span class="event-icon">♛</span>
+          
           <span class="event-key">Current Title</span>
           <span class="event-val">Miss Lake Nona</span>
         </div>
