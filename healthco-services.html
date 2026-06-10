@@ -313,8 +313,29 @@
     gap: 1.5rem; margin-top: 4rem;
   }
   .speaking-card {
-    padding: 3.5rem 3rem; border-radius: 2px;
+    padding: 0; border-radius: 2px; overflow: hidden;
   }
+  .speaking-card-media {
+    width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .speaking-card-media img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    display: block;
+  }
+  .speaking-card-media-placeholder {
+    width: 100%; height: 100%; position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem;
+  }
+  .speaking-card.light .speaking-card-media-placeholder { background: #e8e4dc; }
+  .speaking-card.dark .speaking-card-media-placeholder { background: #1e2218; }
+  .speaking-card-media-placeholder span {
+    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .speaking-card.light .speaking-card-media-placeholder span { color: rgba(0,0,0,0.25); }
+  .speaking-card.dark .speaking-card-media-placeholder span { color: rgba(240,236,228,0.2); }
+  .speaking-card-media-placeholder svg { opacity: 0.2; }
+  .speaking-card-body { padding: 3rem 3rem 3.5rem; }
   .speaking-card.light { background: var(--warm-white); }
   .speaking-card.dark { background: var(--charcoal); }
   .speaking-num {
@@ -685,37 +706,55 @@
   <div class="section-label">Speaking & Media</div>
   <div class="speaking-intro">
     <h2 class="section-headline">In the room<br><em>& on the mic.</em></h2>
-    <p class="speaking-intro-right">Alaias brings lived experience, data-backed insight, and a presence that moves rooms. Every appearance is tailored to the audience and goal.</p>
+    <p class="speaking-intro-right">From Fortune 500 stages to creator conferences and university campuses, Alaias speaks on health, confidence, personal transformation, entrepreneurship, and building a life by design.</p>
   </div>
   <div class="speaking-cards">
 
     <div class="speaking-card light">
-      <div class="speaking-num">01</div>
-      <div class="speaking-cat">Speaking Engagements</div>
-      <h3 class="speaking-title">Keynotes & Panel Appearances</h3>
-      <p class="speaking-desc">From corporate stages to university campuses to women's conferences — Alaias speaks on health, identity, entrepreneurship, and what it actually takes to transform your life.</p>
-      <div class="topic-pills">
-        <span class="topic-pill">Women's Health & Identity</span>
-        <span class="topic-pill">Entrepreneurship</span>
-        <span class="topic-pill">Digital Media & Brand</span>
-        <span class="topic-pill">Doing Hard Things</span>
-        <span class="topic-pill">Youth & Representation</span>
+      <div class="speaking-card-media">
+        <div class="speaking-card-media-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1e2218" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <span>Stage photo coming soon</span>
+        </div>
       </div>
-      <a href="#contact" class="speaking-link">Book a Speaking Engagement →</a>
+      <div class="speaking-card-body">
+        <div class="speaking-num">01</div>
+        <div class="speaking-cat">Speaking Engagements</div>
+        <h3 class="speaking-title">Keynotes & Panel Appearances</h3>
+        <p class="speaking-desc">From corporate stages to university campuses to women's conferences — Alaias speaks on health, identity, entrepreneurship, and what it actually takes to transform your life.</p>
+        <div class="topic-pills">
+          <span class="topic-pill">Losing 75+ Pounds</span>
+          <span class="topic-pill">Confidence & Identity</span>
+          <span class="topic-pill">Entrepreneurship</span>
+          <span class="topic-pill">Reinventing Yourself</span>
+          <span class="topic-pill">Building a Creator Business</span>
+          <span class="topic-pill">Women's Health Myths</span>
+        </div>
+        <a href="#contact" class="speaking-link">Book a Speaking Engagement →</a>
+      </div>
     </div>
 
     <div class="speaking-card dark">
-      <div class="speaking-num">02</div>
-      <div class="speaking-cat">Podcast & Guest Features</div>
-      <h3 class="speaking-title">Guest Interviews & Media Appearances</h3>
-      <p class="speaking-desc">Alaias is available for podcast interviews, YouTube collaborations, brand campaigns, and press features. Her story is rare: D1 athlete, EA Sports brand strategist, CEO, and now Miss Lake Nona.</p>
-      <div class="topic-pills">
-        <span class="topic-pill">Health & Wellness</span>
-        <span class="topic-pill">Creator Economy</span>
-        <span class="topic-pill">Transformation Stories</span>
-        <span class="topic-pill">Women in Business</span>
+      <div class="speaking-card-media">
+        <div class="speaking-card-media-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(240,236,228,0.6)" stroke-width="1"><circle cx="12" cy="10" r="4"/><path d="M8 10a4 4 0 0 0 8 0M12 14v4M9 20h6"/><rect x="6" y="6" width="12" height="8" rx="6"/></svg>
+          <span>Interview photo coming soon</span>
+        </div>
       </div>
-      <a href="#contact" class="speaking-link">Pitch a Feature →</a>
+      <div class="speaking-card-body">
+        <div class="speaking-num">02</div>
+        <div class="speaking-cat">Podcast & Guest Features</div>
+        <h3 class="speaking-title">Guest Interviews & Media Appearances</h3>
+        <p class="speaking-desc">Alaias is available for podcast interviews, YouTube collaborations, brand campaigns, and press features. Her story is rare: D1 athlete, EA Sports brand strategist, CEO, and now Miss Lake Nona.</p>
+        <div class="topic-pills">
+          <span class="topic-pill">Health & Wellness</span>
+          <span class="topic-pill">Personal Branding</span>
+          <span class="topic-pill">Storytelling</span>
+          <span class="topic-pill">Women in Business</span>
+          <span class="topic-pill">Executive Thought Leadership</span>
+        </div>
+        <a href="#contact" class="speaking-link">Pitch a Feature →</a>
+      </div>
     </div>
 
   </div>
