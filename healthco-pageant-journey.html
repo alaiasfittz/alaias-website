@@ -426,7 +426,13 @@
   }
   .service-card:hover { background: rgba(35,51,32,0.6); }
   .service-card-icon {
-    font-size: 1.5rem; margin-bottom: 1.2rem; display: block;
+    width: 2rem; height: 2rem; border-radius: 50%;
+    background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.25);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.4rem;
+    font-family: var(--font-serif); font-size: 0.72rem; font-weight: 400;
+    color: var(--gold); letter-spacing: 0.04em;
+    flex-shrink: 0;
   }
   .service-card-org {
     font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -435,9 +441,34 @@
   .service-card-title {
     font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400;
     color: var(--cream); line-height: 1.2; margin-bottom: 0.8rem;
+    cursor: default; position: relative; display: inline-block;
   }
+  .service-card-title[data-hover-img]:hover { color: var(--gold-lt); }
   .service-card-desc {
     font-size: 0.78rem; line-height: 1.7; color: rgba(240,236,228,0.45);
+  }
+
+  /* Hover image preview */
+  .service-hover-img {
+    position: fixed;
+    width: 220px; height: 155px;
+    border-radius: 4px; overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.4);
+    pointer-events: none;
+    opacity: 0; transition: opacity 0.25s ease;
+    z-index: 9999;
+    border: 1px solid rgba(201,169,110,0.15);
+  }
+  .service-hover-img.visible { opacity: 1; }
+  .service-hover-img img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .service-hover-img-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0.4rem 0.6rem;
+    background: linear-gradient(to top, rgba(20,31,18,0.85), transparent);
+    font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(240,236,228,0.6);
   }
   .service-orgs {
     margin-top: 4rem; padding-top: 3rem;
@@ -987,39 +1018,39 @@
   </div>
   <div class="service-grid">
     <div class="service-card">
-      <span class="service-card-icon" aria-hidden="true">🤝</span>
+      <span class="service-card-icon" aria-hidden="true">01</span>
       <div class="service-card-org">Northern Ohio Recovery Association (NORA)</div>
-      <div class="service-card-title">Weekly Health & Wellness Sessions</div>
+      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Weekly Sessions">Weekly Health &amp; Wellness Sessions</div>
       <div class="service-card-desc">Leads weekly sessions for individuals in substance recovery — movement, mindset, and lifestyle habits to support long-term wellbeing. Has done this consistently for years.</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon" aria-hidden="true">🧘‍♀️</span>
+      <span class="service-card-icon" aria-hidden="true">02</span>
       <div class="service-card-org">Griffin Home · Alliant Treatment · Moore Counseling</div>
-      <div class="service-card-title">Yoga & Recovery Workshops</div>
+      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Yoga &amp; Recovery">Yoga &amp; Recovery Workshops</div>
       <div class="service-card-desc">Led yoga sessions for women in recovery — using movement as a tool for stress relief, discipline, and rebuilding a positive relationship with the body across multiple organizations.</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon" aria-hidden="true">👑</span>
+      <span class="service-card-icon" aria-hidden="true">03</span>
       <div class="service-card-org">Girls Inc. Atlanta</div>
-      <div class="service-card-title">Confidence & Poise Workshop</div>
+      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Confidence &amp; Poise">Confidence &amp; Poise Workshop</div>
       <div class="service-card-desc">Led a confidence and poise workshop for young girls and boys — emphasizing self-expression, confidence, and personal development. (And yes, one week she was training like an MMA fighter; the next she was in a full princess gown with Girls Inc.)</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon" aria-hidden="true">🏈</span>
+      <span class="service-card-icon" aria-hidden="true">04</span>
       <div class="service-card-org">EA Sports · Nike · NFL · Microsoft</div>
-      <div class="service-card-title">Field the Future — Founder</div>
+      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Field the Future">Field the Future — Founder</div>
       <div class="service-card-desc">Created EA Sports' first community-driven brand marketing program. 1,000+ youth impacted annually. 25 STEM scholarships per year. Connected youth with NFL athletes for real-world mentorship.</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon" aria-hidden="true">💪</span>
+      <span class="service-card-icon" aria-hidden="true">05</span>
       <div class="service-card-org">Recovery Communities · Men's Program</div>
-      <div class="service-card-title">Men's Health & Mindset Coaching</div>
+      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Men's Health">Men's Health &amp; Mindset Coaching</div>
       <div class="service-card-desc">Currently coaches men in recovery on foundational health, fitness, and mindset principles — building the habits that support a healthier, more structured life.</div>
     </div>
     <div class="service-card">
-      <span class="service-card-icon" aria-hidden="true">📋</span>
-      <div class="service-card-org">Health & Wellness Seminar · 2024</div>
-      <div class="service-card-title">Sustainable Habits Workshop</div>
+      <span class="service-card-icon" aria-hidden="true">06</span>
+      <div class="service-card-org">Health &amp; Wellness Seminar · 2024</div>
+      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Sustainable Habits">Sustainable Habits Workshop</div>
       <div class="service-card-desc">Hosted a 2024 health and wellness seminar focused on building sustainable habits and improving overall wellbeing — practical, accessible, and free to attend.</div>
     </div>
   </div>
@@ -1217,6 +1248,44 @@
     articleBtnPageant.addEventListener('mouseenter', () => pressSectionPageant.classList.add('reveal-active'));
     articleBtnPageant.addEventListener('mouseleave', () => pressSectionPageant.classList.remove('reveal-active'));
   }
+
+  /* Service card hover images */
+  (function () {
+    const PLACEHOLDER = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="440" height="310" viewBox="0 0 440 310"%3E%3Crect width="440" height="310" fill="%23233320"/%3E%3Crect x="60" y="60" width="320" height="190" rx="2" fill="%232d4228"/%3E%3Cline x1="60" y1="60" x2="380" y2="250" stroke="%23c9a96e" stroke-width="0.5" opacity="0.3"/%3E%3Cline x1="380" y1="60" x2="60" y2="250" stroke="%23c9a96e" stroke-width="0.5" opacity="0.3"/%3E%3Ctext x="220" y="165" font-family="Georgia,serif" font-size="11" fill="%23c9a96e" opacity="0.5" text-anchor="middle" letter-spacing="3"%3EPHOTO COMING SOON%3C/text%3E%3C/svg%3E';
+
+    // Create the floating preview element
+    const preview = document.createElement('div');
+    preview.className = 'service-hover-img';
+    preview.innerHTML = '<img src="" alt=""><div class="service-hover-img-caption"></div>';
+    document.body.appendChild(preview);
+
+    const previewImg = preview.querySelector('img');
+    const previewCap = preview.querySelector('.service-hover-img-caption');
+    let activeEl = null;
+
+    function movePreview(e) {
+      const x = e.clientX + 20;
+      const y = e.clientY - 80;
+      const vw = window.innerWidth, vh = window.innerHeight;
+      preview.style.left = Math.min(x, vw - 240) + 'px';
+      preview.style.top  = Math.max(10, Math.min(y, vh - 175)) + 'px';
+    }
+
+    document.querySelectorAll('.service-card-title[data-hover-img]').forEach(function (el) {
+      el.addEventListener('mouseenter', function (e) {
+        activeEl = el;
+        previewImg.src = PLACEHOLDER;
+        previewCap.textContent = el.dataset.hoverLabel || '';
+        preview.classList.add('visible');
+        movePreview(e);
+      });
+      el.addEventListener('mousemove', movePreview);
+      el.addEventListener('mouseleave', function () {
+        activeEl = null;
+        preview.classList.remove('visible');
+      });
+    });
+  })();
 </script>
 </body>
 </html>
