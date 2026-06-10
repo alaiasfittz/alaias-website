@@ -408,28 +408,36 @@
   .rep-text { font-size: 0.85rem; line-height: 1.6; color: var(--text-mid); }
 
   /* ── TEAM ── */
-  .team-section { background: var(--near-black); padding: 8rem 5rem; }
+  .team-section { background: var(--linen); padding: 8rem 5rem; }
   .team-header { margin-bottom: 5rem; max-width: 620px; }
   .team-header h2 {
     font-family: var(--font-serif);
     font-size: clamp(2.5rem, 4vw, 5rem); font-weight: 300;
-    color: var(--cream); line-height: 1.0; margin-bottom: 1rem;
+    color: var(--text-dark); line-height: 1.0; margin-bottom: 1rem;
   }
-  .team-header h2 em { font-style: italic; color: var(--gold); }
-  .team-header p { font-size: 0.9rem; line-height: 1.8; color: rgba(240,236,228,0.4); }
+  .team-header h2 em { font-style: italic; color: var(--sage); }
+  .team-header p { font-size: 0.9rem; line-height: 1.8; color: var(--text-mid); }
   .team-list {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(240,236,228,0.07);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
   }
   .team-item {
-    padding: 2.5rem 3rem 2.5rem 0;
-    border-bottom: 1px solid rgba(240,236,228,0.06);
-    transition: opacity 0.3s;
+    background: #fff; border-radius: 4px; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .team-item:hover { opacity: 0.7; }
-  .t-name { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 300; color: var(--cream); margin-bottom: 0.3rem; }
-  .t-role { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-lt); margin-bottom: 0.5rem; }
-  .t-note { font-size: 0.78rem; color: rgba(240,236,228,0.28); line-height: 1.5; }
+  .team-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .t-photo {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top;
+    display: block; background: var(--sage);
+  }
+  .t-photo-placeholder {
+    width: 100%; aspect-ratio: 3/4; background: linear-gradient(160deg, #d6d0c4, #c5bfb2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .t-photo-placeholder svg { width: 48px; height: 48px; opacity: 0.35; }
+  .t-info { padding: 1.4rem 1.6rem 1.8rem; }
+  .t-name { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 300; color: var(--text-dark); margin-bottom: 0.25rem; }
+  .t-role { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.6rem; }
+  .t-note { font-size: 0.76rem; color: var(--text-mid); line-height: 1.6; }
 
   /* ── RESOURCES ── */
   .resources-section { background: var(--forest); padding: 8rem 5rem; }
@@ -529,8 +537,7 @@
 
     .rep-section { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
     .team-section { padding: 5rem 1.5rem; }
-    .team-list { grid-template-columns: 1fr 1fr; }
-    .team-item { padding: 2rem 1.5rem 2rem 0; }
+    .team-list { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 
     .resources-section { padding: 5rem 1.5rem; }
     .resources-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -545,7 +552,7 @@
     .metrics-strip { grid-template-columns: 1fr; }
     .metric-item { border-right: none !important; border-top: 1px solid rgba(0,0,0,0.08) !important; }
     .metric-item:first-child { border-top: none !important; }
-    .team-list { grid-template-columns: 1fr; }
+    .team-list { grid-template-columns: 1fr; gap: 1rem; }
   }
 </style>
 </head>
@@ -721,41 +728,76 @@
 <!-- TEAM -->
 <section class="team-section" id="team">
   <div class="team-header reveal">
-    <div class="section-label light">The People Behind It</div>
+    <div class="section-label">The People Behind It</div>
     <h2>Built by a <em>real team.</em></h2>
     <p>While Alaias is the face of the content, The Health Co. is powered by an incredible team of creatives, strategists, and producers working together to execute this vision at the highest level.</p>
   </div>
   <div class="team-list">
+
     <div class="team-item reveal">
-      <div class="t-name">Alaias Fittz</div>
-      <div class="t-role">CEO &amp; Founder</div>
-      <div class="t-note">D1 Athlete · EA Sports Alumni · Miss Lake Nona · Content Creator</div>
+      <img src="assets/Alaias-About.jpg" alt="Alaias Fittz" class="t-photo" />
+      <div class="t-info">
+        <div class="t-name">Alaias Fittz</div>
+        <div class="t-role">CEO &amp; Founder</div>
+        <div class="t-note">D1 Athlete · EA Sports Alumni · Miss Lake Nona · Content Creator</div>
+      </div>
     </div>
+
     <div class="team-item reveal reveal-d1">
-      <div class="t-name">Caitlyn Morton</div>
-      <div class="t-role">Creative Lead &amp; Strategist</div>
-      <div class="t-note">Brand strategy, creative direction, and content systems</div>
+      <div class="t-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5a5a50" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="t-info">
+        <div class="t-name">Caitlyn Morton</div>
+        <div class="t-role">Creative Lead &amp; Strategist</div>
+        <div class="t-note">Brand strategy, creative direction, and content systems</div>
+      </div>
     </div>
+
     <div class="team-item reveal reveal-d2">
-      <div class="t-name">Letter Media</div>
-      <div class="t-role">Agency Partner &amp; Videographer</div>
-      <div class="t-note">Rachel, Christopher &amp; Alessendra — cinematic production team</div>
+      <div class="t-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5a5a50" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="t-info">
+        <div class="t-name">Letter Media</div>
+        <div class="t-role">Agency Partner &amp; Videographer</div>
+        <div class="t-note">Rachel, Christopher &amp; Alessendra — cinematic production team</div>
+      </div>
     </div>
+
     <div class="team-item reveal">
-      <div class="t-name">Iyanu</div>
-      <div class="t-role">Lead Content Editor</div>
-      <div class="t-note">Post-production, storytelling edits, and platform optimization</div>
+      <div class="t-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5a5a50" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="t-info">
+        <div class="t-name">Iyanu</div>
+        <div class="t-role">Lead Content Editor</div>
+        <div class="t-note">Post-production, storytelling edits, and platform optimization</div>
+      </div>
     </div>
+
     <div class="team-item reveal reveal-d1">
-      <div class="t-name">Ant</div>
-      <div class="t-role">Lead Thumbnail Designer</div>
-      <div class="t-note">Click-through optimized visual design across all platforms</div>
+      <div class="t-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5a5a50" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="t-info">
+        <div class="t-name">Ant</div>
+        <div class="t-role">Lead Thumbnail Designer</div>
+        <div class="t-note">Click-through optimized visual design across all platforms</div>
+      </div>
     </div>
+
     <div class="team-item reveal reveal-d2">
-      <div class="t-name">Justin Brown</div>
-      <div class="t-role">Brand Strategist</div>
-      <div class="t-note">Brand positioning, messaging, and long-term growth strategy</div>
+      <div class="t-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5a5a50" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="t-info">
+        <div class="t-name">Justin Brown</div>
+        <div class="t-role">Brand Strategist</div>
+        <div class="t-note">Brand positioning, messaging, and long-term growth strategy</div>
+      </div>
     </div>
+
   </div>
 </section>
 
