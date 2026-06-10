@@ -199,17 +199,36 @@
   .metric-item {
     padding: 5rem 3.5rem; border-right: 1px solid rgba(240,236,228,0.06);
     display: flex; flex-direction: column; gap: 0.7rem;
+    position: relative; overflow: hidden;
+    transition: background 0.4s ease;
+    cursor: default;
   }
+  .metric-item::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.45s ease;
+  }
+  .metric-item:hover { background: rgba(201,169,110,0.04); }
+  .metric-item:hover::before { transform: scaleX(1); }
   .metric-item:last-child { border-right: none; }
   .metric-num {
     font-family: var(--font-serif); font-size: clamp(3rem, 4.5vw, 5.5rem);
     font-weight: 300; color: var(--gold); line-height: 1;
+    transition: transform 0.3s ease;
   }
+  .metric-item:hover .metric-num { transform: translateY(-3px); }
   .metric-label {
     font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: rgba(240,236,228,0.28);
+    transition: color 0.3s ease;
   }
-  .metric-desc { font-size: 0.78rem; color: rgba(240,236,228,0.32); line-height: 1.65; max-width: 200px; }
+  .metric-item:hover .metric-label { color: rgba(240,236,228,0.55); }
+  .metric-desc {
+    font-size: 0.78rem; color: rgba(240,236,228,0.32); line-height: 1.65; max-width: 200px;
+    transition: color 0.3s ease;
+  }
+  .metric-item:hover .metric-desc { color: rgba(240,236,228,0.55); }
 
   /* ── EDITORIAL DATA ── */
   .data-editorial {
@@ -615,22 +634,22 @@
 <!-- METRICS STRIP -->
 <div class="metrics-strip">
   <div class="metric-item reveal">
-    <div class="metric-num">27M+</div>
+    <div class="metric-num" data-count="27" data-suffix="M+">27M+</div>
     <div class="metric-label">YouTube Views</div>
     <div class="metric-desc">Built independently, one challenge at a time</div>
   </div>
   <div class="metric-item reveal reveal-d1">
-    <div class="metric-num">100K+</div>
+    <div class="metric-num" data-count="100" data-suffix="K+">100K+</div>
     <div class="metric-label">Subscribers</div>
     <div class="metric-desc">Women 18–50 seeking real transformation</div>
   </div>
   <div class="metric-item reveal reveal-d2">
-    <div class="metric-num">3</div>
+    <div class="metric-num" data-count="3" data-suffix="">3</div>
     <div class="metric-label">Business Pillars</div>
     <div class="metric-desc">Content · Consulting · Brand Partnerships</div>
   </div>
   <div class="metric-item reveal reveal-d3">
-    <div class="metric-num">6</div>
+    <div class="metric-num" data-count="6" data-suffix="">6</div>
     <div class="metric-label">Person Team</div>
     <div class="metric-desc">Full creative, production & strategy function</div>
   </div>
@@ -931,6 +950,31 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Count-up animation for metrics
+  function countUp(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+    function frame(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.target.dataset.count) {
+        countUp(e.target);
+        countObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.metric-num[data-count]').forEach(el => countObserver.observe(el));
 </script>
 </body>
 </html>
