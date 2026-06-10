@@ -749,23 +749,47 @@
   .btn-white-pill:hover { background: rgba(255,255,255,0.1); }
 
   /* ── PRESS ── */
-  /* ── PRESS ── */
   .press-section {
     background: var(--charcoal);
-    display: grid; grid-template-columns: 1fr 1fr;
-    min-height: 520px; overflow: hidden;
-    position: relative;
+    padding: 6rem 5rem;
+    position: relative; overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 520px;
   }
 
-  /* Left: copy column */
-  .press-left {
-    padding: 6rem 5rem;
-    display: flex; flex-direction: column; justify-content: center;
-    position: relative; z-index: 2;
-    /* subtle left-to-right gradient keeps text readable when image is revealed */
-    background: linear-gradient(to right, var(--charcoal) 70%, transparent 100%);
+  /* Full-section cinematic background image — hidden by default */
+  .press-bg {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 0.7s ease, transform 0.9s ease;
+    transform: scale(1.03);
+    z-index: 0;
   }
-  .press-left .section-label { margin-bottom: 2rem; }
+  .press-bg img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center right; display: block;
+  }
+  /* Dark gradient overlay: very dark on left, lighter toward right */
+  .press-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right,
+      rgba(28,28,26,0.92) 0%,
+      rgba(28,28,26,0.75) 45%,
+      rgba(28,28,26,0.35) 100%);
+  }
+  .press-section.reveal-active .press-bg {
+    opacity: 1; transform: scale(1);
+  }
+
+  /* Copy column */
+  .press-copy {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .press-copy .section-label { margin-bottom: 2rem; }
   .press-outlet {
     font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--sage-pale); margin-bottom: 1.5rem;
@@ -788,34 +812,19 @@
   }
   .btn-article:hover { background: rgba(240,236,228,0.06); border-color: rgba(240,236,228,0.5); }
 
-  /* Right: editorial image panel */
-  .press-right {
-    position: relative; overflow: hidden;
+  /* Ghost wordmark — right column */
+  .press-ghost {
+    position: relative; z-index: 2;
+    font-family: var(--font-serif);
+    font-size: clamp(4rem, 7vw, 9rem); font-weight: 300;
+    color: rgba(240,236,228,0.06);
+    line-height: 1; text-align: right;
+    letter-spacing: -0.02em;
+    pointer-events: none; user-select: none;
+    transition: color 0.7s ease;
   }
-  .press-right-img {
-    position: absolute; inset: 0;
-    opacity: 0;
-    transition: opacity 0.6s ease, transform 0.8s ease;
-    transform: scale(1.03);
-  }
-  .press-right-img img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: top center;
-    display: block;
-  }
-  /* Dark overlay so image reads as editorial, not raw */
-  .press-right-img::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(28,28,26,0.55) 0%, rgba(28,28,26,0.15) 100%);
-  }
-  /* Reveal state — triggered via JS on button hover */
-  .press-section.reveal-active .press-right-img {
-    opacity: 1; transform: scale(1);
-  }
-  .press-right-placeholder {
-    width: 100%; height: 100%;
-    background: var(--forest-mid);
+  .press-section.reveal-active .press-ghost {
+    color: rgba(240,236,228,0.10);
   }
 
   /* ── CTA ── */
@@ -916,9 +925,8 @@
 
     .pageant-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
 
-    .press-section { grid-template-columns: 1fr; min-height: auto; }
-    .press-left { padding: 3rem 1.5rem; }
-    .press-right { min-height: 280px; }
+    .press-section { padding: 3rem 1.5rem; grid-template-columns: 1fr; }
+    .press-ghost { display: none; }
 
     .cta-section { padding: 5rem 1.5rem; }
     .cta-buttons { flex-direction: column; align-items: center; }
@@ -1270,7 +1278,12 @@
 
 <!-- PRESS -->
 <section class="press-section" id="press-section">
-  <div class="press-left">
+  <!-- Cinematic background: full-section image, fades in on button hover -->
+  <div class="press-bg">
+    <img src="assets/BusinessInsider.jpeg" alt="" />
+  </div>
+  <!-- Copy -->
+  <div class="press-copy">
     <div class="section-label light">In the Press</div>
     <div class="press-outlet">Business Insider</div>
     <h2 class="press-headline">How Alaias Fittz Lost 75 Pounds and Kept It Off</h2>
@@ -1279,11 +1292,8 @@
        target="_blank" rel="noopener noreferrer"
        class="btn-article" id="btn-article">Read the Article →</a>
   </div>
-  <div class="press-right">
-    <div class="press-right-img">
-      <img src="assets/BusinessInsider.jpeg" alt="Business Insider article" />
-    </div>
-  </div>
+  <!-- Ghost wordmark right column -->
+  <div class="press-ghost">Business<br>Insider</div>
 </section>
 
 <!-- CTA -->
