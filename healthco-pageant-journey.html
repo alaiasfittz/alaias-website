@@ -82,6 +82,18 @@
     display: flex; flex-direction: column; justify-content: center;
     position: relative; z-index: 2;
   }
+  .hero-bg-layer {
+    position: absolute; inset: 0; z-index: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: left center;
+    opacity: 0.13;
+    filter: blur(3px) saturate(0.6) brightness(0.7);
+    pointer-events: none;
+    /* fade edges so it dissolves into the dark bg */
+    -webkit-mask-image: radial-gradient(ellipse 85% 80% at 30% 55%, rgba(0,0,0,0.9) 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse 85% 80% at 30% 55%, rgba(0,0,0,0.9) 30%, transparent 80%);
+  }
+  .hero-left > *:not(.hero-bg-layer) { position: relative; z-index: 1; }
   .hero-crown {
     font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
     color: var(--gold); margin-bottom: 1.5rem;
@@ -683,6 +695,7 @@
 <section class="hero" id="main-content">
 
   <div class="hero-left">
+    <img src="assets/Background.png" alt="" class="hero-bg-layer" aria-hidden="true">
     <div class="hero-crown">Miss Lake Nona · Miss Florida USA 2026</div>
 
     <h1 class="hero-headline">Alaias<br><em>Fittz.</em></h1>
