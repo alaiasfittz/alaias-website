@@ -1026,19 +1026,19 @@
     <div class="service-card">
       <span class="service-card-icon" aria-hidden="true">02</span>
       <div class="service-card-org">Griffin Home · Alliant Treatment · Moore Counseling</div>
-      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Yoga &amp; Recovery">Yoga &amp; Recovery Workshops</div>
+      <div class="service-card-title" data-hover-img="assets/yoga.jpeg" data-hover-label="Yoga &amp; Recovery">Yoga &amp; Recovery Workshops</div>
       <div class="service-card-desc">Led yoga sessions for women in recovery — using movement as a tool for stress relief, discipline, and rebuilding a positive relationship with the body across multiple organizations.</div>
     </div>
     <div class="service-card">
       <span class="service-card-icon" aria-hidden="true">03</span>
       <div class="service-card-org">Girls Inc. Atlanta</div>
-      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Confidence &amp; Poise">Confidence &amp; Poise Workshop</div>
+      <div class="service-card-title" data-hover-img="assets/Girls.jpeg" data-hover-label="Confidence &amp; Poise">Confidence &amp; Poise Workshop</div>
       <div class="service-card-desc">Led a confidence and poise workshop for young girls and boys — emphasizing self-expression, confidence, and personal development. (And yes, one week she was training like an MMA fighter; the next she was in a full princess gown with Girls Inc.)</div>
     </div>
     <div class="service-card">
       <span class="service-card-icon" aria-hidden="true">04</span>
       <div class="service-card-org">EA Sports · Nike · NFL · Microsoft</div>
-      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Field the Future">Field the Future — Founder</div>
+      <div class="service-card-title" data-hover-img="assets/FTF.jpeg" data-hover-label="Field the Future">Field the Future — Founder</div>
       <div class="service-card-desc">Created EA Sports' first community-driven brand marketing program. 1,000+ youth impacted annually. 25 STEM scholarships per year. Connected youth with NFL athletes for real-world mentorship.</div>
     </div>
     <div class="service-card">
@@ -1050,7 +1050,7 @@
     <div class="service-card">
       <span class="service-card-icon" aria-hidden="true">06</span>
       <div class="service-card-org">Health &amp; Wellness Seminar · 2024</div>
-      <div class="service-card-title" data-hover-img="placeholder" data-hover-label="Sustainable Habits">Sustainable Habits Workshop</div>
+      <div class="service-card-title" data-hover-img="assets/Keynotes.jpeg" data-hover-label="Sustainable Habits">Sustainable Habits Workshop</div>
       <div class="service-card-desc">Hosted a 2024 health and wellness seminar focused on building sustainable habits and improving overall wellbeing — practical, accessible, and free to attend.</div>
     </div>
   </div>
@@ -1274,7 +1274,7 @@
     document.querySelectorAll('.service-card-title[data-hover-img]').forEach(function (el) {
       el.addEventListener('mouseenter', function (e) {
         activeEl = el;
-        previewImg.src = PLACEHOLDER;
+        previewImg.src = (el.dataset.hoverImg === 'placeholder') ? PLACEHOLDER : el.dataset.hoverImg;
         previewCap.textContent = el.dataset.hoverLabel || '';
         preview.classList.add('visible');
         movePreview(e);
