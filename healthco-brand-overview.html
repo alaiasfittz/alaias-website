@@ -43,12 +43,12 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 3.5rem;
+    padding: 1.1rem 2.5rem;
     background: rgba(35,51,32,0.97); backdrop-filter: blur(8px);
   }
   .nav-logo { font-family: var(--font-serif); font-size: 1rem; font-weight: 400; font-style: italic; color: var(--cream); letter-spacing: 0.04em; text-decoration: none; }
-  .nav-links { display: flex; gap: 1.4rem; list-style: none; align-items: center; }
-  .nav-links a { font-size: 0.94rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(240,236,228,0.9); text-decoration: none; transition: color 0.2s; position: relative; padding-bottom: 3px; }
+  .nav-links { display: flex; gap: 0.9rem; list-style: none; align-items: center; flex-wrap: nowrap; }
+  .nav-links a { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,236,228,0.9); text-decoration: none; transition: color 0.2s; position: relative; padding-bottom: 3px; white-space: nowrap; }
   .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
   .nav-links a:hover { color: var(--cream); }
   .nav-links a:hover::after { width: 100%; }
