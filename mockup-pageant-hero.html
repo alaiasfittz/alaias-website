@@ -4,285 +4,300 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mockup — Pageant Journey Hero</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --forest:     #233320;
-    --forest-mid: #2d4228;
+    --forest:     #1e2e1b;
+    --forest-mid: #243521;
     --sage:       #7d8f6a;
-    --sage-lt:    #8fa67a;
     --sage-pale:  #a8b895;
     --gold:       #c9a96e;
+    --gold-lt:    #d4b87a;
     --cream:      #f0ece4;
-    --linen:      #f5f2ec;
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans:  'DM Sans', system-ui, sans-serif;
+    --font-script:'Dancing Script', cursive;
   }
-  body { font-family: var(--font-sans); background: #111; margin: 0; }
-
-  /* MOCKUP LABEL */
-  .mockup-bar {
-    background: #1a1a1a; color: rgba(255,255,255,0.4);
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 0.75rem 2rem; text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-  .mockup-bar span { color: var(--gold); }
+  html, body { margin: 0; padding: 0; font-family: var(--font-sans); background: #0e0e0c; }
 
   /* NAV */
   nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.1rem 2.5rem;
-    background: rgba(35,51,32,0.97);
+    background: rgba(30,46,27,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(240,236,228,0.06);
   }
   .nav-logo { font-family: var(--font-serif); font-size: 1rem; font-style: italic; color: var(--cream); text-decoration: none; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,228,0.7); text-decoration: none; }
+  .nav-links a { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,228,0.65); text-decoration: none; }
   .nav-links a.active { color: var(--gold); }
 
-  /* ── HERO ── */
+  /* ── HERO WRAPPER ── */
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 55% 45%;
+    grid-template-columns: 52% 48%;
     position: relative;
     overflow: hidden;
+    background: var(--forest);
   }
 
-  /* LEFT — full dark image panel */
+  /* ── LEFT PANEL ── */
   .hero-left {
-    position: relative;
-    background: var(--forest);
-    overflow: hidden;
-  }
-  /* Photo fills the left side edge-to-edge */
-  .hero-left-photo {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, #2a3d26 0%, #1a2918 50%, #233320 100%);
-    /* swap for: background: url('assets/YOUR_PHOTO.jpg') center/cover; */
-    display: flex; align-items: center; justify-content: center;
-  }
-  .hero-left-photo-label {
-    font-family: var(--font-serif); font-style: italic;
-    color: rgba(240,236,228,0.18); font-size: 1rem; text-align: center; line-height: 2;
-  }
-  /* Dark gradient overlay — bottom to top, so text on left reads over photo */
-  .hero-left-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(20,31,18,0.55) 0%, rgba(20,31,18,0.1) 100%);
-    pointer-events: none;
-  }
-  /* Thin gold vertical rule separating panels */
-  .hero-left::after {
-    content: '';
-    position: absolute; top: 10%; bottom: 10%; right: 0;
-    width: 1px; background: rgba(201,169,110,0.2);
-  }
-
-  /* RIGHT — editorial copy panel */
-  .hero-right {
-    background: var(--forest);
+    padding: 8rem 3.5rem 4rem 5rem;
     display: flex; flex-direction: column; justify-content: center;
-    padding: 5rem 4rem 5rem 5rem;
-    position: relative;
-  }
-  /* Subtle texture overlay */
-  .hero-right::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.06) 0%, transparent 60%);
-    pointer-events: none;
+    position: relative; z-index: 2;
+    background: linear-gradient(to right, rgba(20,32,17,1) 60%, rgba(20,32,17,0.92) 100%);
   }
 
-  .hero-crown {
-    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 2.5rem;
-    display: flex; align-items: center; gap: 1rem;
-    opacity: 0.85;
+  .hero-crown-label {
+    font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 0.8rem; opacity: 0.9;
   }
-  .hero-crown::before { content: '♛'; font-size: 0.85rem; }
+  .hero-crown-label::before { content: '♛'; font-size: 0.85rem; }
 
   .hero-name {
     font-family: var(--font-serif);
-    font-size: clamp(4rem, 6vw, 7.5rem); font-weight: 300;
-    line-height: 0.9; color: var(--cream);
-    margin-bottom: 0.15em;
+    font-size: clamp(4.5rem, 7vw, 9rem); font-weight: 300;
+    line-height: 0.88; color: var(--cream);
+    margin-bottom: 0.1em;
   }
   .hero-name em { font-style: italic; color: var(--gold); display: block; }
 
-  .hero-divider {
-    width: 2.5rem; height: 1px;
-    background: rgba(201,169,110,0.4);
-    margin: 2.5rem 0;
+  .hero-tagline {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(240,236,228,0.5); margin: 1.8rem 0 0.6rem;
   }
-
-  .hero-platform-label {
-    font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(240,236,228,0.35); margin-bottom: 0.5rem;
-  }
-  .hero-platform {
-    font-family: var(--font-serif);
-    font-size: 1.55rem; font-weight: 300; font-style: italic;
-    color: var(--cream); line-height: 1.3; margin-bottom: 2rem;
+  .hero-tagline-rule {
+    width: 2.5rem; height: 1px; background: rgba(201,169,110,0.5); margin-bottom: 1.8rem;
   }
 
   .hero-bio {
     font-size: 0.88rem; line-height: 1.9; font-weight: 300;
-    color: rgba(240,236,228,0.55); max-width: 380px; margin-bottom: 3rem;
+    color: rgba(240,236,228,0.55); max-width: 440px; margin-bottom: 2.8rem;
   }
-  .hero-bio strong { color: rgba(240,236,228,0.85); font-weight: 400; }
+  .hero-bio .highlight { color: var(--gold); font-weight: 400; }
 
-  /* Badges */
-  .hero-badges { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
-  .badge {
-    font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
-    padding: 0.45rem 1.1rem; border-radius: 2rem;
-  }
-  .badge-gold { background: rgba(201,169,110,0.12); color: var(--gold); border: 1px solid rgba(201,169,110,0.3); }
-  .badge-sage { background: rgba(125,143,106,0.12); color: var(--sage-pale); border: 1px solid rgba(125,143,106,0.3); }
-
-  /* Event details — minimal table */
-  .event-table {
+  /* Stats strip */
+  .hero-stats {
+    display: flex; gap: 0; margin-bottom: 2.5rem;
     border-top: 1px solid rgba(240,236,228,0.08);
-    padding-top: 2rem;
+    border-bottom: 1px solid rgba(240,236,228,0.08);
+    padding: 1.5rem 0;
+  }
+  .stat-item {
+    flex: 1; padding-right: 1.5rem;
+    border-right: 1px solid rgba(240,236,228,0.1);
+  }
+  .stat-item:last-child { border-right: none; padding-right: 0; padding-left: 1.5rem; }
+  .stat-item:not(:first-child) { padding-left: 1.5rem; }
+  .stat-num {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 300;
+    color: var(--cream); line-height: 1; margin-bottom: 0.3rem;
+  }
+  .stat-num sup { font-size: 1rem; }
+  .stat-label { font-size: 0.65rem; color: rgba(240,236,228,0.35); line-height: 1.4; }
+
+  /* Event + Quote cards */
+  .hero-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem;
+  }
+  .event-card {
+    background: rgba(240,236,228,0.04);
+    border: 1px solid rgba(240,236,228,0.1);
+    border-radius: 8px; padding: 1.4rem 1.5rem;
   }
   .event-row {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 0.65rem 0; border-bottom: 1px solid rgba(240,236,228,0.06);
+    display: flex; align-items: baseline; gap: 0.7rem;
+    padding: 0.45rem 0; border-bottom: 1px solid rgba(240,236,228,0.06);
+    font-size: 0.72rem;
   }
   .event-row:last-child { border-bottom: none; }
-  .event-key { font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,228,0.3); }
-  .event-val { font-size: 0.78rem; color: rgba(240,236,228,0.75); font-weight: 300; }
-  .event-val.gold { color: var(--gold); }
+  .event-icon { font-size: 0.7rem; opacity: 0.4; flex-shrink: 0; width: 1rem; }
+  .event-key { font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(240,236,228,0.3); flex-shrink: 0; }
+  .event-val { color: rgba(240,236,228,0.75); font-weight: 300; font-size: 0.72rem; }
+  .event-val.gold-c { color: var(--gold); }
 
-  /* CTA row */
-  .hero-cta { display: flex; gap: 1rem; align-items: center; margin-top: 3rem; }
-  .btn-crown {
-    background: var(--gold); color: var(--forest);
-    padding: 0.8rem 2rem; border-radius: 3rem;
-    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
-    font-family: var(--font-sans); text-decoration: none; font-weight: 600;
-    display: inline-block;
+  .quote-card {
+    background: rgba(201,169,110,0.05);
+    border: 1px solid rgba(201,169,110,0.15);
+    border-radius: 8px; padding: 1.4rem 1.5rem;
+    display: flex; flex-direction: column; justify-content: space-between;
   }
-  .btn-ghost {
-    background: transparent; color: rgba(240,236,228,0.6);
-    border: 1px solid rgba(240,236,228,0.2);
-    padding: 0.8rem 2rem; border-radius: 3rem;
-    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
-    font-family: var(--font-sans); text-decoration: none;
-    display: inline-block;
+  .quote-label { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,169,110,0.5); margin-bottom: 0.8rem; }
+  .quote-text {
+    font-family: var(--font-serif); font-size: 1.1rem; font-style: italic;
+    font-weight: 300; color: var(--cream); line-height: 1.45; flex: 1;
+    margin-bottom: 1rem;
+  }
+  .quote-sig { font-family: var(--font-script); font-size: 1.2rem; color: var(--gold); opacity: 0.7; }
+
+  /* Featured in */
+  .hero-featured {
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .featured-label { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,236,228,0.25); flex-shrink: 0; }
+  .featured-rule { flex: 0 0 1.5rem; height: 1px; background: rgba(240,236,228,0.1); }
+  .featured-logos { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+  .feat-logo {
+    font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(240,236,228,0.3);
+    border: 1px solid rgba(240,236,228,0.1);
+    padding: 0.35rem 0.9rem; border-radius: 2rem;
+    white-space: nowrap;
   }
 
-  /* MOCKUP NOTE */
-  .mockup-note {
-    background: #1a1a1a; padding: 2rem 2.5rem;
-    border-top: 1px solid rgba(255,255,255,0.07);
-    display: flex; gap: 3rem; flex-wrap: wrap;
+  /* ── RIGHT PANEL: full-bleed photo ── */
+  .hero-right {
+    position: relative; overflow: hidden;
   }
-  .note-item { flex: 1; min-width: 220px; }
-  .note-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
-  .note-text { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+  .hero-photo {
+    position: absolute; inset: 0;
+    /* When real photo added: background: url('assets/PageantHeadshot.jpg') center/cover no-repeat; */
+    background: linear-gradient(160deg, #2e3d28 0%, #1a2418 40%, #0f1a0d 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-photo-placeholder {
+    font-family: var(--font-serif); font-style: italic;
+    color: rgba(240,236,228,0.12); font-size: 1rem; text-align: center; line-height: 2;
+  }
+  /* Dark gradient so photo bleeds to the left */
+  .hero-photo-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(20,32,17,0.65) 0%, transparent 30%);
+    pointer-events: none;
+  }
+  /* Script overlay on photo */
+  .hero-photo-script {
+    position: absolute; bottom: 10%; right: 6%;
+    font-family: var(--font-script);
+    font-size: 2.2rem; line-height: 1.3;
+    color: rgba(240,236,228,0.65);
+    text-align: right;
+    pointer-events: none;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  }
+  .hero-photo-script em { color: var(--gold-lt); font-style: normal; }
+
+  /* Thin gold left-edge accent on photo panel */
+  .hero-right::before {
+    content: '';
+    position: absolute; top: 15%; bottom: 15%; left: 0;
+    width: 1px; background: rgba(201,169,110,0.2); z-index: 3;
+  }
 </style>
 </head>
 <body>
 
-<div class="mockup-bar">Mockup — Pageant Journey Hero Uplevel · <span>Not Live</span></div>
-
-<nav>
-  <a href="#" class="nav-logo">The Health Co.</a>
-  <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Brand Overview</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#" class="active">Pageant Journey</a></li>
-    <li><a href="#">Timeline</a></li>
-  </ul>
-</nav>
-
 <div class="hero">
 
-  <!-- LEFT: Full-bleed photo panel -->
+  <!-- LEFT -->
   <div class="hero-left">
-    <div class="hero-left-photo">
-      <span class="hero-left-photo-label">Carlos editorial headshot<br>full-bleed · edge to edge</span>
-    </div>
-    <div class="hero-left-overlay"></div>
-  </div>
 
-  <!-- RIGHT: Editorial copy -->
-  <div class="hero-right">
-    <div class="hero-crown">Miss Lake Nona · Miss Florida USA 2026</div>
+    <div class="hero-crown-label">Miss Lake Nona · Miss Florida USA 2026</div>
 
     <h1 class="hero-name">
       Alaias<br>
       <em>Fittz.</em>
     </h1>
 
-    <div class="hero-divider"></div>
-
-    <div class="hero-platform-label">Platform</div>
-    <div class="hero-platform">"Confidence Beyond the Scale"</div>
+    <div class="hero-tagline">Creator. &nbsp;Founder. &nbsp;Advocate.</div>
+    <div class="hero-tagline-rule"></div>
 
     <p class="hero-bio">
-      Creator. CEO. Competitor. A D1 athlete, EA Sports brand strategist,
-      and founder of The Health Co. — now competing to bring
-      <strong>Confidence Beyond the Scale</strong> to all 67 counties of Florida.
+      Creator. CEO. Founder. A D1 athlete, EA Sports brand strategist, and
+      founder of The Health Co. — now competing to bring
+      <span class="highlight">Confidence Beyond the Scale</span> to all 67 counties of Florida.
     </p>
 
-    <div class="hero-badges">
-      <span class="badge badge-gold">Miss Lake Nona</span>
-      <span class="badge badge-sage">Competing · Miss Florida USA 2026</span>
-    </div>
-
-    <div class="event-table">
-      <div class="event-row">
-        <span class="event-key">Event</span>
-        <span class="event-val">Miss Florida USA 2026</span>
+    <!-- Stats -->
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">25M<sup>+</sup></div>
+        <div class="stat-label">Video Views</div>
       </div>
-      <div class="event-row">
-        <span class="event-key">Dates</span>
-        <span class="event-val">July 10–12, 2026</span>
+      <div class="stat-item">
+        <div class="stat-num">80K<sup>+</sup></div>
+        <div class="stat-label">Community Members</div>
       </div>
-      <div class="event-row">
-        <span class="event-key">Venue</span>
-        <span class="event-val">Linda W. Chapin Theater, Orlando, FL</span>
+      <div class="stat-item">
+        <div class="stat-num">67</div>
+        <div class="stat-label">Florida Counties To Impact</div>
       </div>
-      <div class="event-row">
-        <span class="event-key">Platform</span>
-        <span class="event-val gold">Confidence Beyond the Scale</span>
-      </div>
-      <div class="event-row">
-        <span class="event-key">Current Title</span>
-        <span class="event-val">Miss Lake Nona</span>
+      <div class="stat-item">
+        <div class="stat-num">200<sup>+</sup></div>
+        <div class="stat-label">lbs Health Journey Transformation</div>
       </div>
     </div>
 
-    <div class="hero-cta">
-      <a href="#" class="btn-crown">Support the Journey</a>
-      <a href="#" class="btn-ghost">Read the Platform →</a>
+    <!-- Cards row -->
+    <div class="hero-cards">
+      <div class="event-card">
+        <div class="event-row">
+          <span class="event-icon">♛</span>
+          <span class="event-key">Event</span>
+          <span class="event-val">Miss Florida USA 2026</span>
+        </div>
+        <div class="event-row">
+          <span class="event-icon">🗓</span>
+          <span class="event-key">Dates</span>
+          <span class="event-val">July 10–12, 2026</span>
+        </div>
+        <div class="event-row">
+          <span class="event-icon">📍</span>
+          <span class="event-key">Venue</span>
+          <span class="event-val">Linda W. Chapin Theater, Orlando, FL</span>
+        </div>
+        <div class="event-row">
+          <span class="event-icon">☆</span>
+          <span class="event-key">Platform</span>
+          <span class="event-val gold-c">Confidence Beyond the Scale</span>
+        </div>
+        <div class="event-row">
+          <span class="event-icon">♛</span>
+          <span class="event-key">Current Title</span>
+          <span class="event-val">Miss Lake Nona</span>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <div class="quote-label">Current Mission</div>
+        <div class="quote-text">"Redefining what confidence looks like for women."</div>
+        <div class="quote-sig">Alaias</div>
+      </div>
+    </div>
+
+    <!-- Featured in -->
+    <div class="hero-featured">
+      <span class="featured-label">Featured In &amp; Partnerships</span>
+      <div class="featured-rule"></div>
+      <div class="featured-logos">
+        <span class="feat-logo">EA Sports</span>
+        <span class="feat-logo">YouTube</span>
+        <span class="feat-logo">Miss Florida USA</span>
+        <span class="feat-logo">NCAA Div I</span>
+        <span class="feat-logo">The Health Co.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: photo -->
+  <div class="hero-right">
+    <div class="hero-photo">
+      <div class="hero-photo-placeholder">Carlos editorial headshot<br>full-bleed · edge to edge<br><br>Replace with:<br>assets/PageantHeadshot.jpg</div>
+    </div>
+    <div class="hero-photo-gradient"></div>
+    <div class="hero-photo-script">
+      "This is bigger<br>than a crown.<br>This is <em>legacy.</em>"
     </div>
   </div>
 
-</div>
-
-<div class="mockup-note">
-  <div class="note-item">
-    <div class="note-label">What changed</div>
-    <div class="note-text">Left panel is now full-bleed top-to-bottom — your Carlos headshot fills the entire half with no padding or gaps. A subtle gradient overlay keeps the panels connected.</div>
-  </div>
-  <div class="note-item">
-    <div class="note-label">Typography</div>
-    <div class="note-text">Name is larger and bolder. Platform quote is surfaced above the bio. Gold divider anchors the headline before the copy block.</div>
-  </div>
-  <div class="note-item">
-    <div class="note-label">New elements</div>
-    <div class="note-text">Two CTA buttons added: "Support the Journey" (gold) and "Read the Platform" (ghost). Thin gold vertical rule between panels adds editorial polish.</div>
-  </div>
-  <div class="note-item">
-    <div class="note-label">What's the same</div>
-    <div class="note-text">Event details table, badges, crown label, bio copy — all preserved. This is layout/visual uplift only, no content changes.</div>
-  </div>
 </div>
 
 </body>
