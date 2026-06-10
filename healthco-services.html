@@ -246,6 +246,47 @@
   .partnership-item::before {
     content: '→'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; margin-top: 0.15rem;
   }
+  /* ── PARTNERS STRIP ── */
+  .partners-strip {
+    margin-top: 3.5rem;
+    border-top: 1px solid rgba(240,236,228,0.07);
+    border-bottom: 1px solid rgba(240,236,228,0.07);
+    padding: 1.8rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .partners-strip-label {
+    font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,236,228,0.2); margin-bottom: 1.2rem; display: block;
+  }
+  .partners-track-wrapper {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+  .partners-track {
+    display: flex; gap: 0; white-space: nowrap;
+    animation: partners-scroll 32s linear infinite;
+  }
+  .partners-track:hover { animation-play-state: paused; }
+  .partners-set {
+    display: flex; align-items: center; gap: 0; flex-shrink: 0;
+  }
+  .partner-name {
+    font-family: var(--font-serif); font-size: 1.05rem; font-weight: 300;
+    color: rgba(240,236,228,0.3); letter-spacing: 0.04em;
+    padding: 0 2.2rem; white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .partners-track:hover .partner-name:hover { color: rgba(240,236,228,0.75); }
+  .partner-dot {
+    color: var(--gold); font-size: 0.5rem; opacity: 0.4; flex-shrink: 0;
+  }
+  @keyframes partners-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   .partnerships-cta-row {
     margin-top: 3.5rem; display: flex; align-items: center; justify-content: space-between;
     border-top: 1px solid rgba(240,236,228,0.07); padding-top: 2.5rem;
@@ -770,6 +811,54 @@
     <div class="partnership-item">Event Partnerships</div>
     <div class="partnership-item">Custom Campaign Activations</div>
   </div>
+  <!-- PARTNERS STRIP -->
+  <div class="partners-strip">
+    <span class="partners-strip-label">Selected Partners</span>
+    <div class="partners-track-wrapper">
+      <div class="partners-track">
+        <div class="partners-set">
+          <span class="partner-name">AG1</span><span class="partner-dot">·</span>
+          <span class="partner-name">WHOOP</span><span class="partner-dot">·</span>
+          <span class="partner-name">OrangeTheory</span><span class="partner-dot">·</span>
+          <span class="partner-name">Orgain</span><span class="partner-dot">·</span>
+          <span class="partner-name">Heritage Store</span><span class="partner-dot">·</span>
+          <span class="partner-name">Solaray</span><span class="partner-dot">·</span>
+          <span class="partner-name">TULA</span><span class="partner-dot">·</span>
+          <span class="partner-name">Aveeno</span><span class="partner-dot">·</span>
+          <span class="partner-name">Better Being</span><span class="partner-dot">·</span>
+          <span class="partner-name">Grüns</span><span class="partner-dot">·</span>
+          <span class="partner-name">Halara</span><span class="partner-dot">·</span>
+          <span class="partner-name">Meridian</span><span class="partner-dot">·</span>
+          <span class="partner-name">Ativafit</span><span class="partner-dot">·</span>
+          <span class="partner-name">Nuritas</span><span class="partner-dot">·</span>
+          <span class="partner-name">Caliwater</span><span class="partner-dot">·</span>
+          <span class="partner-name">TikTok Lite</span><span class="partner-dot">·</span>
+          <span class="partner-name">ProSupps</span><span class="partner-dot">·</span>
+        </div>
+        <!-- duplicate for seamless loop -->
+        <div class="partners-set" aria-hidden="true">
+          <span class="partner-name">AG1</span><span class="partner-dot">·</span>
+          <span class="partner-name">WHOOP</span><span class="partner-dot">·</span>
+          <span class="partner-name">OrangeTheory</span><span class="partner-dot">·</span>
+          <span class="partner-name">Orgain</span><span class="partner-dot">·</span>
+          <span class="partner-name">Heritage Store</span><span class="partner-dot">·</span>
+          <span class="partner-name">Solaray</span><span class="partner-dot">·</span>
+          <span class="partner-name">TULA</span><span class="partner-dot">·</span>
+          <span class="partner-name">Aveeno</span><span class="partner-dot">·</span>
+          <span class="partner-name">Better Being</span><span class="partner-dot">·</span>
+          <span class="partner-name">Grüns</span><span class="partner-dot">·</span>
+          <span class="partner-name">Halara</span><span class="partner-dot">·</span>
+          <span class="partner-name">Meridian</span><span class="partner-dot">·</span>
+          <span class="partner-name">Ativafit</span><span class="partner-dot">·</span>
+          <span class="partner-name">Nuritas</span><span class="partner-dot">·</span>
+          <span class="partner-name">Caliwater</span><span class="partner-dot">·</span>
+          <span class="partner-name">TikTok Lite</span><span class="partner-dot">·</span>
+          <span class="partner-name">ProSupps</span><span class="partner-dot">·</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="partnerships-cta-row">
     <a href="healthco-brand-overview.html#pillars" class="partnerships-learn">Learn more about Alaias.Fit →</a>
     <a href="mailto:management@alaias-bertrand.com?subject=Brand%20Partnership%20Inquiry" class="btn-partner-inquiry">Inquire About A Partnership</a>
