@@ -123,6 +123,13 @@
   .stat-num {
     font-family: var(--font-serif); font-size: 1.7rem; font-weight: 300;
     color: var(--cream); line-height: 1; margin-bottom: 0.2rem;
+    transition: color 0.3s;
+  }
+  .stat-num.counted { color: var(--gold-lt); animation: stat-flash 0.4s ease forwards; }
+  @keyframes stat-flash {
+    0%   { color: var(--gold-lt); }
+    60%  { color: var(--cream); }
+    100% { color: var(--cream); }
   }
   .stat-label { font-size: 0.6rem; color: rgba(240,236,228,0.3); line-height: 1.4; }
 
@@ -685,15 +692,15 @@
 
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num">27M+</div>
+        <div class="stat-num" data-count="27" data-suffix="M+">27M+</div>
         <div class="stat-label">Video Views</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">150K+</div>
+        <div class="stat-num" data-count="150" data-suffix="K+">150K+</div>
         <div class="stat-label">Community Members</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">75+</div>
+        <div class="stat-num" data-count="75" data-suffix="+">75+</div>
         <div class="stat-label">lbs Weight Loss Journey</div>
       </div>
     </div>
@@ -1116,6 +1123,46 @@
       btn.setAttribute('aria-expanded', 'false');
     }));
   }
+
+  /* Count-up animation for hero stats */
+  (function () {
+    const els = document.querySelectorAll('.stat-num[data-count]');
+    if (!els.length) return;
+
+    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+    function animateCount(el) {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = Math.round(easeOutQuart(progress) * target);
+        el.textContent = value + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = target + suffix;
+          el.classList.add('counted');
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    els.forEach(function (el) { observer.observe(el); });
+  })();
 </script>
 </body>
 </html>
