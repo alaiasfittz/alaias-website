@@ -83,7 +83,7 @@
 
   .hero-left {
     display: flex; flex-direction: column; justify-content: center;
-    padding: 9rem 4rem 5rem 5rem;
+    padding: 9rem 4rem 10rem 5rem;
     position: relative; z-index: 1;
   }
 
@@ -214,13 +214,14 @@
     text-align: center; line-height: 1.9; max-width: 200px;
   }
 
-  /* ── HERO CREDIBILITY (left column, bottom — dark panel) ── */
+  /* ── HERO CREDIBILITY — full-width band pinned to hero bottom ── */
   .hero-credibility {
-    /* bleed to the edges of hero-left padding */
-    margin: 0 -4rem -5rem -5rem;
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
     padding: 2.2rem 5rem 2.8rem;
-    background: linear-gradient(to bottom, transparent, rgba(14,22,13,0.88) 35%);
+    background: linear-gradient(to bottom, transparent, rgba(14,22,13,0.92) 35%);
+    pointer-events: none;
   }
+  .hero-credibility * { pointer-events: auto; }
   .cred-cat-label {
     display: block; font-size: 0.68rem; letter-spacing: 0.35em;
     text-transform: uppercase; color: var(--gold); opacity: 0.85;
@@ -892,7 +893,7 @@
     .hero-right { min-height: 70vw; order: -1; }
     .hero-left { padding: 3rem 1.5rem 3.5rem; }
     .hero-name .first, .hero-name .last { font-size: clamp(4rem, 16vw, 7rem); }
-    .hero-credibility { margin: 0 -1.5rem -3rem; padding: 2rem 1.5rem 2.5rem; }
+    .hero-credibility { padding: 2rem 1.5rem 2.5rem; }
     .cred-logo-row { gap: 0.4rem 1.2rem; }
 
     .data-section { padding: 4rem 1.5rem 0; }
