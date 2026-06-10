@@ -520,40 +520,56 @@
   }
 
   /* PRESS FEATURE */
-  .press-section { background: var(--linen); padding: 5rem 5rem; }
-  .press-section .section-label { margin-bottom: 2.5rem; }
-  .press-card {
-    background: var(--charcoal); border-radius: 2px;
-    padding: 5rem; display: grid; grid-template-columns: 1fr auto;
-    gap: 4rem; align-items: start;
+  .press-section {
+    background: var(--charcoal);
+    padding: 6rem 5rem;
+    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; min-height: 520px;
   }
+  .press-bg {
+    position: absolute; inset: 0;
+    opacity: 0; transition: opacity 0.7s ease, transform 0.9s ease;
+    transform: scale(1.03); z-index: 0;
+  }
+  .press-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center right; display: block; }
+  .press-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(28,28,26,0.92) 0%, rgba(28,28,26,0.75) 45%, rgba(28,28,26,0.35) 100%);
+  }
+  .press-section.reveal-active .press-bg { opacity: 1; transform: scale(1); }
+  .press-copy { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; }
+  .press-copy .section-label { margin-bottom: 2rem; }
   .press-outlet {
     font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--sage-pale); margin-bottom: 1.5rem;
   }
   .press-headline {
     font-family: var(--font-serif);
-    font-size: clamp(1.8rem, 3vw, 3.2rem); font-weight: 300;
+    font-size: clamp(1.8rem, 2.8vw, 3.2rem); font-weight: 300;
     color: var(--cream); line-height: 1.1; margin-bottom: 1.8rem;
   }
   .press-body {
     font-size: 0.85rem; line-height: 1.8;
-    color: rgba(240,236,228,0.45); max-width: 560px; margin-bottom: 2rem;
+    color: rgba(240,236,228,0.65); max-width: 480px; margin-bottom: 2.5rem;
   }
   .btn-article {
-    border: 1px solid rgba(240,236,228,0.25); color: var(--cream);
-    background: transparent; padding: 0.75rem 1.8rem; border-radius: 3rem;
+    border: 1px solid rgba(240,236,228,0.25); color: var(--cream); background: transparent;
+    padding: 0.75rem 1.8rem; border-radius: 3rem;
     font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
     font-family: var(--font-sans); cursor: pointer; text-decoration: none;
-    display: inline-block; transition: all 0.2s;
+    display: inline-block; transition: all 0.2s; align-self: flex-start;
   }
-  .btn-article:hover { background: rgba(240,236,228,0.07); }
+  .btn-article:hover { background: rgba(240,236,228,0.06); border-color: rgba(240,236,228,0.5); }
   .press-ghost {
-    font-family: var(--font-serif); font-size: clamp(3rem, 6vw, 7rem);
-    font-weight: 300; font-style: italic;
-    color: rgba(240,236,228,0.05); line-height: 1; text-align: right;
-    white-space: nowrap; align-self: center;
+    position: relative; z-index: 2;
+    font-family: var(--font-serif);
+    font-size: clamp(4rem, 7vw, 9rem); font-weight: 300;
+    color: rgba(240,236,228,0.06); line-height: 1; text-align: right;
+    letter-spacing: -0.02em; pointer-events: none; user-select: none;
+    transition: color 0.7s ease;
   }
+  .press-section.reveal-active .press-ghost { color: rgba(240,236,228,0.10); }
 
   /* CTA */
   .cta-section { background: var(--near-black); padding: 9rem 5rem; text-align: center; }
@@ -848,8 +864,8 @@
   <div class="program-left">
     <div class="section-label light">Signature Initiative</div>
     <h2 class="program-headline">Healthy,<br><em>Anywhere.</em></h2>
-    <p class="program-desc">I'm simplifying healthy living for women across Florida — through workshops, digital content, and practical tools that work no matter your budget or background. What I teach in real life, I scale through content. From rooms to millions.</p>
-    <p class="program-desc" style="margin-top:0;">In partnership with Second Harvest Food Bank of Central Florida and Feeding Florida — because access to healthy food and access to healthy knowledge go hand in hand.</p>
+    <p class="program-desc">I'm simplifying healthy living for women across Florida through workshops, digital content, and practical tools that work no matter your budget or background. What I teach in real life, I scale through content. From rooms to millions.</p>
+    <p class="program-desc" style="margin-top:0;">In partnership with <a href="https://feedhopenow.org" target="_blank" rel="noopener noreferrer" style="color:inherit;border-bottom:1px solid rgba(240,236,228,0.25);text-decoration:none;">Second Harvest Food Bank of Central Florida</a> and Feeding Florida because access to healthy food and access to healthy knowledge go hand in hand.</p>
   </div>
   <div class="program-right">
     <div class="program-item">
@@ -888,7 +904,7 @@
       <h2 class="hunger-headline">Hunger in<br><em>Central Florida.</em></h2>
     </div>
     <p class="hunger-context">
-      You cannot talk about women's health without talking about food access. These numbers are why the "Healthy, Anywhere" initiative partners directly with local food organizations — health education and food security must go together.<br><br>
+      You cannot talk about women's health without talking about food access. These numbers are why the "Healthy, Anywhere" initiative partners directly with local food organizations because health education and food security must go together.<br><br>
       Source: <a href="https://feedhopenow.org/our-work/hunger-in-central-florida/map-the-meal-gap-report/" target="_blank">Second Harvest Food Bank · Map the Meal Gap Report</a>
     </p>
   </div>
@@ -911,7 +927,7 @@
     </div>
   </div>
   <div class="hunger-partner">
-    <span class="hunger-partner-label">Future Nonprofit Partner</span>
+    <span class="hunger-partner-label">Nonprofit Partner</span>
     <span class="hunger-partner-name">Second Harvest Food Bank of Central Florida · Feeding Florida</span>
   </div>
 </section>
@@ -921,7 +937,7 @@
   <div class="resources-header">
     <div class="section-label">Free Resources · In Development</div>
     <h2>Tools for the <em>journey.</em></h2>
-    <p>Three guides built for women on the go — distributed at appearances, speaking events, and downloadable directly from this page. In future partnership with the Miss Florida USA organization.</p>
+    <p>Three guides distributed at appearances, speaking events, and downloadable directly from this page. In future partnership with the Miss Florida USA organization.</p>
   </div>
   <div class="guides-grid">
     <div class="guide-card">
@@ -1048,6 +1064,22 @@
       <div class="sponsor-name">Letter Media</div>
       <div class="sponsor-type">Media Partner</div>
     </div>
+    <div class="sponsor-cell">
+      <div class="sponsor-name">Tempra Studio</div>
+      <div class="sponsor-type">Creative Partner</div>
+    </div>
+    <div class="sponsor-cell">
+      <div class="sponsor-name">Eternal Films &amp; Photo</div>
+      <div class="sponsor-type">Media Partner</div>
+    </div>
+    <div class="sponsor-cell">
+      <div class="sponsor-name">Stretch Lab</div>
+      <div class="sponsor-type">Wellness Partner</div>
+    </div>
+    <div class="sponsor-cell">
+      <div class="sponsor-name">Nia Consulting</div>
+      <div class="sponsor-type">Consulting Partner</div>
+    </div>
   </div>
 </section>
 
@@ -1056,17 +1088,16 @@
   <div class="market-left">
     <div class="section-label light">Why She's Ready for the Job</div>
     <h2 class="market-headline">The platform<br>is already <em>built.</em></h2>
-    <p class="market-desc">Most titleholders build their platform after the crown. Alaias walks in with 26M+ YouTube views, a team of six, active brand partnerships, and a community of 100,000+ women already following the mission. The reach is real. The impact is documented. The work is already happening.</p>
-    <p class="market-desc">"I have to hook people in 3 seconds — that's what I do every day. And that's why I'm ready for the job."</p>
+    <p class="market-desc">Most titleholders build their platform after the crown. Alaias walks in with 27M+ YouTube views, a team of six, active brand partnerships, and a community of 150,000+ women already following the mission. The reach is real. The impact is documented. The work is already happening.</p>
   </div>
   <div class="market-right">
     <div class="market-stat">
-      <div class="market-stat-num">26M+</div>
+      <div class="market-stat-num">27M+</div>
       <div class="market-stat-label">YouTube Views</div>
     </div>
     <div class="market-stat">
-      <div class="market-stat-num">130K+</div>
-      <div class="market-stat-label">Subscribers & Followers</div>
+      <div class="market-stat-num">150K+</div>
+      <div class="market-stat-label">Followers Across Platforms</div>
     </div>
     <div class="market-stat">
       <div class="market-stat-num">1M+</div>
@@ -1080,17 +1111,20 @@
 </section>
 
 <!-- PRESS -->
-<section class="press-section">
-  <div class="section-label">In the Press</div>
-  <div class="press-card">
-    <div>
-      <div class="press-outlet">Business Insider</div>
-      <h2 class="press-headline">From Corporate Brand Strategist to Content CEO: How Alaias Fittz Is Building a Wellness Media Empire</h2>
-      <p class="press-body">After four years balancing a full-time role at EA Sports with building her own media company, Alaias Fittz made the leap — and hasn't looked back. With 26 million YouTube views and a growing consulting practice, she's redefining what it means to be a health and wellness creator in 2025.</p>
-      <a href="#" class="btn-article">Read the Article →</a>
-    </div>
-    <div class="press-ghost">Business<br>Insider</div>
+<section class="press-section" id="press-section-pageant">
+  <div class="press-bg">
+    <img src="assets/BusinessInsider.jpeg" alt="" />
   </div>
+  <div class="press-copy">
+    <div class="section-label light">In the Press</div>
+    <div class="press-outlet">Business Insider</div>
+    <h2 class="press-headline">How Alaias Fittz Lost 75 Pounds and Kept It Off</h2>
+    <p class="press-body">Before losing 75 pounds, Alaias spent years chasing restrictive diets, quick fixes, and unsustainable solutions that left her feeling frustrated and defeated.<br><br>Her breakthrough came when she stopped focusing on becoming smaller and started focusing on becoming healthier. By building simple, sustainable habits and changing the way she thought about fitness, she transformed her life and maintained that transformation for more than six years.<br><br>Her story was later featured by Business Insider as an example of long-term, sustainable weight loss.</p>
+    <a href="https://www.businessinsider.com/woman-lost-75-pounds-making-2-simple-lifestyle-changes-2024-10"
+       target="_blank" rel="noopener noreferrer"
+       class="btn-article" id="btn-article-pageant">Read the Article →</a>
+  </div>
+  <div class="press-ghost">Business<br>Insider</div>
 </section>
 
 <!-- CTA -->
@@ -1175,6 +1209,14 @@
 
     els.forEach(function (el) { observer.observe(el); });
   })();
+
+  /* Business Insider press section reveal on button hover */
+  const articleBtnPageant = document.getElementById('btn-article-pageant');
+  const pressSectionPageant = document.getElementById('press-section-pageant');
+  if (articleBtnPageant && pressSectionPageant) {
+    articleBtnPageant.addEventListener('mouseenter', () => pressSectionPageant.classList.add('reveal-active'));
+    articleBtnPageant.addEventListener('mouseleave', () => pressSectionPageant.classList.remove('reveal-active'));
+  }
 </script>
 </body>
 </html>
