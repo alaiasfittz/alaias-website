@@ -180,7 +180,7 @@
   /* right: full-bleed photo */
   .hero-right {
     position: relative; overflow: hidden;
-    background: var(--forest-mid);
+    background: var(--forest);
   }
   .hero-photo-main {
     position: absolute; inset: 0;
@@ -196,11 +196,17 @@
     background: linear-gradient(to right, var(--forest), transparent);
     z-index: 1; pointer-events: none;
   }
+  /* bottom fade: unify the bottom edge color across full width */
+  .hero-photo-main::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 35%;
+    background: linear-gradient(to bottom, transparent, var(--forest));
+    z-index: 1; pointer-events: none;
+  }
   /* placeholder state (before photo is added) */
   .hero-photo-placeholder {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
-    background: var(--forest-mid);
+    background: var(--forest);
   }
   .hero-photo-placeholder span {
     font-family: var(--font-serif); font-style: italic;
