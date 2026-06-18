@@ -391,6 +391,80 @@
     font-size: 0.8rem; line-height: 1.7; color: rgba(240,236,228,0.55);
     margin-bottom: 1.5rem;
   }
+  /* Download modal */
+  .guide-modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .guide-modal-overlay.open { display: flex; }
+  .guide-modal {
+    background: var(--linen); border-radius: 4px;
+    padding: 3rem 2.8rem; max-width: 440px; width: 100%;
+    position: relative;
+  }
+  .guide-modal-close {
+    position: absolute; top: 1.2rem; right: 1.4rem;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.4rem; color: var(--text-muted); line-height: 1;
+  }
+  .guide-modal-series {
+    font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .guide-modal-title {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 300;
+    font-style: italic; color: var(--text-dark); line-height: 1.1;
+    margin-bottom: 0.8rem;
+  }
+  .guide-modal-desc {
+    font-size: 0.8rem; color: var(--text-mid); line-height: 1.65;
+    margin-bottom: 1.8rem;
+  }
+  .guide-modal-form { display: flex; flex-direction: column; gap: 0.9rem; }
+  .guide-modal-form input {
+    width: 100%; padding: 0.85rem 1rem;
+    border: 1px solid rgba(0,0,0,0.15); border-radius: 2px;
+    font-family: var(--font-sans); font-size: 0.85rem;
+    color: var(--text-dark); background: #fff;
+    outline: none; transition: border-color 0.2s;
+  }
+  .guide-modal-form input:focus { border-color: var(--sage); }
+  .guide-modal-submit {
+    background: var(--forest); color: var(--cream);
+    border: none; border-radius: 2px; padding: 0.95rem 1.5rem;
+    font-family: var(--font-sans); font-size: 0.72rem;
+    font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s; margin-top: 0.3rem;
+  }
+  .guide-modal-submit:hover { background: var(--forest-mid); }
+  .guide-modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .guide-modal-success { display: none; text-align: center; padding: 1rem 0; }
+  .guide-modal-success.visible { display: block; }
+  .guide-modal-success p {
+    font-size: 0.85rem; color: var(--text-mid); margin-bottom: 1.5rem; line-height: 1.6;
+  }
+  .guide-download-btn {
+    display: inline-block; background: var(--gold); color: var(--forest);
+    text-decoration: none; padding: 0.9rem 2rem; border-radius: 2px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; transition: background 0.2s;
+  }
+  .guide-download-btn:hover { background: var(--gold-lt); }
+  .guide-modal-error {
+    font-size: 0.75rem; color: #c0392b; margin-top: 0.5rem; display: none;
+  }
+  .guide-modal-error.visible { display: block; }
+  /* Download trigger button on card */
+  .guide-download-trigger {
+    display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--cream);
+    background: var(--forest-mid); border: 1px solid rgba(201,169,110,0.3);
+    padding: 0.6rem 1.2rem; border-radius: 2px; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .guide-download-trigger:hover { background: var(--forest-lt); border-color: var(--gold); }
+
   .guide-badge {
     font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--gold); background: rgba(201,169,110,0.1);
@@ -989,7 +1063,7 @@
       </div>
       <div class="guide-card-bottom">
         <p class="guide-card-desc">Beginner-accessible movement frameworks that work anywhere — no gym required. Build the habit first, build the body second.</p>
-        <span class="guide-badge">Coming Soon</span>
+        <button class="guide-download-trigger" onclick="openGuideModal()">Download Guide</button>
       </div>
     </div>
     <div class="guide-card">
@@ -1285,6 +1359,65 @@
       });
     });
   })();
+</script>
+
+<!-- EXERCISE GUIDE DOWNLOAD MODAL -->
+<div class="guide-modal-overlay" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+  <div class="guide-modal">
+    <button class="guide-modal-close" onclick="closeGuideModal()" aria-label="Close">×</button>
+    <div class="guide-modal-series">Healthy, Anywhere Series</div>
+    <div class="guide-modal-title" id="guideModalTitle">Exercise Guide</div>
+    <p class="guide-modal-desc">Enter your name and email to get instant access to the free Exercise Guide — beginner-friendly movement frameworks you can do anywhere.</p>
+
+    <div id="guideFormWrap">
+      <form class="guide-modal-form" id="guideForm">
+        <input type="text" name="name" placeholder="First Name" required autocomplete="given-name" />
+        <input type="email" name="email" placeholder="Email Address" required autocomplete="email" />
+        <!-- hidden field so you know which guide they requested -->
+        <input type="hidden" name="guide" value="Exercise Guide — Healthy Anywhere Series" />
+        <div class="guide-modal-error" id="guideFormError">Something went wrong. Please try again.</div>
+        <button type="submit" class="guide-modal-submit" id="guideSubmitBtn">Get the Guide →</button>
+      </form>
+    </div>
+
+    <div class="guide-modal-success" id="guideSuccess">
+      <p>You're all set! Click below to download your Exercise Guide.</p>
+      <a href="assets/Exercise Guide - Healthy Anywhere.pdf" download class="guide-download-btn">⬇ Download the Guide</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+<script>
+  function openGuideModal() {
+    document.getElementById('guideModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeGuideModal() {
+    document.getElementById('guideModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('guideModal').addEventListener('click', function(e) {
+    if (e.target === this) closeGuideModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeGuideModal();
+  });
+
+  window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', {
+    formElement: '#guideForm',
+    formId: 'xnjyyyql',
+    onSuccess: function() {
+      document.getElementById('guideFormWrap').style.display = 'none';
+      document.getElementById('guideSuccess').classList.add('visible');
+    },
+    onError: function() {
+      var err = document.getElementById('guideFormError');
+      err.classList.add('visible');
+      document.getElementById('guideSubmitBtn').disabled = false;
+    }
+  });
 </script>
 </body>
 </html>
