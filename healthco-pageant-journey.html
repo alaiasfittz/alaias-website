@@ -1052,7 +1052,7 @@
       </div>
       <div class="guide-card-bottom">
         <p class="guide-card-desc">Simple, accessible meal ideas, grocery lists, and food frameworks for real women with real budgets and real schedules.</p>
-        <span class="guide-badge">Coming Soon</span>
+        <button class="guide-download-trigger" onclick="openGuideModal('Nutrition Guide', 'assets/Nutrition Guide - Healthy Anywhere.pdf', 'Nutrition Guide — Healthy Anywhere Series')">Download Guide</button>
       </div>
     </div>
     <div class="guide-card">
@@ -1063,7 +1063,7 @@
       </div>
       <div class="guide-card-bottom">
         <p class="guide-card-desc">Beginner-accessible movement frameworks that work anywhere — no gym required. Build the habit first, build the body second.</p>
-        <button class="guide-download-trigger" onclick="openGuideModal()">Download Guide</button>
+        <button class="guide-download-trigger" onclick="openGuideModal('Exercise Guide', 'assets/Exercise Guide - Healthy Anywhere.pdf', 'Exercise Guide — Healthy Anywhere Series')">Download Guide</button>
       </div>
     </div>
     <div class="guide-card">
@@ -1382,14 +1382,23 @@
 
     <div class="guide-modal-success" id="guideSuccess">
       <p>You're all set! Click below to download your Exercise Guide.</p>
-      <a href="assets/Exercise Guide - Healthy Anywhere.pdf" download class="guide-download-btn">⬇ Download the Guide</a>
+      <a href="#" id="guideDownloadBtn" download class="guide-download-btn">⬇ Download the Guide</a>
     </div>
   </div>
 </div>
 
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <script>
-  function openGuideModal() {
+  function openGuideModal(title, filePath, hiddenValue) {
+    document.getElementById('guideModalTitle').textContent = title || 'Exercise Guide';
+    document.querySelector('#guideForm input[name="guide"]').value = hiddenValue || title;
+    document.getElementById('guideDownloadBtn').href = filePath || '#';
+    // reset form state
+    document.getElementById('guideFormWrap').style.display = '';
+    document.getElementById('guideSuccess').classList.remove('visible');
+    document.getElementById('guideFormError').classList.remove('visible');
+    document.getElementById('guideForm').reset();
+    document.getElementById('guideSubmitBtn').disabled = false;
     document.getElementById('guideModal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
