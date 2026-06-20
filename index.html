@@ -832,6 +832,66 @@
   }
 
   /* ── CTA ── */
+  /* SHRED STORE */
+  .shred-section {
+    background: var(--near-black); padding: 8rem 5rem;
+  }
+  .shred-header { text-align: center; margin-bottom: 5rem; }
+  .shred-headline {
+    font-family: var(--font-serif); font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300; color: var(--cream); line-height: 1.0; margin-bottom: 1rem;
+  }
+  .shred-headline em { font-style: italic; color: var(--gold); }
+  .shred-sub {
+    font-size: 0.85rem; color: rgba(240,236,228,0.4); letter-spacing: 0.06em;
+  }
+  .shred-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .shred-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(240,236,228,0.08);
+    border-radius: 4px; padding: 2.5rem 2rem; display: flex;
+    flex-direction: column; position: relative;
+  }
+  .shred-card--featured {
+    background: rgba(201,169,110,0.06); border-color: rgba(201,169,110,0.25);
+  }
+  .shred-card-badge {
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--forest);
+    font-size: 0.55rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 0 0 4px 4px;
+  }
+  .shred-card-top { flex: 1; margin-bottom: 1.5rem; }
+  .shred-card-label {
+    font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem; opacity: 0.7;
+  }
+  .shred-card-title {
+    font-family: var(--font-serif); font-size: 1.6rem; font-weight: 300;
+    font-style: italic; color: var(--cream); line-height: 1.1; margin-bottom: 1rem;
+  }
+  .shred-card-price {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 300;
+    color: var(--cream); margin-bottom: 1rem;
+  }
+  .shred-card--featured .shred-card-price { color: var(--gold-lt); }
+  .shred-card-desc {
+    font-size: 0.78rem; line-height: 1.7; color: rgba(240,236,228,0.45);
+  }
+  .shred-card-buy { margin-top: auto; }
+  /* Override Shopify button to match site style */
+  .shred-card-buy .shopify-buy__btn {
+    background: var(--forest) !important; border-radius: 2px !important;
+    font-family: var(--font-sans) !important;
+    letter-spacing: 0.1em !important; width: 100% !important;
+  }
+  @media (max-width: 768px) {
+    .shred-section { padding: 5rem 1.5rem; }
+    .shred-grid { grid-template-columns: 1fr; }
+  }
+
   /* BOOK TEASER */
   .book-teaser-section {
     background: var(--forest); padding: 9rem 5rem;
@@ -1295,6 +1355,52 @@
   </div>
 </section>
 
+<!-- SHRED STORE -->
+<section class="shred-section" id="shred">
+  <div class="shred-header">
+    <div class="section-label" style="color:var(--gold);">The SHRED Collection</div>
+    <h2 class="shred-headline">Built to get<br><em>results.</em></h2>
+    <p class="shred-sub">Three guides. One system. Start where you are.</p>
+  </div>
+  <div class="shred-grid">
+
+    <!-- Product 1: Nutrition Guide -->
+    <div class="shred-card">
+      <div class="shred-card-top">
+        <div class="shred-card-label">Nutrition</div>
+        <div class="shred-card-title">SHRED:<br>Nutrition Guide</div>
+        <div class="shred-card-price">$24.99</div>
+        <p class="shred-card-desc">The book and nutrition plan. Learn how to fuel your body for sustainable fat loss — no crash diets, no guesswork.</p>
+      </div>
+      <div class="shred-card-buy" id="product-component-1781987201951"></div>
+    </div>
+
+    <!-- Product 2: 12-Week Workout Plan — featured -->
+    <div class="shred-card shred-card--featured">
+      <div class="shred-card-badge">Most Popular</div>
+      <div class="shred-card-top">
+        <div class="shred-card-label">Training</div>
+        <div class="shred-card-title">SHRED:<br>12-Week Workout Plan</div>
+        <div class="shred-card-price">$44.99</div>
+        <p class="shred-card-desc">12 weeks of structured workouts for fat loss, strength, and mobility. Designed for real life — no excuses, just results.</p>
+      </div>
+      <div class="shred-card-buy" id="product-component-1781987101145"></div>
+    </div>
+
+    <!-- Product 3: Complete Bundle -->
+    <div class="shred-card">
+      <div class="shred-card-top">
+        <div class="shred-card-label">Bundle</div>
+        <div class="shred-card-title">SHRED:<br>Complete Bundle</div>
+        <div class="shred-card-price">$54.99</div>
+        <p class="shred-card-desc">Everything together — workouts and nutrition in one complete system. The full transformation experience.</p>
+      </div>
+      <div class="shred-card-buy" id="product-component-1781987169958"></div>
+    </div>
+
+  </div>
+</section>
+
 <!-- PAGEANT -->
 <section class="pageant-section" id="pageant">
   <div class="pageant-left">
@@ -1407,6 +1513,60 @@
     }));
   }
 
+</script>
+
+<!-- SHOPIFY BUY BUTTONS -->
+<script type="text/javascript">
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  function loadScript(cb) {
+    var s = document.createElement('script');
+    s.async = true; s.src = scriptURL;
+    (document.head || document.body).appendChild(s);
+    s.onload = cb;
+  }
+  function initAll() {
+    var client = ShopifyBuy.buildClient({
+      domain: '4f0c7e.myshopify.com',
+      storefrontAccessToken: '67c0b6ebcde063c5f841657ce30ce838',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      var btnOpts = {
+        "button": {
+          ":hover": { "background-color": "#2d4228" },
+          "background-color": "#233320",
+          ":focus": { "background-color": "#2d4228" },
+          "border-radius": "2px",
+          "width": "100%"
+        }
+      };
+      var baseOptions = {
+        "product": {
+          "styles": { "button": btnOpts.button },
+          "buttonDestination": "checkout",
+          "text": { "button": "Buy Now" },
+          "contents": { "img": false, "title": false, "price": false }
+        },
+        "cart": {
+          "styles": { "button": { ":hover": { "background-color": "#2d4228" }, "background-color": "#233320", "border-radius": "2px" } },
+          "text": { "total": "Subtotal", "button": "Checkout" }
+        },
+        "toggle": {
+          "styles": { "toggle": { "background-color": "#233320", ":hover": { "background-color": "#2d4228" } } }
+        }
+      };
+      // Product 1 — Nutrition Guide
+      ui.createComponent('product', { id: '9469919166761', node: document.getElementById('product-component-1781987201951'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: baseOptions });
+      // Product 2 — 12-Week Workout Plan
+      ui.createComponent('product', { id: '9469703192873', node: document.getElementById('product-component-1781987101145'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: baseOptions });
+      // Product 3 — Complete Bundle
+      ui.createComponent('product', { id: '9469911499049', node: document.getElementById('product-component-1781987169958'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: baseOptions });
+    });
+  }
+  if (window.ShopifyBuy && window.ShopifyBuy.UI) { initAll(); }
+  else if (window.ShopifyBuy) { ShopifyBuy.UI ? initAll() : loadScript(initAll); }
+  else { loadScript(initAll); }
+})();
 </script>
 </body>
 </html>
