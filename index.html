@@ -879,7 +879,29 @@
   .shred-card--featured .shred-card-price { color: var(--gold-lt); }
   .shred-card-desc {
     font-size: 0.78rem; line-height: 1.7; color: rgba(240,236,228,0.45);
+    margin-bottom: 1.2rem;
   }
+  .shred-card-list {
+    list-style: none; margin: 0 0 1.2rem; padding: 0;
+    display: flex; flex-direction: column; gap: 0.45rem;
+  }
+  .shred-card-list li {
+    font-size: 0.75rem; color: rgba(240,236,228,0.5); line-height: 1.5;
+    padding-left: 1rem; position: relative;
+  }
+  .shred-card-list li::before {
+    content: '·'; position: absolute; left: 0; color: var(--gold); opacity: 0.7;
+  }
+  .shred-card-note {
+    font-size: 0.68rem; color: rgba(240,236,228,0.25); font-style: italic;
+    line-height: 1.5; border-top: 1px solid rgba(240,236,228,0.06);
+    padding-top: 0.9rem; margin-top: 0.4rem;
+  }
+  .shred-footer-note {
+    text-align: center; font-size: 0.72rem; color: rgba(240,236,228,0.25);
+    margin-top: 3.5rem; line-height: 1.6;
+  }
+  .shred-footer-note a { color: rgba(240,236,228,0.4); text-decoration: underline; }
   .shred-card-buy { margin-top: auto; }
   /* Override Shopify button to match site style */
   .shred-card-buy .shopify-buy__btn {
@@ -1370,7 +1392,15 @@
         <div class="shred-card-label">Nutrition</div>
         <div class="shred-card-title">SHRED:<br>Nutrition Guide</div>
         <div class="shred-card-price">$24.99</div>
-        <p class="shred-card-desc">The book and nutrition plan. Learn how to fuel your body for sustainable fat loss — no crash diets, no guesswork.</p>
+        <p class="shred-card-desc">A science-based digital nutrition guide designed to help you understand how to fuel your body with intention and confidence — rooted in sports and dietetics science.</p>
+        <ul class="shred-card-list">
+          <li>Build a sustainable nutrition plan tailored to your body</li>
+          <li>Macro-based eating fundamentals + how to calculate your needs</li>
+          <li>Science-backed insights on metabolism and energy balance</li>
+          <li>12 weeks of structured nutrition education (PDF)</li>
+          <li>Flexible framework — no fixed meal plans, vegan/vegetarian friendly</li>
+        </ul>
+        <p class="shred-card-note">Workouts not included. See the 12-Week Plan or Complete Bundle for training.</p>
       </div>
       <div class="shred-card-buy" id="product-component-1781987201951"></div>
     </div>
@@ -1382,7 +1412,15 @@
         <div class="shred-card-label">Training</div>
         <div class="shred-card-title">SHRED:<br>12-Week Workout Plan</div>
         <div class="shred-card-price">$44.99</div>
-        <p class="shred-card-desc">12 weeks of structured workouts for fat loss, strength, and mobility. Designed for real life — no excuses, just results.</p>
+        <p class="shred-card-desc">A 135-page digital training program with 60+ structured workouts to build strength, improve performance, and move with confidence — at home or in the gym.</p>
+        <ul class="shred-card-list">
+          <li>12 weeks of progressive strength programming</li>
+          <li>500+ dynamic exercises with video demo links</li>
+          <li>Lower body, upper body, full body & core workouts</li>
+          <li>Mobility, stretching & recovery sessions</li>
+          <li>Alternatives for equipment and fitness level</li>
+        </ul>
+        <p class="shred-card-note">Workouts only. For nutrition guidance, see the Nutrition Guide or Complete Bundle.</p>
       </div>
       <div class="shred-card-buy" id="product-component-1781987101145"></div>
     </div>
@@ -1393,12 +1431,21 @@
         <div class="shred-card-label">Bundle</div>
         <div class="shred-card-title">SHRED:<br>Complete Bundle</div>
         <div class="shred-card-price">$54.99</div>
-        <p class="shred-card-desc">Everything together — workouts and nutrition in one complete system. The full transformation experience.</p>
+        <p class="shred-card-desc">Your 12-week total body reset — 225 pages of structured training and science-backed nutrition in one complete system. No crash diets, no quick fixes.</p>
+        <ul class="shred-card-list">
+          <li>Everything in the Nutrition Guide + 12-Week Workout Plan</li>
+          <li>500+ exercises with demo video links</li>
+          <li>Flexible macro framework — vegan & vegetarian friendly</li>
+          <li>BONUS: 8 seasonal recipes (limited time)</li>
+          <li>Educational content on training, metabolism & mindset</li>
+        </ul>
+        <p class="shred-card-note">Includes both training AND nutrition. Best value.</p>
       </div>
       <div class="shred-card-buy" id="product-component-1781987169958"></div>
     </div>
 
   </div>
+  <p class="shred-footer-note">All purchases are instant digital downloads delivered via email and checkout page. This is a digital product — all sales final. Questions? <a href="mailto:mgt@thehealthcompany.studio">mgt@thehealthcompany.studio</a></p>
 </section>
 
 <!-- PAGEANT -->
