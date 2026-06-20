@@ -832,6 +832,44 @@
   }
 
   /* ── CTA ── */
+  /* BOOK TEASER */
+  .book-teaser-section {
+    background: var(--forest); padding: 9rem 5rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .book-teaser-section::before {
+    content: 'TRANSFORM YOUR HEALTH';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: var(--font-serif); font-size: clamp(4rem, 10vw, 12rem);
+    font-weight: 300; font-style: italic; letter-spacing: 0.02em;
+    color: rgba(240,236,228,0.03); white-space: nowrap;
+    pointer-events: none; user-select: none;
+  }
+  .book-teaser-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+  .book-teaser-label {
+    font-size: 0.58rem; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem; opacity: 0.75;
+  }
+  .book-teaser-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3.2rem, 6vw, 6.5rem); font-weight: 300;
+    font-style: italic; color: var(--cream); line-height: 1.0;
+    margin-bottom: 1.8rem; letter-spacing: -0.01em;
+  }
+  .book-teaser-sub {
+    font-size: 0.85rem; font-weight: 300; line-height: 1.8;
+    color: rgba(240,236,228,0.45); margin-bottom: 2.5rem;
+    letter-spacing: 0.02em;
+  }
+  .book-teaser-rule {
+    width: 2rem; height: 1px; background: rgba(201,169,110,0.4);
+    margin: 0 auto 2rem;
+  }
+  .book-teaser-note {
+    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 300;
+    font-style: italic; color: rgba(240,236,228,0.35); letter-spacing: 0.04em;
+  }
+
   .cta-section { background: var(--near-black); padding: 9rem 5rem; text-align: center; }
   .cta-headline {
     font-family: var(--font-serif);
@@ -1300,6 +1338,17 @@
   </div>
   <!-- Ghost wordmark right column -->
   <div class="press-ghost">Business<br>Insider</div>
+</section>
+
+<!-- BOOK TEASER -->
+<section class="book-teaser-section">
+  <div class="book-teaser-inner">
+    <div class="book-teaser-label">Coming</div>
+    <h2 class="book-teaser-title">Transform Your Health</h2>
+    <p class="book-teaser-sub">A book is coming. That's all we're saying for now.</p>
+    <div class="book-teaser-rule"></div>
+    <p class="book-teaser-note">Be prepared.</p>
+  </div>
 </section>
 
 <!-- CTA -->
