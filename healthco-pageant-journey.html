@@ -208,11 +208,12 @@
 
   /* PLATFORM */
   .platform-section {
-    background: var(--linen); padding: 7rem 5rem;
+    background: var(--linen); padding: 8rem 5rem 9rem;
+    text-align: left;
   }
   .platform-intro {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8rem;
-    align-items: end; margin-bottom: 5rem;
+    display: grid; grid-template-columns: 1fr; gap: 0;
+    align-items: end; margin-bottom: 0;
   }
   .section-label {
     font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em;
@@ -231,40 +232,26 @@
     font-style: italic; color: var(--text-mid); line-height: 1.6;
     border-left: 2px solid var(--sage); padding-left: 1.5rem;
   }
-  .goals-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-    background: rgba(0,0,0,0.08);
+  .platform-mission {
+    max-width: 52rem; margin: 4rem auto 0;
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2.5rem;
   }
-  .goal-card {
-    background: var(--warm-white); padding: 3rem 2.5rem;
-    transition: background 0.3s;
+  .platform-rule {
+    width: 3rem; height: 1px; background: var(--sage); opacity: 0.5;
   }
-  .goal-card:hover { background: var(--cream); }
-  .goal-num {
-    font-family: var(--font-serif); font-size: 4rem; font-weight: 300;
-    color: rgba(0,0,0,0.05); line-height: 1; margin-bottom: -0.8rem;
+  .platform-mission-text {
+    font-family: var(--font-serif); font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+    font-weight: 300; font-style: italic;
+    color: var(--text-mid); line-height: 1.65;
   }
-  .goal-tag {
-    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--sage); margin-bottom: 0.6rem;
+  .platform-pillars {
+    display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 1rem;
   }
-  .goal-title {
-    font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400;
-    color: var(--text-dark); line-height: 1.2; margin-bottom: 1rem;
+  .platform-pillar {
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--sage); font-weight: 500;
   }
-  .goal-title em { font-style: italic; color: var(--sage); }
-  .goal-desc {
-    font-size: 0.82rem; line-height: 1.75; color: var(--text-mid);
-    margin-bottom: 1.5rem;
-  }
-  .goal-bullets { list-style: none; }
-  .goal-bullets li {
-    font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;
-    padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06);
-    display: flex; gap: 0.6rem; align-items: baseline;
-  }
-  .goal-bullets li:last-child { border-bottom: none; }
-  .goal-bullets li::before { content: '→'; color: var(--sage); font-size: 0.7rem; flex-shrink: 0; }
 
   /* HEALTHY ANYWHERE SIGNATURE PROGRAM */
   .program-section {
@@ -757,8 +744,9 @@
     .hero-photo-script { font-size: 1.5rem; }
 
     .platform-section { padding: 4rem 1.5rem; }
-    .platform-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
-    .goals-grid { grid-template-columns: 1fr; }
+    .platform-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 0; }
+    .platform-mission { margin-top: 2.5rem; gap: 2rem; }
+    .platform-pillars { gap: 1.5rem; }
 
     .program-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
 
@@ -924,47 +912,15 @@
       <div class="section-label">My Platform</div>
       <h2 class="platform-headline">Confidently<br><em>Capable.</em></h2>
     </div>
-    <div>
-      <p class="platform-statement">"I advocate for redefining health for women, shifting the conversation from restriction and dieting to sustainable, personalized wellness, so women can feel confident, capable, and in control of their bodies for life."</p>
-    </div>
   </div>
-  <div class="goals-grid">
-    <div class="goal-card">
-      <div class="goal-num">01</div>
-      <div class="goal-tag">Goal One</div>
-      <h3 class="goal-title">Shift how young women<br>view <em>health & dieting.</em></h3>
-      <p class="goal-desc">Moving the conversation from shame and restriction to ownership, nourishment, and balance.</p>
-      <ul class="goal-bullets">
-        <li>Partner with organizations like Orlando Harvest Food Bank and universities</li>
-        <li>Teach simple, sustainable habits women can actually maintain</li>
-        <li>Champion a new standard for women's health in Florida</li>
-        <li>Because when women have the right tools, they change their lives</li>
-      </ul>
-    </div>
-    <div class="goal-card">
-      <div class="goal-num">02</div>
-      <div class="goal-tag">Goal Two · Signature Program</div>
-      <h3 class="goal-title"><em>Healthy, Anywhere.</em><br>No matter the zip code.</h3>
-      <p class="goal-desc">A statewide initiative making healthy living accessible to every woman through practical, low-cost tools whether she's shopping at a grocery store, dollar store, or gas station.</p>
-      <ul class="goal-bullets">
-        <li>30–45 min workshops: "Healthy Eating on $50/Week"</li>
-        <li>Live demos: build a meal, show real food swaps</li>
-        <li>Partner with colleges, high schools, community centers</li>
-        <li>Digital amplifier: YouTube, Reels, TikTok challenges</li>
-        <li>Free downloadable resource hub for every woman</li>
-      </ul>
-    </div>
-    <div class="goal-card">
-      <div class="goal-num">03</div>
-      <div class="goal-tag">Goal Three</div>
-      <h3 class="goal-title">Elevate the Miss USA brand<br>through <em>social media.</em></h3>
-      <p class="goal-desc">As a content creator with 30M+ YouTube views, I've seen firsthand how digital platforms shape culture. It's actually how I found pageants. I'd bring that expertise to the Miss USA brand.</p>
-      <ul class="goal-bullets">
-        <li>Reach a new generation of women authentically</li>
-        <li>Highlight real impact this organization is making</li>
-        <li>When young women see themselves in it, they believe they belong</li>
-        <li>Representation isn't just being seen. It's making others believe they can step in too</li>
-      </ul>
+  <div class="platform-mission">
+    <div class="platform-rule"></div>
+    <p class="platform-mission-text">"Inspiring women to build confidence and transform their lives from the inside out. Because I did too."</p>
+    <div class="platform-rule"></div>
+    <div class="platform-pillars">
+      <span class="platform-pillar">Health</span>
+      <span class="platform-pillar">Confidence</span>
+      <span class="platform-pillar">Transformation</span>
     </div>
   </div>
 </section>
