@@ -452,12 +452,33 @@
   .resources-left h2 em { font-style: italic; color: var(--gold); }
   .resources-left p { font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,228,0.45); margin-bottom: 3rem; }
   .resource-list { display: flex; flex-direction: column; }
-  .resource-item { display: flex; align-items: center; gap: 1.5rem; padding: 1.4rem 0; border-bottom: 1px solid rgba(240,236,228,0.07); }
+  .resource-item {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 1.4rem 1rem; margin: 0 -1rem;
+    border-bottom: 1px solid rgba(240,236,228,0.07);
+    text-decoration: none; border-radius: 3px;
+    transition: background 0.28s ease, transform 0.28s ease;
+  }
   .resource-item:last-child { border-bottom: none; }
+  .resource-item:hover { background: rgba(240,236,228,0.045); transform: translateX(3px); }
+  .resource-item:focus-visible { outline: 1px solid rgba(201,169,110,0.5); outline-offset: 2px; }
+  .res-body { flex: 1; }
   .res-badge { font-size: 0.54rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.2); padding: 0.3rem 0.8rem; border-radius: 2rem; white-space: nowrap; flex-shrink: 0; }
   .res-badge.soon { color: var(--sage-pale); background: rgba(143,166,122,0.1); border-color: rgba(143,166,122,0.2); }
-  .res-name { font-family: var(--font-serif); font-size: 1.05rem; color: var(--cream); }
-  .res-desc { font-size: 0.74rem; color: rgba(240,236,228,0.3); margin-top: 0.2rem; }
+  .res-name { font-family: var(--font-serif); font-size: 1.05rem; color: rgba(240,236,228,0.88); transition: color 0.28s ease; }
+  .resource-item:hover .res-name { color: var(--cream); }
+  .res-desc { font-size: 0.74rem; color: rgba(240,236,228,0.3); margin-top: 0.2rem; transition: color 0.28s ease; }
+  .resource-item:hover .res-desc { color: rgba(240,236,228,0.5); }
+  .res-arrow {
+    flex-shrink: 0; color: var(--gold); font-size: 1rem; line-height: 1;
+    opacity: 0; transform: translateX(-8px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+  }
+  .resource-item:hover .res-arrow { opacity: 1; transform: translateX(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .resource-item, .res-name, .res-desc, .res-arrow { transition: none; }
+    .resource-item:hover { transform: none; }
+  }
   .resources-right { display: flex; flex-direction: column; gap: 1.5rem; }
   .kit-card { border: 1px solid rgba(240,236,228,0.09); padding: 2.2rem 2rem; background: rgba(240,236,228,0.02); transition: background 0.3s, border-color 0.3s; }
   .kit-card:hover { background: rgba(240,236,228,0.05); border-color: rgba(201,169,110,0.3); }
@@ -796,41 +817,54 @@
       <h2>Tools for the <em>journey.</em></h2>
       <p>Built for distribution at speaking events, Miss USA appearances, and direct to our community. Every resource is designed to give women a practical starting point for real change.</p>
       <div class="resource-list">
-        <div class="resource-item">
+        <a class="resource-item" href="index.html#shred-nutrition">
           <span class="res-badge">Available Now</span>
-          <div>
+          <div class="res-body">
             <div class="res-name">Shred — The Book</div>
-            <div class="res-desc">Mindset + nutrition guide · $29</div>
+            <div class="res-desc">Mindset + nutrition guide · $24.99</div>
           </div>
-        </div>
-        <div class="resource-item">
+          <span class="res-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-item" href="index.html#shred-workout">
           <span class="res-badge">Available Now</span>
-          <div>
+          <div class="res-body">
             <div class="res-name">Shred — 12 Week Program</div>
-            <div class="res-desc">Full workout guide · $49</div>
+            <div class="res-desc">Full workout guide · $44.99</div>
           </div>
-        </div>
-        <div class="resource-item">
-          <span class="res-badge soon">In Development</span>
-          <div>
+          <span class="res-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-item" href="index.html#shred-bundle">
+          <span class="res-badge">Available Now</span>
+          <div class="res-body">
+            <div class="res-name">Shred — Complete Bundle</div>
+            <div class="res-desc">Training + nutrition · Best value · $54.99</div>
+          </div>
+          <span class="res-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-item" href="healthco-pageant-journey.html#resources">
+          <span class="res-badge">Available Now</span>
+          <div class="res-body">
             <div class="res-name">Nutrition Guide</div>
-            <div class="res-desc">For appearances &amp; speaking events</div>
+            <div class="res-desc">Free download · Healthy Anywhere series</div>
           </div>
-        </div>
-        <div class="resource-item">
-          <span class="res-badge soon">In Development</span>
-          <div>
+          <span class="res-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-item" href="healthco-pageant-journey.html#resources">
+          <span class="res-badge">Available Now</span>
+          <div class="res-body">
             <div class="res-name">Exercise Guide</div>
-            <div class="res-desc">Beginner-accessible movement framework</div>
+            <div class="res-desc">Free download · Beginner-accessible movement</div>
           </div>
-        </div>
-        <div class="resource-item">
-          <span class="res-badge soon">In Development</span>
-          <div>
+          <span class="res-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-item" href="healthco-pageant-journey.html#resources">
+          <span class="res-badge">Available Now</span>
+          <div class="res-body">
             <div class="res-name">Mindset &amp; Confidence Guide</div>
-            <div class="res-desc">Identity-level change workbook</div>
+            <div class="res-desc">Free download · Identity-level change workbook</div>
           </div>
-        </div>
+          <span class="res-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
     <div class="resources-right reveal reveal-d1">
