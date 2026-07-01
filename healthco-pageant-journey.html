@@ -255,38 +255,23 @@
 
   /* HEALTHY ANYWHERE SIGNATURE PROGRAM */
   .program-section {
-    background: var(--charcoal); padding: 7rem 5rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    background: var(--charcoal); padding: 9rem 5rem 10rem;
   }
-  .program-left .section-label { color: var(--sage-pale); margin-bottom: 1rem; }
+  .program-left .section-label { color: var(--sage-pale); margin-bottom: 1.5rem; }
   .program-headline {
     font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
-    color: var(--cream); line-height: 1.05; margin-bottom: 1.5rem;
+    font-size: clamp(3rem, 5vw, 6rem); font-weight: 300;
+    color: var(--cream); line-height: 1.0; margin-bottom: 3rem;
   }
   .program-headline em { font-style: italic; color: var(--gold); }
+  .program-rule {
+    width: 3rem; height: 1px; background: rgba(201,169,110,0.4); margin-bottom: 3rem;
+  }
   .program-desc {
-    font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,228,0.6);
-    margin-bottom: 2.5rem;
-  }
-  .program-right { display: flex; flex-direction: column; gap: 1px; }
-  .program-item {
-    background: rgba(240,236,228,0.04);
-    border: 1px solid rgba(240,236,228,0.07);
-    padding: 1.8rem 2rem;
-    transition: background 0.2s;
-  }
-  .program-item:hover { background: rgba(240,236,228,0.07); }
-  .program-item-label {
-    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--sage-lt); margin-bottom: 0.4rem;
-  }
-  .program-item-title {
-    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400;
-    color: var(--cream); margin-bottom: 0.4rem;
-  }
-  .program-item-desc {
-    font-size: 0.78rem; line-height: 1.6; color: rgba(240,236,228,0.45);
+    font-family: var(--font-serif); font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-weight: 300; font-style: italic;
+    line-height: 1.7; color: rgba(240,236,228,0.65);
+    max-width: 42rem;
   }
 
   /* FOOD INSECURITY DATA */
@@ -748,7 +733,7 @@
     .platform-mission { margin-top: 2.5rem; gap: 2rem; }
     .platform-pillars { gap: 1.5rem; }
 
-    .program-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .program-section { padding: 5rem 1.5rem 6rem; }
 
     .hunger-section { padding: 4rem 1.5rem; }
     .hunger-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
@@ -927,39 +912,10 @@
 
 <!-- HEALTHY ANYWHERE PROGRAM -->
 <section class="program-section">
-  <div class="program-left">
-    <div class="section-label light">Signature Initiative</div>
-    <h2 class="program-headline">Healthy,<br><em>Anywhere.</em></h2>
-    <p class="program-desc">I'm simplifying healthy living for women across Florida through workshops, digital content, and practical tools that work no matter your budget or background. What I teach in real life, I scale through content. From rooms to millions.</p>
-    <p class="program-desc" style="margin-top:0;">In partnership with <a href="https://feedhopenow.org" target="_blank" rel="noopener noreferrer" style="color:inherit;border-bottom:1px solid rgba(240,236,228,0.25);text-decoration:none;">Second Harvest Food Bank of Central Florida</a> and Feeding Florida because access to healthy food and access to healthy knowledge go hand in hand.</p>
-  </div>
-  <div class="program-right">
-    <div class="program-item">
-      <div class="program-item-label">Workshop Format</div>
-      <div class="program-item-title">"Healthy Eating on $50/Week"</div>
-      <div class="program-item-desc">Live community workshop with real meal builds, food swaps, and take-home guides</div>
-    </div>
-    <div class="program-item">
-      <div class="program-item-label">Digital Content</div>
-      <div class="program-item-title">I Tried Eating Healthy at the Dollar Store</div>
-      <div class="program-item-desc">YouTube episodes + Reels + TikTok challenges moving impact from rooms to millions</div>
-    </div>
-    <div class="program-item">
-      <div class="program-item-label">Community Partners</div>
-      <div class="program-item-title">Colleges, High Schools & Community Centers</div>
-      <div class="program-item-desc">Statewide partnerships across all 67 Florida counties</div>
-    </div>
-    <div class="program-item">
-      <div class="program-item-label">Resource Hub</div>
-      <div class="program-item-title">Free Digital Toolkit</div>
-      <div class="program-item-desc">Meal ideas, shopping lists, and habit frameworks — downloadable for every woman, everywhere</div>
-    </div>
-    <div class="program-item">
-      <div class="program-item-label">Food Bank Partnership</div>
-      <div class="program-item-title">Second Harvest Food Bank of Central Florida</div>
-      <div class="program-item-desc">Addressing food insecurity alongside health education — because you can't build a healthy life without food access</div>
-    </div>
-  </div>
+  <div class="section-label light">Signature Initiative</div>
+  <h2 class="program-headline">Healthy,<br><em>Anywhere.</em></h2>
+  <div class="program-rule"></div>
+  <p class="program-desc">"Healthy Anywhere is a movement centered on the belief that every woman deserves access to the knowledge, tools, and confidence to live a healthy life, regardless of her background, budget, or zip code."</p>
 </section>
 
 <!-- FOOD INSECURITY DATA -->
