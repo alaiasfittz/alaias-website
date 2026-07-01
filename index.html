@@ -280,14 +280,38 @@
   .identity-stat-text { font-size: 0.85rem; line-height: 1.6; color: rgba(240,236,228,0.6); }
 
   /* ── WELLNESS BANNER ── */
-  .wellness-banner { background: var(--sage); padding: 6rem 5rem; text-align: center; }
-  .wellness-banner p {
-    font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 2.8vw, 2.8rem); font-weight: 300;
-    color: var(--cream); line-height: 1.45; max-width: 980px; margin: 0 auto;
+  .wellness-banner { background: var(--sage); padding: 8rem 5rem; }
+  .manifesto { position: relative; max-width: 940px; margin: 0 auto; text-align: center; }
+  .manifesto-mark {
+    position: absolute; top: -3.75rem; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(9rem, 18vw, 15rem); line-height: 1;
+    color: var(--cream); opacity: 0.13;
+    pointer-events: none; user-select: none; z-index: 0;
   }
-  .wellness-banner strong { font-weight: 600; }
-  .wellness-banner em { font-style: italic; }
+  .manifesto-lead, .manifesto-statement {
+    position: relative; z-index: 1;
+    font-family: var(--font-serif); font-weight: 300; margin: 0 auto; max-width: 900px;
+  }
+  .manifesto-lead {
+    font-size: clamp(1.3rem, 2.1vw, 2rem); line-height: 1.55;
+    color: rgba(240,236,228,0.68); margin-bottom: 1.9rem;
+  }
+  .manifesto-statement {
+    font-size: clamp(1.65rem, 3vw, 3.05rem); line-height: 1.4; color: var(--cream);
+  }
+  .manifesto-statement .soft { font-style: italic; }
+  .manifesto-statement .accent { font-style: italic; color: var(--gold); }
+  .manifesto-attribution { position: relative; z-index: 1; margin-top: 3.5rem; }
+  .manifesto-rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.55; margin: 0 auto 1.4rem; }
+  .manifesto-name {
+    font-family: var(--font-serif); font-style: italic; font-weight: 400;
+    font-size: 1.5rem; color: var(--cream); line-height: 1.2;
+  }
+  .manifesto-role {
+    font-family: var(--font-sans); font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-top: 0.7rem;
+  }
 
   /* ── ABOUT ── */
   .about-section {
@@ -994,7 +1018,10 @@
     .identity-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
     .identity-stat { grid-template-columns: 100px 1fr; }
 
-    .wellness-banner { padding: 4rem 1.5rem; }
+    .wellness-banner { padding: 5rem 1.5rem; }
+    .manifesto-mark { top: -2rem; font-size: 7rem; }
+    .manifesto-attribution { margin-top: 2.5rem; }
+    .manifesto-name { font-size: 1.35rem; }
 
     .about-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
     .about-photo { display: none; }
@@ -1140,9 +1167,18 @@
   </div>
 </section>
 
-<!-- WELLNESS BANNER -->
+<!-- WELLNESS BANNER / MANIFESTO -->
 <div class="wellness-banner">
-  <p>Women are investing more in wellness than ever before, yet many still struggle with confidence, belonging, and access. That's why this mission exists. Because <em>confidence changes everything.</em> Health was never about becoming smaller. It was always about becoming <em>who you were capable of being.</em></p>
+  <div class="manifesto">
+    <span class="manifesto-mark" aria-hidden="true">&ldquo;</span>
+    <p class="manifesto-lead">Women are investing more in wellness than ever before, yet many still struggle with confidence, belonging, and access. That's why this mission exists.</p>
+    <p class="manifesto-statement">Because <span class="soft">confidence changes everything.</span> Health was never about becoming smaller — it was always about becoming <span class="accent">who you were capable of being.</span></p>
+    <div class="manifesto-attribution">
+      <div class="manifesto-rule" aria-hidden="true"></div>
+      <div class="manifesto-name">Alaias Fittz</div>
+      <div class="manifesto-role">Founder of The Health Co.</div>
+    </div>
+  </div>
 </div>
 
 <!-- ABOUT -->
