@@ -288,6 +288,7 @@
   .guide-card {
     background: var(--forest); border-radius: 2px;
     overflow: hidden; display: flex; flex-direction: column;
+    scroll-margin-top: 110px;
   }
   .guide-card-top {
     aspect-ratio: 4/5; background: var(--forest-mid);
@@ -867,7 +868,7 @@
     <p>Three guides distributed at appearances, speaking events, and downloadable directly from this page. In future partnership with the Miss Florida USA organization.</p>
   </div>
   <div class="guides-grid">
-    <div class="guide-card">
+    <div class="guide-card" id="guide-nutrition">
       <div class="guide-card-top">
         <img src="assets/nutrition-guide-cover.jpg" alt="Nutrition Guide — Healthy Anywhere Series" class="guide-card-cover">
       </div>
@@ -876,7 +877,7 @@
         <button class="guide-download-trigger" onclick="openGuideModal('Nutrition Guide', 'assets/Nutrition Guide - Healthy Anywhere.pdf', 'Nutrition Guide — Healthy Anywhere Series')">Download Guide</button>
       </div>
     </div>
-    <div class="guide-card">
+    <div class="guide-card" id="guide-fitness">
       <div class="guide-card-top">
         <img src="assets/fitness-guide-cover.jpg" alt="Fitness Guide — Healthy Anywhere Series" class="guide-card-cover">
       </div>
@@ -885,7 +886,7 @@
         <button class="guide-download-trigger" onclick="openGuideModal('Fitness Guide', 'assets/Fitness Free Guides.pdf', 'Fitness Guide — Healthy Anywhere Series')">Download Guide</button>
       </div>
     </div>
-    <div class="guide-card">
+    <div class="guide-card" id="guide-mindset">
       <div class="guide-card-top">
         <img src="assets/mindset-guide-cover.jpg" alt="Mindset Guide — Healthy Anywhere Series" class="guide-card-cover">
       </div>
