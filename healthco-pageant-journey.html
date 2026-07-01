@@ -206,14 +206,9 @@
   }
   .hero-photo-script em { color: var(--gold-lt); font-style: italic; }
 
-  /* PLATFORM */
+  /* PLATFORM — consolidated */
   .platform-section {
-    background: var(--linen); padding: 8rem 5rem 9rem;
-    text-align: left;
-  }
-  .platform-intro {
-    display: grid; grid-template-columns: 1fr; gap: 0;
-    align-items: end; margin-bottom: 0;
+    background: var(--linen);
   }
   .section-label {
     font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em;
@@ -221,104 +216,67 @@
   }
   .section-label.light { color: var(--sage-pale); }
   .section-label.gold-c { color: var(--gold); }
+
+  /* Part 1 — Confidently Capable */
+  .platform-part {
+    padding: 8rem 5rem 9rem;
+  }
+  .platform-part--dark {
+    background: var(--charcoal);
+  }
+  .platform-part--sage {
+    background: var(--sage);
+  }
   .platform-headline {
     font-family: var(--font-serif);
     font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300;
-    color: var(--text-dark); line-height: 1.0;
+    color: var(--text-dark); line-height: 1.0; margin-bottom: 3rem;
   }
   .platform-headline em { font-style: italic; color: var(--sage); }
-  .platform-statement {
-    font-family: var(--font-serif); font-size: 1.25rem; font-weight: 300;
-    font-style: italic; color: var(--text-mid); line-height: 1.6;
-    border-left: 2px solid var(--sage); padding-left: 1.5rem;
-  }
-  .platform-mission {
-    max-width: 52rem; margin: 4rem auto 0;
-    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2.5rem;
-  }
+  .platform-headline--light { color: var(--cream); }
+  .platform-headline--light em { color: var(--gold); }
+  .platform-headline--cream { color: var(--cream); }
+  .platform-headline--cream em { font-style: italic; }
   .platform-rule {
-    width: 3rem; height: 1px; background: var(--sage); opacity: 0.5;
+    width: 3rem; height: 1px; background: var(--sage); opacity: 0.45; margin-bottom: 3rem;
   }
-  .platform-mission-text {
-    font-family: var(--font-serif); font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  .platform-rule--gold { background: var(--gold); }
+  .platform-rule--cream { background: rgba(240,236,228,0.3); }
+  .platform-quote {
+    font-family: var(--font-serif); font-size: clamp(1.3rem, 2vw, 1.85rem);
     font-weight: 300; font-style: italic;
-    color: var(--text-mid); line-height: 1.65;
+    color: var(--text-mid); line-height: 1.65; max-width: 44rem;
   }
-  .platform-pillars {
-    display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
-    margin-top: 1rem;
+  .platform-quote--light { color: rgba(240,236,228,0.65); }
+  .platform-body {
+    font-size: 0.95rem; line-height: 1.9; color: var(--text-mid);
+    max-width: 44rem; margin-top: 2rem;
   }
-  .platform-pillar {
-    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--sage); font-weight: 500;
-  }
+  .platform-body--light { color: rgba(240,236,228,0.6); }
 
-  /* HEALTHY ANYWHERE SIGNATURE PROGRAM */
-  .program-section {
-    background: var(--charcoal); padding: 9rem 5rem 10rem;
-  }
-  .program-left .section-label { color: var(--sage-pale); margin-bottom: 1.5rem; }
-  .program-headline {
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 5vw, 6rem); font-weight: 300;
-    color: var(--cream); line-height: 1.0; margin-bottom: 3rem;
-  }
-  .program-headline em { font-style: italic; color: var(--gold); }
-  .program-rule {
-    width: 3rem; height: 1px; background: rgba(201,169,110,0.4); margin-bottom: 3rem;
-  }
-  .program-desc {
-    font-family: var(--font-serif); font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-    font-weight: 300; font-style: italic;
-    line-height: 1.7; color: rgba(240,236,228,0.65);
-    max-width: 42rem;
-  }
-
-  /* FOOD INSECURITY DATA */
-  .hunger-section {
-    background: var(--sage); padding: 6rem 5rem;
-  }
-  .hunger-intro {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8rem;
-    align-items: end; margin-bottom: 4rem;
-  }
-  .hunger-headline {
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300;
-    color: var(--cream); line-height: 1.05;
-  }
-  .hunger-headline em { font-style: italic; }
-  .hunger-context {
-    font-size: 0.9rem; line-height: 1.8; color: rgba(240,236,228,0.75);
-  }
-  .hunger-context a { color: var(--cream); }
-  .hunger-stats {
+  /* Stats row */
+  .platform-stats {
     display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 1px; background: rgba(255,255,255,0.1);
+    gap: 1px; background: rgba(255,255,255,0.12); margin-top: 4rem;
   }
-  .hunger-stat {
+  .platform-stat {
     background: rgba(35,51,32,0.35); padding: 2.5rem 2rem;
   }
-  .hunger-stat-num {
+  .platform-stat-num {
     font-family: var(--font-serif); font-size: 3rem; font-weight: 300;
     color: var(--cream); line-height: 1; margin-bottom: 0.5rem;
   }
-  .hunger-stat-label {
+  .platform-stat-label {
     font-size: 0.78rem; line-height: 1.6; color: rgba(240,236,228,0.7);
   }
-  .hunger-partner {
+  .platform-source {
     margin-top: 3rem; padding-top: 2rem;
-    border-top: 1px solid rgba(240,236,228,0.2);
-    display: flex; align-items: center; gap: 2rem;
+    border-top: 1px solid rgba(240,236,228,0.15);
+    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(240,236,228,0.4);
   }
-  .hunger-partner-label {
-    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(240,236,228,0.5); white-space: nowrap;
-  }
-  .hunger-partner-name {
-    font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400;
-    font-style: italic; color: var(--cream);
-  }
+  .platform-source a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
 
   /* RESOURCES / DOWNLOADABLE GUIDES */
   .resources-section {
@@ -728,16 +686,9 @@
     .hero-cards { grid-template-columns: 1fr; }
     .hero-photo-script { font-size: 1.5rem; }
 
-    .platform-section { padding: 4rem 1.5rem; }
-    .platform-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 0; }
-    .platform-mission { margin-top: 2.5rem; gap: 2rem; }
-    .platform-pillars { gap: 1.5rem; }
+    .platform-part { padding: 5rem 1.5rem 6rem; }
+    .platform-stats { grid-template-columns: 1fr 1fr; }
 
-    .program-section { padding: 5rem 1.5rem 6rem; }
-
-    .hunger-section { padding: 4rem 1.5rem; }
-    .hunger-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
-    .hunger-stats { grid-template-columns: 1fr 1fr; }
 
     .resources-section { padding: 4rem 1.5rem; }
     .guides-grid { grid-template-columns: 1fr; }
@@ -890,68 +841,54 @@
 
 </section>
 
-<!-- PLATFORM -->
+<!-- PLATFORM — consolidated -->
 <section class="platform-section" id="platform">
-  <div class="platform-intro">
-    <div>
-      <div class="section-label">My Platform</div>
-      <h2 class="platform-headline">Confidently<br><em>Capable.</em></h2>
-    </div>
-  </div>
-  <div class="platform-mission">
-    <div class="platform-rule"></div>
-    <p class="platform-mission-text">"Inspiring women to build confidence and transform their lives from the inside out. Because I did too."</p>
-    <div class="platform-rule"></div>
-    <div class="platform-pillars">
-      <span class="platform-pillar">Health</span>
-      <span class="platform-pillar">Confidence</span>
-      <span class="platform-pillar">Transformation</span>
-    </div>
-  </div>
-</section>
 
-<!-- HEALTHY ANYWHERE PROGRAM -->
-<section class="program-section">
-  <div class="section-label light">Signature Initiative</div>
-  <h2 class="program-headline">Healthy,<br><em>Anywhere.</em></h2>
-  <div class="program-rule"></div>
-  <p class="program-desc">"Healthy Anywhere is a movement centered on the belief that every woman deserves access to the knowledge, tools, and confidence to live a healthy life, regardless of her background, budget, or zip code."</p>
-</section>
+  <!-- Part 1: Confidently Capable -->
+  <div class="platform-part">
+    <div class="section-label">My Platform</div>
+    <h2 class="platform-headline">Confidently<br><em>Capable.</em></h2>
+    <div class="platform-rule"></div>
+    <p class="platform-quote">"Inspiring women to build confidence and transform their lives from the inside out. Because I did too."</p>
+  </div>
 
-<!-- FOOD INSECURITY DATA -->
-<section class="hunger-section">
-  <div class="hunger-intro">
-    <div>
-      <div class="section-label" style="color:rgba(240,236,228,0.5); margin-bottom:1rem;">Why Food Access Matters</div>
-      <h2 class="hunger-headline">Hunger in<br><em>Central Florida.</em></h2>
-    </div>
-    <p class="hunger-context">
-      You cannot talk about women's health without talking about food access. These numbers are why the "Healthy, Anywhere" initiative partners directly with local food organizations because health education and food security must go together.<br><br>
-      Source: <a href="https://feedhopenow.org/our-work/hunger-in-central-florida/map-the-meal-gap-report/" target="_blank">Second Harvest Food Bank · Map the Meal Gap Report</a>
-    </p>
+  <!-- Part 2: Healthy, Anywhere -->
+  <div class="platform-part platform-part--dark">
+    <div class="section-label light">Signature Initiative</div>
+    <h2 class="platform-headline platform-headline--light">Healthy,<br><em>Anywhere.</em></h2>
+    <div class="platform-rule platform-rule--gold"></div>
+    <p class="platform-quote platform-quote--light">"Healthy Anywhere is a movement centered on the belief that every woman deserves access to the knowledge, tools, and confidence to live a healthy life, regardless of her background, budget, or zip code."</p>
+    <p class="platform-body platform-body--light">Making health feel accessible, sustainable, and empowering for women everywhere.</p>
   </div>
-  <div class="hunger-stats">
-    <div class="hunger-stat">
-      <div class="hunger-stat-num">1 in 7</div>
-      <div class="hunger-stat-label">individuals in Central Florida are facing hunger</div>
+
+  <!-- Part 3: Why It Matters -->
+  <div class="platform-part platform-part--sage">
+    <div class="section-label" style="color:rgba(240,236,228,0.6);">Why It Matters</div>
+    <h2 class="platform-headline platform-headline--cream">Hunger in<br><em>Central Florida.</em></h2>
+    <div class="platform-rule platform-rule--cream"></div>
+    <p class="platform-quote platform-quote--light">You cannot talk about women's health without talking about food access.</p>
+    <p class="platform-body platform-body--light">For many women and families, the greatest barrier to wellness isn't motivation — it's access. Understanding these realities is what inspires the vision behind Healthy, Anywhere.<br><br>Because every woman deserves the opportunity to pursue a healthy life, regardless of her circumstances.</p>
+    <div class="platform-stats">
+      <div class="platform-stat">
+        <div class="platform-stat-num">1 in 7</div>
+        <div class="platform-stat-label">individuals in Central Florida are facing hunger</div>
+      </div>
+      <div class="platform-stat">
+        <div class="platform-stat-num">1 in 6</div>
+        <div class="platform-stat-label">kids live in food-insecure households</div>
+      </div>
+      <div class="platform-stat">
+        <div class="platform-stat-num">35%</div>
+        <div class="platform-stat-label">of food-insecure people don't qualify for SNAP — working families falling through the cracks</div>
+      </div>
+      <div class="platform-stat">
+        <div class="platform-stat-num">111M+</div>
+        <div class="platform-stat-label">meals is the regional shortfall per year in Central Florida</div>
+      </div>
     </div>
-    <div class="hunger-stat">
-      <div class="hunger-stat-num">1 in 6</div>
-      <div class="hunger-stat-label">kids live in food-insecure households</div>
-    </div>
-    <div class="hunger-stat">
-      <div class="hunger-stat-num">35%</div>
-      <div class="hunger-stat-label">of food-insecure people don't even qualify for SNAP — working families falling through the cracks</div>
-    </div>
-    <div class="hunger-stat">
-      <div class="hunger-stat-num">111M+</div>
-      <div class="hunger-stat-label">meals is the regional shortfall per year in Central Florida</div>
-    </div>
+    <p class="platform-source">Source: <a href="https://feedhopenow.org/our-work/hunger-in-central-florida/map-the-meal-gap-report/" target="_blank" rel="noopener noreferrer">Second Harvest Food Bank · Map the Meal Gap Report</a></p>
   </div>
-  <div class="hunger-partner">
-    <span class="hunger-partner-label">Nonprofit Partner</span>
-    <span class="hunger-partner-name">Second Harvest Food Bank of Central Florida · Feeding Florida</span>
-  </div>
+
 </section>
 
 <!-- DOWNLOADABLE RESOURCES -->
